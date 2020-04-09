@@ -12,10 +12,11 @@ Wzmocnienie(power up) - wypadający z wrogów obiekt, jeśli obiekt zostanie zeb
 Grywalny-
 Pocisk-
 Wróg- 
+> **TO DO** Dopisać istniejące rzeczy z słownika pojęć + dodwać nowe w miarę tworzenia specyfikacji
 ### Opis Systemu
 #### Ogólny opis gry
 Celem jest utworzenie gry przeglądarkowej IO, w której będzie mogło wziąć udział od 1 do 2 graczy. Drugi gracz będzie mógł dołączyć po sieci. Każdy gracz będzie mógł sterować własnym statkiem poruszać nim w poziomie oraz wystrzeliwać pociski. Przeciwnicy będą atakować gracza podobnymi pociskami.
-
+---
 #### Ogólny zarys tworzenia projektu 
 Gra będzie tworzona w systemie wersji. Poszczególne wersje będą wzbogacały grę o dodatkowe mechaniki. Wersja 1.0 będzie wersją grywalną.
 
@@ -34,8 +35,23 @@ Po pokonaniu przeciwników będzie sie pojawiała kolejna fala.
 
 ##### Wersja 1.2
 Z przeciwników będą wypadać wzmoznienia które 
-
-
+---
+> **TO DO** Dokończyć wersje  
 
  Po poknaniu fali przeciwników będzie pojawiała się kolejna fala przeciwników z innymi właściwościami. 
-Po pokonaniu odpowieniej ilości fal będzie się generować kolejna fala z bosem
+Po pokonaniu odpowieniej ilości fal będzie się generować kolejna fala z bosem.
+---
+
+
+
+> **TO DO** Napisać obiekty biznesowe
+---
+> **TO DO**  Wymagania funkcjonalne
+---
+> **TO DO**  Wymagania niefunkcjonalne
+---
+> **TO DO**  Model systemu- mam już trochę do tego przygotwoane
+---
+> **TO DO**  Schemat interfejsu -mam przygotowany tylko muszę dodać 
+
+> **TO DO**  Wymyślić co można jeszcz dodać do Specyfikacja Wymagań

@@ -6,11 +6,13 @@ Wersja 1.0<br>
 2. Kamil Mentel
 3. Marek Wyczesany
 ## 1. Wprowadzenie
-### Słowinik pojęć
-**Wzmocnienie**(power up) - wypadający z wrogów obiekt, jeśli obiekt zostanie zebrany przez gracza spowoduje to stałe lub czasowe zmiany w parametrach strzału lub interakcji statku z pozostałymi obiekatami.<br>
-**Grywalny**-Znaczy, że gra będzie posiadała dość mechanik, aby funkcjonować w podstawowy sposób według założeń.<br>
-**Pocisk**-obiekt wysyłany przez gracza lub przeciwnika. Po zetknięciu się z graczem odejmuję życie lub kończy grę. Po zetknięciu z przeciwnikiem eliminuje go. Po uderzeniu w przeszkodę znika.<br>
-**Wróg**- Sterowany przez skrypt obiekt który, będzie poruszał się po wybranej ścieżce i atakował w odstępach czasowych.
+### Słowinik pojęć:
+* **Wzmocnienie** (power up) - Wypadający z wrogów obiekt, jeśli obiekt zostanie zebrany przez gracza spowoduje to stałe lub czasowe zmiany w parametrach strzału lub interakcji statku z pozostałymi obiekatami.<br>
+* **Grywalny**- Znaczy, że gra będzie posiadała dość mechanik, aby funkcjonować w podstawowy sposób według założeń.<br>
+* **Pocisk**- Obiekt wysyłany przez gracza lub przeciwnika. Po zetknięciu się z graczem odejmuję życie lub kończy grę. Po zetknięciu z przeciwnikiem eliminuje go. Po uderzeniu w przeszkodę znika.<br>
+* **Wróg**- Sterowany przez skrypt obiekt który, będzie poruszał się po wybranej ścieżce i atakował w odstępach czasowych.<br>
+* **Boss**- Unikatowy i szczególnie wymagający przeciwnik w grach komputerowych, którego pokonanie zazwyczaj oznacza zwieńczenie pewnego etapu gry.<br>
+* **Wave**- (z ang. fala) zmasowany atak przeciwników, zazwyczaj pomiędzy pokonaniem jednej fali a przyjściem następnej gracz ma chwilkę na przygotowanie się. Wyznacznik postępu na danym poziomie.<br>
 ## 2.Opis Systemu
 ### 1.Ogólny opis gry i założenia jej rozbudowy.
 Celem jest utworzenie gry przeglądarkowej IO, w której będzie mogło wziąć udział od 1 do 2 graczy. Drugi gracz będzie mógł dołączyć po sieci. Każdy gracz będzie mógł sterować własnym statkiem poruszać nim w poziomie oraz wystrzeliwać pociski. Przeciwnicy będą atakować gracza podobnymi pociskami.

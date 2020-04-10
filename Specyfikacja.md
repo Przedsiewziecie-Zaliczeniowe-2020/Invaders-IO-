@@ -5,16 +5,14 @@ Wersja 1.0<br>
 1. Karol Węglarz
 2. Kamil Mentel
 3. Marek Wyczesany
-4. Rafał Olma
 ## 1. Wprowadzenie
 ### Słowinik pojęć
-Wzmocnienie(power up) - wypadający z wrogów obiekt, jeśli obiekt zostanie zebrany przez gracza spowoduje to stałe lub czasowe zmiany w parametrach strzału lub interakcji statku z pozostałymi obiekatami.
-Grywalny-
-Pocisk-
-Wróg- 
-> **TO DO** Dopisać istniejące rzeczy z słownika pojęć + dodwać nowe w miarę tworzenia specyfikacji
+**Wzmocnienie**(power up) - wypadający z wrogów obiekt, jeśli obiekt zostanie zebrany przez gracza spowoduje to stałe lub czasowe zmiany w parametrach strzału lub interakcji statku z pozostałymi obiekatami.<br>
+**Grywalny**-Znaczy, że gra będzie posiadała dość mechanik, aby funkcjonować w podstawowy sposób według założeń.<br>
+**Pocisk**-obiekt wysyłany przez gracza lub przeciwnika. Po zetknięciu się z graczem odejmuję życie lub kończy grę. Po zetknięciu z przeciwnikiem eliminuje go. Po uderzeniu w przeszkodę znika.<br>
+**Wróg**- Sterowany przez skrypt obiekt który, będzie poruszał się po wybranej ścieżce i atakował w odstępach czasowych.
 ## 2.Opis Systemu
-### 1.Ogólny opis gry
+### 1.Ogólny opis gry i założenia jej rozbudowy.
 Celem jest utworzenie gry przeglądarkowej IO, w której będzie mogło wziąć udział od 1 do 2 graczy. Drugi gracz będzie mógł dołączyć po sieci. Każdy gracz będzie mógł sterować własnym statkiem poruszać nim w poziomie oraz wystrzeliwać pociski. Przeciwnicy będą atakować gracza podobnymi pociskami.
 
 ### 2.Jakie są warunki zwycięstwa?
@@ -73,7 +71,7 @@ Wzmocnienie broni, mnożnik punktowy<br><br>
  Niebieski -> *wzmocnienie dla pojedynczego gracza*<br>
  Pomarańczowy -> *wzmocnienie dla zespolu*
 
-> **TO DO** Zastanowić się czy w wariancie solo, power-upy zespołowe będą się respić
+
 
 ---
 ## 3.Ogólny zarys tworzenia projektu 
@@ -117,9 +115,11 @@ Będą pojawiać się po wciśnięci przez gracza lewego przycisku myszy. W zale
 Będą chronić gracza przed zakończeniem gry. Gracz traci życie, gdy zostanie trafiony pociskiem przeciwnika. Gdy ilość żyć spadnie do zera gra się kończy.
 
 ### 5.Przeszkody
-......
+W grze będą znajdować przeszkodu które będą chronić przed atakiami przeciwnika a oraz zasłaniać przeciwników graczowi.
 
-> **TO DO** Napisać kolejne obiekty biznesowe
+### 5.Wynik
+Gdy gracz będzie widział swój wynik w prawym górnym rogu.
+
 ---
 ## 5.Wymagania funkcjonalne
 
@@ -141,11 +141,11 @@ Gracz będzie mógł połączyć się z serwerem.
 Priorytet: WYSOKI <br>
 Gracz będzie mógł podłączyć się do sesji innego gracza.
 
-### 6. Wynik 
-
-
+### 6. Wynik
+Priorytet: WYSOKI <br>
+Będzie dostawał punkt za każdego pokonanego przeciwnika.
  
-> **TO DO** Dopisać kolejne  Wymagania funkcjonalne
+
 ---
 ## 6.Wymagania nie funkcjonalne 
 ### 1.Możliwosć wyboru koloru statku 
@@ -154,12 +154,41 @@ Gracz będzie mógł wybrać kolor poruszanego przez niego obiektu
 ### 2.Tabla najwyższych wyników 
 Priorytet: NiSKI <br>
 Gracz będzie mógł zobaczyć table najlepszych wyników, a także wpisać się do niej.
+### 3.Muzyka 
+Priorytet: ŚREDNI <br>
+Podczas gry w tle będzie grała muzyka.
+### 3.Ochrona po trafieniu  
+Priorytet: WYSOKI <br>
+Gdy gracz zostanie trafiony, na krótki okres 2-3 sek nie będzie mógł być trafiony kolejny raz. Będzie to sygnalizowane graficznie, poprzez nadanie większej przeźroczystości obiektowi sterowanemu przez gracza.
+### 4.Ładowanie się kolejnych poziomów
+Priorytet: WYSOKI <br>
+Gdy gracz pokona daną falę przeciwników, otrzyma komunikat o ukończeniu poziomu. Nastąpi zmiana graficzna tła rozgrywki oraz pojawią się nowi przeciwnicy.
 
 
-> **TO DO** Dopiać kolejne  Wymagania niefunkcjonalne
+
 ---
-> **TO DO** Wykorzystywane technologie Model systemu- mam już trochę do tego przygotwoane
----
-> **TO DO**  Schemat interfejsu -mam przygotowany tylko muszę dodać 
+## 6.Wykorzystywane technologie.
+### 1.Klient <img src="https://piecioshka.pl/assets/images/posts/javascript/logo-javascript.svg" alt="alt text" width="40" height="40">
+Klient będzie napisany w języku JavaScript.
+<br>
 
-> **TO DO**  Wymyślić co można jeszcz dodać do Specyfikacja Wymagań
+#### p5.js <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQV0j_CJwy58uyAC25uVSBZ8a6IsbY-EO47BiSA9FJVAGUmveZ2&usqp=CAU" alt="alt text" width="40" height="40">
+Dodatkowo skorzystamy z  z biblioteką p5.js. Pomoże ona w budowaniu interfejsu graficznego gry.<br>
+Link do strony biblioteki: https://p5js.org
+
+### 3.Server 
+Serwer będzie napisany w JavaScript przy użyciu Noda.js <img src="https://bedekodzic.pl/wp-content/uploads/2018/03/flat550x550075f.u1.jpg" alt="alt text" width="40" height="40"> i frameworku express. 
+Dodatkowo skorzystamy z frameworka socker.io.<img src="https://images.ctfassets.net/3prze68gbwl1/asset-17suaysk1qa1k7p/364f9e87d38546dd48a6fd75c5c92c10/SOCKETIOICON.gif" alt="alt text" width="40" height="40"><br>
+#### Socker io<br>
+Przy pomocy tego frameworku stworzymy połączenie dwóch aplikacji w czasie rzeczywistym, tworząc dwukierunkowy kanał komunikacji między klientem a serwerem.<br>
+Link do strony frameworku: https://socket.io/
+#### Przykładowy Model działania komunikacji 
+<img src="https://i.imgur.com/ZS8dbhj.png" alt="alt text"><br>
+
+
+---
+## 7.Przykład szkic interfejsu gry
+<img src="https://i.imgur.com/Jbfi3Fe.png" alt="alt text"><br>
+W grze będzie można poruszać się prawo lewo, przeciwnicy będą znajdować się w górze ekranu, w środku będzie pusta przestrzeń dająca możliwość manewrowania przez gracza między pociskami wroga.
+
+

@@ -4,7 +4,7 @@ let i = 0;
 let numberofShots=10;
 
 function setup() {
-    createCanvas (600, 450);
+    createCanvas (1000, 750);
     ship = new Ship ();
     for (var i = 0; i < numberofShots; i++) {
         shot[i] = new Shot (-999, -999);
@@ -18,7 +18,7 @@ function keyPressed() {
     }
 }
 function draw() {
-    background (120, 55, 55);
+    background (00, 00, 00);
     for (var k = 0; k < numberofShots; k++) {
        shot[i].show ();
         shot[i].move ();

@@ -11,4 +11,6 @@ class Ship {
         fill (255);
         rect (this.x, this.y, 30, 50);
     };
+
+
 }

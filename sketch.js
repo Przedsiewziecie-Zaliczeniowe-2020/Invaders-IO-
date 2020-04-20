@@ -2,6 +2,12 @@ let ship;
 let shot = [10];
 let i = 0;
 let numberofShots=10;
+let shipImg;
+
+function preload()
+{
+shipImg= loadImage('Models/Spaceships/PlayerOne.png')
+}
 
 function setup() {
     createCanvas (1000, 750);

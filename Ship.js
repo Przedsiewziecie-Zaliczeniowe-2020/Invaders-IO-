@@ -9,7 +9,7 @@ class Ship {
     };
     show() {
         fill (255);
-        image(shipImg,this.x, this.y, 30, 50);
+        image(shipImg,this.x, this.y, 80, 90);
     };
 
 

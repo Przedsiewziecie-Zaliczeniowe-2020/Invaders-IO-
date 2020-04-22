@@ -1,7 +1,7 @@
 class Ship {
     constructor() {
         this.x = mouseX;
-        this.y = height - 60;
+        this.y = height - 120;
         this.update = function () {
 
             this.x = mouseX;

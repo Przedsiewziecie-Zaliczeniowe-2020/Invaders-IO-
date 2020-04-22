@@ -8,15 +8,19 @@ class Shot {
 
     boom()
     {
-        this.vy = -5;
+        this.vy = -10;
+
     }
 
     move() {
         this.y += this.vy;
     }
+
     reload() {
+
         this.x=ship.x+35;
         this.y=ship .y;
+
     }
     show() {
         fill (10, 255, 10);

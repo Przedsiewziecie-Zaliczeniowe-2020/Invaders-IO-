@@ -9,7 +9,7 @@ class Star {
         if (this.y<0)
         {
             this.y=height;
-
+            this.x=random(width);
         }
     }
 

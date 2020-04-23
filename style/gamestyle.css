@@ -17,6 +17,23 @@ body{
   border-right: 2px solid #fff;
 }
 
+.playerInfo{
+  position: absolute;
+  top: 30%;
+  color: #fff;
+  padding: 20px;
+  font-family: 'Mr Dafoe', cursive;
+  font-style: italic;
+}
+
+.playerInfo span{
+  color: #F29;
+  font-style: normal;
+  font-size: 1.5rem;
+  -webkit-filter: drop-shadow(0 0 22px #000);
+          filter: drop-shadow(0 0 22px #000);
+
+}
 
 .rightBar{
   width: 30vh;

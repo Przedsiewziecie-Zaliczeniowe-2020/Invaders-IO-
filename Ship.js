@@ -1,7 +1,7 @@
 class Ship {
     constructor() {
         this.x = mouseX;
-        this.y = height - 60;
+        this.y = height - 120;
         this.update = function () {
 
             this.x = mouseX;
@@ -9,6 +9,8 @@ class Ship {
     };
     show() {
         fill (255);
-        rect (this.x, this.y, 30, 50);
+        image(shipImg,this.x, this.y, 80, 90);
     };
+
+
 }

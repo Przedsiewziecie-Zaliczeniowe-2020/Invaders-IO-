@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GAME - Robots Invaders</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+<link rel="stylesheet" href="style/gamestyle.css">
+
+
+</head>
+<body onload="namePrompt()">
+  <script type="text/javascript">
+function namePrompt()
+{
+var name = prompt("INSERT YOUR NAME","Star Knight");
+alert("Mystery Voice: Hello "+ name +", good to see you. We need your help...");
+if (name != null) {
+  document.getElementById("playerName").innerHTML = name;
+}
+
+}
+</script>
+<div class="container">
+<div class="leftBar">
+<div class="neon"><a href="index.html">Back</a><br><a href="#">Pause</a></div>
+<div class="playerInfo"><span>Player:</span>
+<p id="playerName"></p>
+<span>Points: </span>
+<br>
+<span>Lifes: </span>
+</div>
+</div>
+<div class="gameBar">
+
+<script language="javascript" type="text/javascript" src="sketch.js"></script>
+<script language="javascript" type="text/javascript" src="Ship.js"></script>
+<script language="javascript" type="text/javascript" src="Shot.js"></script>
+<script language="javascript" type="text/javascript" src="AdditionalSystemFunctions.js"></script>
+<script language="javascript" type="text/javascript" src="Star.js"></script>
+
+</div>
+<div class="rightBar">
+
+</div>
+</div>
+
+
+</body>
+</html>

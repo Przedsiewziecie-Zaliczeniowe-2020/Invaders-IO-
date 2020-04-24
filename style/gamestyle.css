@@ -1,0 +1,78 @@
+*{
+  margin: 0 !important;
+  cursor: none;
+
+}
+
+body{
+  background: #000;
+}
+
+.leftBar{
+  width: 30vh;
+  height: 100vh;
+ background-color: #17182f;
+  float: left;
+  cursor: auto;
+  border-right: 2px solid #fff;
+}
+
+.playerInfo{
+  position: absolute;
+  top: 30%;
+  color: #fff;
+  padding: 20px;
+  font-family: 'Mr Dafoe', cursive;
+  font-style: italic;
+}
+
+.playerInfo span{
+  color: #F29;
+  font-style: normal;
+  font-size: 1.5rem;
+  -webkit-filter: drop-shadow(0 0 22px #000);
+          filter: drop-shadow(0 0 22px #000);
+
+}
+
+.rightBar{
+  width: 30vh;
+  height: 100vh;
+ background-color: #17182f;
+  float: right;
+  cursor: auto;
+  border-left: 2px solid #fff;
+}
+
+.leftBar a {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  padding: 20px;
+}
+.neon {
+  grid-area: NEON;
+  z-index: 2;
+  font-family: 'Mr Dafoe', cursive;
+  font-size: 50px;
+  font-weight: 100;
+  color: #fff;
+  -webkit-filter: drop-shadow(0 0 22px #000);
+          filter: drop-shadow(0 0 22px #000);
+
+  -webkit-transform: rotateZ(-15deg);
+          transform: rotateZ(-15deg);
+
+}
+.neon a:hover {
+
+  color: #f29;
+
+
+}
+/*#defaultCanvas0{*/
+/*    float: right;*/
+
+
+/*}*/

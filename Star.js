@@ -2,13 +2,13 @@ class Star {
     constructor() {
         this.x = random(width);
         this.y = random(height);
-        this.vy = -2;
+        this.vy = +2;
     };
     update()
     {
-        if (this.y<0)
+        if (this.y>height)
         {
-            this.y=height;
+            this.y=0;
             this.x=random(width);
         }
     }

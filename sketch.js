@@ -7,16 +7,19 @@ let shipImg;
 let LayerImg;
 let numerofStarsinBackground=100;
 let someEnemy;
+let enemyshoot;
+
 function preload()
 {
 shipImg= loadImage('Models/Spaceships/PlayerOne.png');
 LayerImg= loadImage('Models/Layer/Layer 1.png');
 }
-
 function setup() {
     createCanvas (window.screen.width*window.devicePixelRatio*0.582, window.screen.height*window.devicePixelRatio*0.713);
     ship = new Ship ();
+
     someEnemy = new Enemy ();
+    enemyshoot=new enemyShot(someEnemy.x,someEnemy.y);
     for (var i = 0; i < numberofShots; i++) {
         shot[i] = new Shot (-999, -999);
     }
@@ -31,6 +34,11 @@ function keyPressed() {
 
         shot[i].boom ();
         shot[i].reload ();
+    }
+    if (key == '+') {
+
+        enemyshoot.boom ();
+       // enemyshoot.reload ();
     }
 }
 function draw() {
@@ -50,6 +58,9 @@ function draw() {
     }
     someEnemy.show();
     someEnemy.move();
+    enemyshoot.show(someEnemy.x,someEnemy.y);
+    enemyshoot.update(someEnemy.x,someEnemy.y);
+    enemyshoot.move();
     ship.show ();
     ship.update ();
 

@@ -1,0 +1,28 @@
+{
+  "name": "invaders-io-game",
+  "version": "1.0.0",
+  "description": "Browser io game",
+  "main": "index.html",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Przedsiewziecie-Zaliczeniowe-2020/Invaders-IO-.git"
+  },
+  "keywords": [
+    "game",
+    "io",
+    "browser"
+  ],
+  "author": "KW,KM,MW",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Przedsiewziecie-Zaliczeniowe-2020/Invaders-IO-/issues"
+  },
+  "homepage": "https://github.com/Przedsiewziecie-Zaliczeniowe-2020/Invaders-IO-#readme",
+  "devDependencies": {
+    "jest": "^25.4.0"
+  },
+  "dependencies": {}
+}

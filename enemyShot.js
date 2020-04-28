@@ -1,14 +1,14 @@
 class enemyShot {
-    constructor(x, y) {
-        this.x = x;
-        this.y  = y;
+    constructor(x,y) {
+this.y=y;
+this.x=x+10;
         this.vy = 0;
     };
 
 
     boom()
     {
-        this.vy = +10;
+        this.vy = +15;
 
     };
 
@@ -17,19 +17,19 @@ class enemyShot {
     };
     update(x,y)
     {
-      // this.x=x;
-      // this.y=y;
+      this.x=x+10;
+     // this.y=y;
     }
 
     reload() {
 
-        this.x=ship.x+35;
-        this.y=ship .y;
+
+        this.y=someEnemy.y;
 
     };
     show() {
         fill (10, 255, 10);
-        rect (this.x, this.y, 10, 20);
+        rect (this.x,this.y, 10, 20);
     };
 
 }

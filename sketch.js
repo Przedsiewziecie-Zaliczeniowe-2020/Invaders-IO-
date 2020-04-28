@@ -35,11 +35,7 @@ function keyPressed() {
         shot[i].boom ();
         shot[i].reload ();
     }
-    if (key == '+') {
 
-        enemyshoot.boom ();
-       // enemyshoot.reload ();
-    }
 }
 function draw() {
 
@@ -57,12 +53,21 @@ function draw() {
 
     }
     someEnemy.show();
+    someEnemy.movePath();
     someEnemy.move();
-    enemyshoot.show(someEnemy.x,someEnemy.y);
-    enemyshoot.update(someEnemy.x,someEnemy.y);
+
+    enemyshoot.boom();
+   // enemyshoot.update(someEnemy.x,someEnemy.y);
     enemyshoot.move();
+    enemyshoot.update(someEnemy.x,someEnemy.y);
+    if (enemyshoot.y>height){
+        enemyshoot.reload();
+    }
+
+
     ship.show ();
     ship.update ();
+    enemyshoot.show();
 
    // someEnemy.update();
 }

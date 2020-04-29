@@ -1,23 +1,20 @@
 let StartX;
-let StartY;
+
 class Enemy {
     constructor() {
         this.x = random(width);
-        this.y = random(height/2);
-      StartX= this.x+200;
-       //  StartY= this.y+10;
-         this.vx=0;
-         this.vy=0;
+        this.y = random(height / 2);
+        StartX = this.x + 200;
+        this.vx = 0;
+        this.vy = 0;
     };
-    movePath()
-    {
 
-        if (StartX<this.x-100) {
+    update() {
+        if (StartX < this.x - 100) {
 
             this.vx = -2;
 
-    }
-       else if (StartX>this.x+100){
+        } else if (StartX > this.x + 100) {
 
             this.vx = +2;
 
@@ -36,8 +33,8 @@ class Enemy {
 
 
     show() {
-        fill (255,0,0);
-        rect(this.x,this.y, 40, 40);
+        fill(255, 0, 0);
+        rect(this.x, this.y, 40, 40);
     };
 
 

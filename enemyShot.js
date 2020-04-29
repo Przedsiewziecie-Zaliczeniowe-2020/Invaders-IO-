@@ -1,7 +1,7 @@
 class enemyShot {
     constructor(x,y) {
 this.y=y;
-this.x=x+10;
+this.x=x;
         this.vy = 0;
     };
 

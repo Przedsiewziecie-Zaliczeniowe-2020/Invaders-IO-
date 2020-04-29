@@ -15,6 +15,7 @@ class Shot {
     move() {
         this.y += this.vy;
     };
+
     update(x,y)
     {
         this.x=x+30;
@@ -26,8 +27,7 @@ class Shot {
 
     };
     show() {
-        fill (10, 255, 10);
-        image(LaserImg,this.x, this.y, 20, 30);
+        image(laserImg,this.x, this.y, 20, 30);
     };
 
 }

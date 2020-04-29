@@ -1,18 +1,19 @@
-
- class Ship {
+class Ship {
     constructor() {
-        this.y = height-120;
+        this.y = height - 120;
+        this.x = mouseX;
+        this.width = 80;
+        this.height= 90;
+    };
+
+    show() {
+        image(shipImg, this.x, this.y, this.width, this.height);
+    };
+
+    update() {
         this.x = mouseX;
 
-        this.update = function () {
-
-            this.x = mouseX;
-        };
-    };
-    show() {
-        fill (255);
-        image(shipImg,this.x, this.y, 80, 90);
-    };
-
+        // TODO zrobić tu ifa by nie wyjezdal poza ekran
+    }
 
 }

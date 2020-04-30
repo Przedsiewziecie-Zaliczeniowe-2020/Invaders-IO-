@@ -9,9 +9,9 @@
 
 
 </head>
-<body onload="namePromptAndAlert()">
+<body onload="introdution()">
   <script type="text/javascript">
-function namePromptAndAlert()
+function introdution()
 {
 var name = prompt("INSERT YOUR NAME","Star Knight");
 var box = document.getElementById('box');
@@ -22,15 +22,28 @@ document.getElementById('close').addEventListener('click',function(evt){
     box.style.display = "none";
   }
 }, false);
+var i = 0,
+  text;
+text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti nostrum, in facere impedit adipisci, vitae quasi quo neque voluptates minus. Recusandae, praesentium blanditiis culpa tempore a, sunt neque sapiente explicabo cupiditate. Possimus consectetur porro provident tempore expedita, natus, repellat, quaerat excepturi voluptatum vitae nulla, sequi mollitia quo facere vel veniam!" + name;
+function typing() {
+  if (i < text.length) {
+    document.getElementById("text").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 60);
+  }
+}
+typing();
 //alert("Mystery Voice: Hello "+ name +", good to see you. We need your help...");
 if (name != null) {
   document.getElementById("playerName").innerHTML = name;
 }
 }
 </script>
+
 <div id="box">
-  <h1>Hello World</h1>
-  <a class="close" id="close">Close</a>
+  <div id="text"></div>
+  <br/>
+  <a class="close" id="close">I'm ready!</a>
 </div>
 <div class="container">
 <div class="leftBar">

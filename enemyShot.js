@@ -1,33 +1,37 @@
-class enemyShot {
-    constructor(x, y) {
+class EnemyShot {
+    constructor(x, y, vx) {
         this.y = y;
         this.x = x;
-        this.vy = 0;
-    };
+        this.vx = vx;
 
-
-    boom() {
-        this.vy = +15;
-
+        this.vy = 15;
+        this.width = 10;
+        this.height = 20;
     };
 
     move() {
         this.y += this.vy;
+        this.x += this.vx;
     };
 
-    update(x, y) {
-        this.x = x + 10;
-        // this.y=y;
-    }
+    // wykrywa kolizje z sciana lub graczem.
+    checkCollision(ship) {
 
-    reload() {
+        // sprawdz czy nastapila kolizja z boczynmi lub dolna sciana
+        if(this.x >= width || this.x <= 0 || this.y >= height ) {
+            return "wall";
+        }
+        // sprawdz czy nastapila kolizja ze statkiem
+        if(collideRectRect(ship.x, ship.y, ship.width, ship.height, this.x, this.y, this.width, this.height)){
+            return "player";
+        }
 
-        this.y = someEnemy.y;
+        return "nope";
     };
 
     show() {
         fill(10, 255, 10);
-        rect(this.x, this.y, 10, 20);
+        rect(this.x, this.y, this.width, this.height);
     };
 
 }

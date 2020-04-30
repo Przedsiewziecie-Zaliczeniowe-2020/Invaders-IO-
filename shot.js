@@ -1,14 +1,10 @@
 class Shot {
     constructor(x, y) {
         this.x = x;
-        this.y  = y;
-        this.vy = 0;
-    };
-
-
-    boom()
-    {
-        this.vy = -60;
+        this.y = y;
+        this.vy = -40;
+        this.width = 20;
+        this.height = 30;
 
     };
 
@@ -16,18 +12,22 @@ class Shot {
         this.y += this.vy;
     };
 
-    update(x,y)
-    {
-        this.x=x+30;
-        // this.y=y;
-    }
-    reload() {
- //this.x=ship.x+35;
-        this.y=ship.y;
-
+    checkCollision(enemies) { // zwraca -99 gdy brak kolizji, -1 gdy kolizja z sciana lub indeks wroga z ktorym nastapila kolizja
+        // sprawdz czy nastapila kolizja z gorna sciana
+        if (this.y <= 0) {
+            return -1;
+        }
+        // sprawdz czy nastapila kolizja ze wrogiem
+        for (let i = 0; i < enemies.length; i++) {
+            if (collideRectRect(enemies[i].x, enemies[i].y, enemies[i].width, enemies[i].height, this.x, this.y, this.width, this.height)) {
+                return i;
+            }
+        }
+        return -99;
     };
+
     show() {
-        image(laserImg,this.x, this.y, 20, 30);
+        image(LASER_IMG, this.x, this.y, 20, 30);
     };
 
 }

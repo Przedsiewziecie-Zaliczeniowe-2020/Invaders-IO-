@@ -1,5 +1,7 @@
 class Ship {
-    constructor() {
+    constructor(playerShots) {
+        this.playerShots = playerShots;
+
         this.y = height - 120;
         this.x = mouseX;
         this.width = 80;
@@ -7,13 +9,17 @@ class Ship {
     };
 
     show() {
-        image(shipImg, this.x, this.y, this.width, this.height);
+        image(SHIP_IMG, this.x, this.y, this.width, this.height);
     };
 
     update() {
         this.x = mouseX;
 
         // TODO zrobić tu ifa by nie wyjezdal poza ekran
-    }
+    };
+
+    shoot() {
+        this.playerShots.push(new Shot(this.x, this.y)) //TODO zrobic by strzelal ze srodka
+    };
 
 }

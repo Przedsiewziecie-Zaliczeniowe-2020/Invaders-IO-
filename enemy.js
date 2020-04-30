@@ -1,41 +1,57 @@
-let StartX;
-
 class Enemy {
-    constructor() {
-        this.x = random(width);
-        this.y = random(height / 2);
-        StartX = this.x + 200;
+    constructor(x, y, shootProbability, enemyShots) {
+        this.x = x;
+        this.y = y;
+        this.shootProbability = shootProbability;
+        this.enemyShots = enemyShots;
+
+        this.width = 40;
+        this.height = 40;
+        this.startX = this.x;
+        this.moveDirection = "right";
+        this.moveRange = 100;
         this.vx = 0;
         this.vy = 0;
     };
 
     update() {
-        if (StartX < this.x - 100) {
-
-            this.vx = -2;
-
-        } else if (StartX > this.x + 100) {
-
+        if (this.x < this.startX + this.moveRange && this.moveDirection == "right") {
             this.vx = +2;
-
         }
-    }
+        if (this.x > this.startX - this.moveRange && this.moveDirection == "left") {
+            this.vx = -2;
+        }
 
-    move() {
-        // this.y += getRandomInt(-1,1);
-        // this.x += getRandomInt(-1,1);
-
-
-        this.y += this.vy;
-        this.x += this.vx;
-
+        // jesli dolecial do prawego konca trasy, zmien kierunek na lewo
+        if (this.x >= this.startX + 200) {
+            this.moveDirection = "left";
+        }
+        // analogicznie..
+        if (this.x <= this.startX) {
+            this.moveDirection = "right";
+        }
     };
 
+    move() {
+        this.y += this.vy;
+        this.x += this.vx;
+    };
 
     show() {
         fill(255, 0, 0);
         rect(this.x, this.y, 40, 40);
     };
 
+    attemptShooting() {
+        let rand = random(); // random() bez argumentow zwraca float z przedzialu <0;1)
+        if (rand < this.shootProbability) {
+            this.shoot();
+        }
+    };
+
+    shoot() {
+        this.enemyShots.push(new EnemyShot(this.x, this.y, this.vx)) //TODO zrobic by strzelal ze srodka
+
+    };
 
 }

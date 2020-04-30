@@ -7,6 +7,8 @@
     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style/gamestyle.css">
+    <script src="https://cdn.jsdelivr.net/gh/bmoren/p5.collide2D/p5.collide2d.min.js"></script>
+    <link rel="stylesheet" href="style/gamestyle.css">
 
 
 </head>
@@ -39,41 +41,28 @@ if (name != null) {
 }
 }
 </script>
-
-<div id="box">
-  <div class="row">
-  <div class="column left">
-    <img src="Pictures/Characters/android-girl.jpg" alt="Android woman">
-  </div>
-  <div class="column right">
-    <h2>Android Woman:</h2>
-    <div id="text"></div>
-  </div>
-</div>
-
-  <br/>
-  <a class="close" id="close">I'm ready!</a>
-</div>
 <div class="container">
-<div class="leftBar">
-<div class="neon"><a href="index.html">Back</a><br><a href="#">Pause</a></div>
-<div class="playerInfo"><span>Player:</span>
-<p id="playerName"></p>
-<span>Points: </span>
-<br>
-<span>Lifes: </span>
-</div>
-</div>
-<div class="gameBar">
+    <div class="leftBar">
+        <div class="neon"><a href="index.html">Back</a><br><a href="#">Pause</a></div>
+        <div class="playerInfo"><span>Player:</span>-
+            <p id="playerName"></p>
+            <span>Points: </span>
+            <br>
+            <span>Lifes: </span>
+        </div>
+    </div>
+    <div id="gameBar" style="height: 800px; width: 1200px; float: left;"> <!-- TODO przenies style do innego pliku i ustawic to jakos tak by by sie skalowalo i trzymalo proporcje -->
 
-<script language="javascript" type="text/javascript" src="sketch.js"></script>
-<script language="javascript" type="text/javascript" src="Ship.js"></script>
-<script language="javascript" type="text/javascript" src="Shot.js"></script>
-<script language="javascript" type="text/javascript" src="AdditionalSystemFunctions.js"></script>
-<script language="javascript" type="text/javascript" src="Star.js"></script>
+        <script language="javascript" type="text/javascript" src="sketch.js"></script>
+        <script language="javascript" type="text/javascript" src="ship.js"></script>
+        <script language="javascript" type="text/javascript" src="shot.js"></script>
+        <script language="javascript" type="text/javascript" src="additionalSystemFunctions.js"></script>
+        <script language="javascript" type="text/javascript" src="bgStar.js"></script>
+        <script language="javascript" type="text/javascript" src="enemy.js"></script>
+        <script language="javascript" type="text/javascript" src="enemyShot.js"></script>
 
-</div>
-<div class="rightBar">
+    </div>
+    <div class="rightBar">
 
 </div>
 </div>

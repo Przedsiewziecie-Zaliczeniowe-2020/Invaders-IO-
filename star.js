@@ -13,13 +13,13 @@ class Star {
         }
     }
 
-
     move() {
         this.y += this.vy;
 
     };
+
    show() {
-        fill (255, 255, 255);
+       fill (255, 255, 255);
        ellipse (this.x, this.y, 5,5);
     };
 

@@ -14,6 +14,6 @@ class Ship {
         this.x = mouseX;
 
         // TODO zrobić tu ifa by nie wyjezdal poza ekran
-    }
+    };
 
 }

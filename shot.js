@@ -20,7 +20,7 @@ class Shot {
     {
         this.x=x+30;
         // this.y=y;
-    }
+    };
     reload() {
  //this.x=ship.x+35;
         this.y=ship.y;

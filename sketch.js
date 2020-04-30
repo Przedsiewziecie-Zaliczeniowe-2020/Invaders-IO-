@@ -16,9 +16,12 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(window.screen.width * window.devicePixelRatio * 0.582, window.screen.height * window.devicePixelRatio * 0.713); // TODO naprawić i zapisać gdzies wielkosc canvasu
+    var div = document.getElementById('gameBar')
+    var canvas = createCanvas(div.offsetWidth, div.offsetHeight); // TODO naprawić i zapisać gdzies wielkosc canvasu
+    canvas.parent('gameBar')
+
     ship = new Ship();
-    someEnemy = new Enemy();
+    someEnemy = new Enemy(random(width), random(height/2), 0.4 );
 
     enemyshoot = new enemyShot(someEnemy.x, someEnemy.y);
 
@@ -74,5 +77,4 @@ function draw() {
     ship.update();
     enemyshoot.show();
 
-    // someEnemy.update();
 }

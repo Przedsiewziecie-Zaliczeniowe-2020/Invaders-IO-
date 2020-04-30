@@ -5,6 +5,7 @@
     <title>GAME - Robots Invaders</title>
 
     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style/gamestyle.css">
 
 
@@ -24,7 +25,7 @@ document.getElementById('close').addEventListener('click',function(evt){
 }, false);
 var i = 0,
   text;
-text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti nostrum, in facere impedit adipisci, vitae quasi quo neque voluptates minus. Recusandae, praesentium blanditiis culpa tempore a, sunt neque sapiente explicabo cupiditate. Possimus consectetur porro provident tempore expedita, natus, repellat, quaerat excepturi voluptatum vitae nulla, sequi mollitia quo facere vel veniam!" + name;
+text = "Hey stop! Who are you?                                       " + name+"?!  What are you doing here? Everyone else is fighting under Saturn!                           Ohhh ... it looks like your recovery procedure has failed            I don't know how much you remember but you must join your team on the battlefield as soon as possible!            We have some problems with connectivity - I can not guarantee you they are still alive ...  I need someone to check it for me, can you do it?";
 function typing() {
   if (i < text.length) {
     document.getElementById("text").innerHTML += text.charAt(i);
@@ -41,7 +42,16 @@ if (name != null) {
 </script>
 
 <div id="box">
-  <div id="text"></div>
+  <div class="row">
+  <div class="column left">
+    <img src="Pictures/Characters/android-girl.jpg" alt="Android woman">
+  </div>
+  <div class="column right">
+    <h2>Android Woman:</h2>
+    <div id="text"></div>
+  </div>
+</div>
+
   <br/>
   <a class="close" id="close">I'm ready!</a>
 </div>

@@ -8,12 +8,48 @@ body{
   background: #000;
 }
 
+.column {
+  float: left;
+  padding: 10px;
+  cursor: auto;
+
+}
+.left {
+  width: 35%;
+  cursor: auto;
+}
+.left img{
+  max-width: 100%;
+  max-height: 100%;
+  box-shadow: 0 0 20px #17182f;
+  cursor: auto;
+}
+
+.right {
+  width: 55%;
+  float: right;
+  text-align: left;
+  letter-spacing: 1px;
+  cursor: auto;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  cursor: auto;
+}
+
+#text {
+  cursor: auto;
+}
+
 #box{
-  font-family: 'Mr Dafoe', cursive;
-  width: 40%;
+  font-family: 'Orbitron', sans-serif;
+  width: 50%;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 0 20px #F29;
+  box-shadow: 0 0 20px #17182f;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -32,20 +68,20 @@ body{
 
 .close{
   font-size: 16px;
-  color: #000;
+  color: #17182f;
   padding: 10px 20px;
   cursor: pointer;
   background: #fff;
   display: inline-block;
   border-radius: 8px;
-  border: 2px solid #F29;
-  color: #F29;
+  border: 2px solid #17182f;
+  color: #17182f;
   margin-top: 5%;
 }
 
 .close:hover{
   transform: scale(1.1);
-  background: #F29;
+  background: #17182f;
   color: #fff;
 }
 

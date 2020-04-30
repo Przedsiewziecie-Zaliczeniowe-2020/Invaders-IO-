@@ -13,13 +13,14 @@ class Ship {
     };
 
     update() {
+        if(mouseX>10&&mouseX<width-80)
         this.x = mouseX;
 
-        // TODO zrobić tu ifa by nie wyjezdal poza ekran
+
     };
 
     shoot() {
-        this.playerShots.push(new Shot(this.x, this.y)) //TODO zrobic by strzelal ze srodka
+        this.playerShots.push(new Shot(this.x+30, this.y)) //TODO zrobic by strzelal ze srodka
     };
 
 }

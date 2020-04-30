@@ -9,18 +9,29 @@
 
 
 </head>
-<body onload="namePrompt()">
+<body onload="namePromptAndAlert()">
   <script type="text/javascript">
-function namePrompt()
+function namePromptAndAlert()
 {
 var name = prompt("INSERT YOUR NAME","Star Knight");
-alert("Mystery Voice: Hello "+ name +", good to see you. We need your help...");
+var box = document.getElementById('box');
+box.style.display = "block";
+document.getElementById('close').addEventListener('click',function(evt){
+  var target = evt.target;
+  if(target.id === 'close') {
+    box.style.display = "none";
+  }
+}, false);
+//alert("Mystery Voice: Hello "+ name +", good to see you. We need your help...");
 if (name != null) {
   document.getElementById("playerName").innerHTML = name;
 }
-
 }
 </script>
+<div id="box">
+  <h1>Hello World</h1>
+  <a class="close" id="close">Close</a>
+</div>
 <div class="container">
 <div class="leftBar">
 <div class="neon"><a href="index.html">Back</a><br><a href="#">Pause</a></div>

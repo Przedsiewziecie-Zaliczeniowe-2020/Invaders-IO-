@@ -8,6 +8,37 @@ body{
   background: #000;
 }
 
+#box{
+  width: 500px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 20px #F29;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 9999;
+  padding: 10px;
+  text-align: center;
+  cursor: auto;
+  display: none;
+}
+
+#box h1{
+  color: #000;
+  cursor: auto;
+}
+
+.close{
+  font-size: 16px;
+  color: #000;
+  padding: 10px 20px;
+  cursor: pointer;
+  background: #F29;
+  display: inline-block;
+  border-radius: 8px;
+}
+
 .leftBar{
   width: 30vh;
   height: 100vh;
@@ -66,11 +97,10 @@ body{
 
 }
 .neon a:hover {
-
   color: #f29;
-
-
 }
+
+
 /*#defaultCanvas0{*/
 /*    float: right;*/
 

@@ -1,4 +1,4 @@
-class Star {
+class BgStar {
     constructor() {
         this.x = random(width);
         this.y = random(height);

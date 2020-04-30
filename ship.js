@@ -7,7 +7,7 @@ class Ship {
     };
 
     show() {
-        image(shipImg, this.x, this.y, this.width, this.height);
+        image(SHIP_IMG, this.x, this.y, this.width, this.height);
     };
 
     update() {

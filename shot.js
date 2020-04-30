@@ -27,7 +27,7 @@ class Shot {
 
     };
     show() {
-        image(laserImg,this.x, this.y, 20, 30);
+        image(LASER_IMG,this.x, this.y, 20, 30);
     };
 
 }

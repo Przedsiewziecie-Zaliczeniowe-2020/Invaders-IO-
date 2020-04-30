@@ -9,7 +9,7 @@ class Enemy {
         this.height = 40;
         this.startX = this.x;
         this.moveDirection = "right";
-        this.moveRange = 200;
+        this.moveRange = 150;
         this.vx = 0;
         this.vy = 0;
     };

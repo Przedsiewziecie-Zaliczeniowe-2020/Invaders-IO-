@@ -14,19 +14,19 @@ class EnemyShot {
         this.x += this.vx;
     };
 
-    // wykrywa kolizje z sciana lub graczem. Zwraca prawde jesli wykryto
+    // wykrywa kolizje z sciana lub graczem.
     checkCollision(ship) {
 
         // sprawdz czy nastapila kolizja z boczynmi lub dolna sciana
         if(this.x >= width || this.x <= 0 || this.y >= height ) {
-            return true;
+            return "wall";
         }
         // sprawdz czy nastapila kolizja ze statkiem
         if(collideRectRect(ship.x, ship.y, ship.width, ship.height, this.x, this.y, this.width, this.height)){
-            return true;
+            return "player";
         }
 
-        return false;
+        return "nope";
     };
 
     show() {

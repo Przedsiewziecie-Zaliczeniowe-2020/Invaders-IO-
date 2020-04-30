@@ -7,7 +7,8 @@ let LASER_IMG;
     let bgStars = [countBgStars];
     let ship;
     let enemies = [];
-    let enemyShoots = [];
+    let enemyShots = [];
+    let playerShots = [];
 
 
     function preload() {
@@ -21,64 +22,104 @@ let LASER_IMG;
         var canvas = createCanvas(div.offsetWidth, div.offsetHeight); // TODO naprawić i zapisać gdzies wielkosc canvasu
         canvas.parent('gameBar')
 
-        ship = new Ship();
-
-
-        shot = new Shot(ship.x + 35, ship.y);
-
-
-
+        ship = new Ship(playerShots);
+        prepareEnemies();
+        prepareBgStars();
     }
 
     function keyPressed() {
-
         if (key == ' ') {
-
-            shot.boom();
-
+            ship.shoot();
         }
-
     }
 
     function draw() {
+        // - - - - moving and drawing - - - -
         background(LAYER_IMG);
-
-        shot.show();
-        shot.move();
-
-        for (var s = 0; s < numerofStarsinBackground; s++) {
-            star[s].show();
-            star[s].move();
-            star[s].update();
+        moveAndDrawBgStars();
+        for (let i = 0; i < enemies.length; i++) {
+            enemies[i].show();
+            enemies[i].update();
+            enemies[i].move();
         }
 
-        someEnemy.show();
-        someEnemy.update();
-        someEnemy.move();
-
-        enemyshoot.boom();
-        enemyshoot.move();
-        enemyshoot.update(someEnemy.x, someEnemy.y);
-
-        shot.update(ship.x, ship.y);
-        if (enemyshoot.y > height) {
-            enemyshoot.reload();
-        }
-        if (shot.y < 0) {
-            shot.vy = 0;
-            shot.reload();
-        }
         ship.show();
         ship.update();
-        enemyshoot.show();
+
+        for (let i = 0; i < enemyShots.length; i++) {
+            enemyShots[i].show();
+            enemyShots[i].move();
+        }
+        for (let i = 0; i < playerShots.length; i++) {
+            playerShots[i].show();
+            playerShots[i].move();
+        }
+
+        // co pol sekundy triggeruj prawdopodobny strzal enenmy
+        if (frameCount % 30 == 0) {
+            for (let i = 0; i < enemies.length; i++)
+                enemies[i].attemptShooting()
+
+        }
+
+        // kolizje
+        enemyShotsCollisions();
+        playerShotsCollisions();
 
     }
 
     function prepareBgStars() {
         for (let i = 0; i < countBgStars; i++) {
-            bgStars[s] = new BgStar();
+            bgStars[i] = new BgStar();
+        }
+    };
+
+    function prepareEnemies() {
+        for (let i = 0; i < 6; i++) {
+            enemies.push(new Enemy(100 + (i * 150), 100, 0.1, enemyShots))
+        }
+    };
+
+    function moveAndDrawBgStars() {
+        for (let i = 0; i < countBgStars; i++) {
+            bgStars[i].show();
+            bgStars[i].move();
+            bgStars[i].update();
+        }
+    };
+
+    function enemyShotsCollisions() {
+        for (let i = 0; i < enemyShots.length; i++) {
+            let collision = enemyShots[i].checkCollision(ship);
+
+            if (collision == "player") {
+                enemyShots.splice(i, 1);
+                i--;
+                ship.y = -100; // tymczasowo
+                // TODO tracenie zyc, respienie sie na srodku?
+
+            } else if (collision == "wall") {
+                enemyShots.splice(i, 1);
+                i--;
+            }
         }
     }
 
+    function playerShotsCollisions() {
+        for (let i = 0; i < playerShots.length; i++) {
+            let collision = playerShots[i].checkCollision(enemies);
+
+            if (collision == -99) continue;
+            if (collision == -1) {
+                playerShots.splice(i, 1);
+                i--;
+
+            } else {
+                playerShots.splice(i, 1);
+                enemies.splice(collision, 1);
+                i--;
+            }
+        }
+    }
 
 }

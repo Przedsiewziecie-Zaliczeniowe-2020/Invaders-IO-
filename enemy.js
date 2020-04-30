@@ -9,7 +9,7 @@ class Enemy {
         this.height = 40;
         this.startX = this.x;
         this.moveDirection = "right";
-        this.moveRange = 150;
+        this.moveRange = 100;
         this.vx = 0;
         this.vy = 0;
     };
@@ -43,17 +43,14 @@ class Enemy {
     };
 
     attemptShooting() {
-        let rand = random() // random() bez argumentow zwraca float z przedzialu <0;1)
+        let rand = random(); // random() bez argumentow zwraca float z przedzialu <0;1)
         if (rand < this.shootProbability) {
-
-            shoot();
-
-            return true;
+            this.shoot();
         }
     };
 
     shoot() {
-        enemyShots.push(new EnemyShot(this.x, this.y, this.vx))
+        this.enemyShots.push(new EnemyShot(this.x, this.y, this.vx)) //TODO zrobic by strzelal ze srodka
 
     };
 

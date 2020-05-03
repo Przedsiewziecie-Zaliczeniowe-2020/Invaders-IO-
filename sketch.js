@@ -3,8 +3,8 @@ let LAYER_IMG;
 let LASER_IMG;
 {
     let countBgStars = 100;
-    let backgroundMusic;
-    let shotSound;
+    let BACKGROUND_MUSIC;
+    let SHOT_SOUND;
     let bgStars = [countBgStars];
     let ship;
     let enemies = [];
@@ -16,8 +16,8 @@ let LASER_IMG;
         SHIP_IMG = loadImage('Models/Spaceships/PlayerOne.png');
         LAYER_IMG = loadImage('Models/Layer/Layer 1.png');
         LASER_IMG = loadImage('Models/Lazers/lazers1.png');
-        backgroundMusic=loadSound("Sound/General/Too Soon.mp3");
-        shotSound=loadSound("Sound/Effects/Lazers1.mp3");
+        BACKGROUND_MUSIC=loadSound("Sound/General/Too Soon.mp3");
+        SHOT_SOUND=loadSound("Sound/Effects/Lazers1.mp3");
     }
 
     function setup() {
@@ -30,13 +30,13 @@ let LASER_IMG;
         prepareBgStars();
 
 
-        backgroundMusic.loop();
+        BACKGROUND_MUSIC.loop();
     }
 
     function keyPressed() {
         if (key == ' ') {
             ship.shoot();
-            shotSound.play();
+            SHOT_SOUND.play();
         }
     }
 

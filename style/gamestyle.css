@@ -6,6 +6,7 @@
 
 body{
   background: #000;
+
 }
 
 .column {
@@ -40,9 +41,7 @@ body{
   cursor: auto;
 }
 
-#text {
-  cursor: auto;
-}
+#text {}
 
 #box{
   font-family: 'Orbitron', sans-serif;

@@ -172,10 +172,6 @@ nav ul li a:hover {
   font-size: 25px;
 
 }
-.music {
-  position: absolute;
-  bottom: 5%;
-}
 
 
 audio {
@@ -192,4 +188,23 @@ audio {
 }
 .info span {
     color: #f29;
+}
+
+
+#topline {
+
+  height: 3%;
+  width: 100%;
+  top:100%;
+  background: #f29;
+
+
+}
+#bottomline {
+
+  height: 3%;
+  width: 100%;
+  top:0%;
+  background: #f29;
+
 }

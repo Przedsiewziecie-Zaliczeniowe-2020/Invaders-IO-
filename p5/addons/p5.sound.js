@@ -11305,7 +11305,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;
    *  <b>frames</b> determines how many loops must pass before
    *  another peak can be detected.
    *  For example, if the frameRate() = 60, you could detect the beat of a
-   *  120 beat-per-minute song with this equation:
+   *  120 beat-per-minute backgroundMusic with this equation:
    *  <code> framesPerPeak = 60 / (estimatedBPM / 60 );</code>
    *  </p>
    *

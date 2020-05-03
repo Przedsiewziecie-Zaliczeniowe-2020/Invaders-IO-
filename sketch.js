@@ -3,7 +3,8 @@ let LAYER_IMG;
 let LASER_IMG;
 {
     let countBgStars = 100;
-
+    let backgroundMusic;
+    let shotSound;
     let bgStars = [countBgStars];
     let ship;
     let enemies = [];
@@ -15,21 +16,27 @@ let LASER_IMG;
         SHIP_IMG = loadImage('Models/Spaceships/PlayerOne.png');
         LAYER_IMG = loadImage('Models/Layer/Layer 1.png');
         LASER_IMG = loadImage('Models/Lazers/lazers1.png');
+        backgroundMusic=loadSound("Sound/General/Too Soon.mp3");
+        shotSound=loadSound("Sound/Effects/Lazers1.mp3");
     }
 
     function setup() {
-        var div = document.getElementById('gameBar')
+        var div = document.getElementById('gameBar');
         var canvas = createCanvas(div.offsetWidth, div.offsetHeight); // TODO naprawić i zapisać gdzies wielkosc canvasu
-        canvas.parent('gameBar')
+        canvas.parent('gameBar');
 
         ship = new Ship(playerShots);
         prepareEnemies();
         prepareBgStars();
+
+
+        backgroundMusic.loop();
     }
 
     function keyPressed() {
         if (key == ' ') {
             ship.shoot();
+            shotSound.play();
         }
     }
 

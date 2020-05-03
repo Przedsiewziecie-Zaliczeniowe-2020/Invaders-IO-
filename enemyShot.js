@@ -30,8 +30,7 @@ class EnemyShot {
     };
 
     show() {
-        fill(10, 255, 10);
-        rect(this.x, this.y, this.width, this.height);
+        image(LASER_ENEMY_IMG, this.x, this.y, 20, 30);
     };
 
 }

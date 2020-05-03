@@ -1,6 +1,8 @@
 let SHIP_IMG;
 let LAYER_IMG;
 let LASER_IMG;
+let LASER_ENEMY_IMG;
+let ENEMY_ONE_SMALL;
 {
     let countBgStars = 100;
     let BACKGROUND_MUSIC;
@@ -18,6 +20,8 @@ let LASER_IMG;
         LASER_IMG = loadImage('Models/Lazers/lazers1.png');
         BACKGROUND_MUSIC=loadSound("Sound/General/Too Soon.mp3");
         SHOT_SOUND=loadSound("Sound/Effects/Lazers1.mp3");
+        ENEMY_ONE_SMALL= loadImage('Models/Enemies/Pack1/Infantry/inf-a-7.png');
+        LASER_ENEMY_IMG=loadImage('Models/Lazers/lazers2.png');
     }
 
     function setup() {

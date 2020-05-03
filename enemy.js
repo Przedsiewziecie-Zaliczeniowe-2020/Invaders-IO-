@@ -38,8 +38,7 @@ class Enemy {
     };
 
     show() {
-        fill(255, 0, 0);
-        rect(this.x, this.y, 40, 40);
+        image(ENEMY_ONE_SMALL,this.x, this.y,60,60)
     };
 
     attemptShooting() {
@@ -50,7 +49,7 @@ class Enemy {
     };
 
     shoot() {
-        this.enemyShots.push(new EnemyShot(this.x, this.y, this.vx)) //TODO zrobic by strzelal ze srodka
+        this.enemyShots.push(new EnemyShot(this.x+35, this.y, this.vx))
 
     };
 

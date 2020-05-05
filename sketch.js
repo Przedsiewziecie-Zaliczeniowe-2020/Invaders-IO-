@@ -1,12 +1,9 @@
-let SHIP_IMG;
-let LAYER_IMG;
-let LASER_IMG;
-let LASER_ENEMY_IMG;
-let ENEMY_ONE_SMALL;
+
+let IMGS = {};
+let SOUNDS_AND_MUSIC = {};
+
 {
     let countBgStars = 100;
-    let BACKGROUND_MUSIC;
-    let SHOT_SOUND;
     let bgStars = [countBgStars];
     let ship;
     let enemies = [];
@@ -15,18 +12,14 @@ let ENEMY_ONE_SMALL;
 
 
     function preload() {
-        SHIP_IMG = loadImage('Models/Spaceships/PlayerOne.png');
-        LAYER_IMG = loadImage('Models/Layer/Layer 1.png');
-        LASER_IMG = loadImage('Models/Lazers/lazers1.png');
-        BACKGROUND_MUSIC=loadSound("Sound/General/Too Soon.mp3");
-        SHOT_SOUND=loadSound("Sound/Effects/Lazers1.mp3");
-        ENEMY_ONE_SMALL= loadImage('Models/Enemies/Pack1/Infantry/inf-a-7.png');
-        LASER_ENEMY_IMG=loadImage('Models/Lazers/lazers2.png');
+        loadImgs();
+        loadSoundsAndMusic()
     }
 
     function setup() {
         var div = document.getElementById('sketchHolder');
         var canvas = createCanvas(div.offsetWidth, div.offsetHeight);
+
         canvas.parent('sketchHolder');
 
         ship = new Ship(playerShots);
@@ -34,19 +27,19 @@ let ENEMY_ONE_SMALL;
         prepareBgStars();
 
 
-        BACKGROUND_MUSIC.loop();
+        SOUNDS_AND_MUSIC.too_soon.loop();
     }
 
     function keyPressed() {
         if (key == ' ') {
             ship.shoot();
-            SHOT_SOUND.play();
+            SOUNDS_AND_MUSIC.shot.play();
         }
     }
 
     function draw() {
         // - - - - moving and drawing - - - -
-        background(LAYER_IMG);
+        background(IMGS.bg1);
         moveAndDrawBgStars();
         for (let i = 0; i < enemies.length; i++) {
             enemies[i].show();
@@ -65,6 +58,7 @@ let ENEMY_ONE_SMALL;
             playerShots[i].show();
             playerShots[i].move();
         }
+
 
         // co pol sekundy triggeruj prawdopodobny strzal enenmy
         if (frameCount % 30 == 0) {

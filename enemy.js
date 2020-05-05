@@ -38,7 +38,7 @@ class Enemy {
     };
 
     show() {
-        image(ENEMY_ONE_SMALL,this.x, this.y,60,60)
+        image(IMGS.enemyLvl1Small,this.x, this.y,60,60)
     };
 
     attemptShooting() {

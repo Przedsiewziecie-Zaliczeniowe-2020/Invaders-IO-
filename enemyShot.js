@@ -30,7 +30,7 @@ class EnemyShot {
     };
 
     show() {
-        image(LASER_ENEMY_IMG, this.x, this.y, 20, 30);
+        image(IMGS.enemyWeapon1, this.x, this.y, 20, 30);
     };
 
 }

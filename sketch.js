@@ -1,7 +1,7 @@
-
 let IMGS = {};
 let SOUNDS_AND_MUSIC = {};
-
+//resolution parameters
+let RES_PARAMS = { canvasWidth:null, canvasHeight:null, canvasOriginX:null, canvasOriginY:null, scalingFactor:null }
 {
     let countBgStars = 100;
     let bgStars = [countBgStars];
@@ -10,23 +10,24 @@ let SOUNDS_AND_MUSIC = {};
     let enemyShots = [];
     let playerShots = [];
 
-
     function preload() {
         loadImgs();
         loadSoundsAndMusic()
+        var div = document.getElementById('sketchHolder');
+        RES_PARAMS.canvasWidth = div.offsetWidth;
+        RES_PARAMS.canvasHeight = div.offsetHeight;
+        RES_PARAMS.canvasOriginX = div.offsetLeft;
+        RES_PARAMS.canvasOriginY = div.offsetTop;
+        RES_PARAMS.scalingFactor = 937 / RES_PARAMS.canvasHeight; // przyjalem 937 jako referencyjna wysokosc canvasu, jak nie wiesz o co cho to zapytaj mnie na msg
     }
 
     function setup() {
-        var div = document.getElementById('sketchHolder');
-        var canvas = createCanvas(div.offsetWidth, div.offsetHeight);
-
+        var canvas = createCanvas(RES_PARAMS.canvasWidth, RES_PARAMS.canvasHeight);
         canvas.parent('sketchHolder');
 
         ship = new Ship(playerShots);
         prepareEnemies();
         prepareBgStars();
-
-
         SOUNDS_AND_MUSIC.too_soon.loop();
     }
 

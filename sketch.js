@@ -25,9 +25,9 @@ let ENEMY_ONE_SMALL;
     }
 
     function setup() {
-        var div = document.getElementById('gameBar');
-        var canvas = createCanvas(div.offsetWidth, div.offsetHeight); // TODO naprawić i zapisać gdzies wielkosc canvasu
-        canvas.parent('gameBar');
+        var div = document.getElementById('sketchHolder');
+        var canvas = createCanvas(div.offsetWidth, div.offsetHeight);
+        canvas.parent('sketchHolder');
 
         ship = new Ship(playerShots);
         prepareEnemies();

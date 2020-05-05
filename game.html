@@ -11,80 +11,23 @@
     <script src="p5/addons/p5.sound.js"></script>
 
 </head>
-<body onload="introdution()">
-  <script type="text/javascript">
-function introdution()
-{
-var name = prompt("INSERT YOUR NAME","Star Knight");
-var box = document.getElementById('box');
-box.style.display = "block";
-document.getElementById('close').addEventListener('click',function(evt){
-  var target = evt.target;
-  if(target.id === 'close') {
-    box.style.display = "none";
-  }
-}, false);
-var i = 0,
-  text;
-text = "Hey stop! Who are you?                                       " + name+"?!  What are you doing here? Everyone else is fighting under Saturn!                           Ohhh ... it looks like your recovery procedure has failed            I don't know how much you remember but you must join your team on the battlefield as soon as possible!            We have some problems with connectivity - I can not guarantee you they are still alive ...  I need someone to check it for me, can you do it?";
-function typing() {
-  if (i < text.length) {
-    document.getElementById("text").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typing, 60);
-  }
-}
-typing();
-if (name != null) {
-  document.getElementById("playerName").innerHTML = name;
-}
-}
-</script>
+
+<body>
 
 
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js'></script>
-<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-
-  <div id="box">
-      <div class="row">
-          <div class="column left">
-              <img src="Pictures/Characters/android-girl.jpg" alt="Android woman">
-          </div>
-          <div class="column right">
-              <h2>Android Woman:</h2>
-              <div id="text"></div>
-          </div>
-      </div>
-
-      <br/>
-      <a class="close" id="close">I'm ready!</a>
-  </div>
-<div class="container">
-    <div class="leftBar">
-        <div class="neon"><a href="index.html">Back</a><br><a href="#">Pause</a></div>
-        <div class="playerInfo"><span>Player:</span>-
-            <p id="playerName"></p>
-            <span>Points: </span>
-            <br>
-            <span>Lifes: </span>
-        </div>
+    <div id="sketchHolder">
+        <script  type="text/javascript" src="sketch.js"></script>
+        <script  type="text/javascript" src="ship.js"></script>
+        <script  type="text/javascript" src="shot.js"></script>
+        <script  type="text/javascript" src="additionalSystemFunctions.js"></script>
+        <script  type="text/javascript" src="bgStar.js"></script>
+        <script  type="text/javascript" src="enemy.js"></script>
+        <script  type="text/javascript" src="enemyShot.js"></script>
     </div>
-    <div id="gameBar" style="height: 800px; width: 1200px; float: left;"> <!-- TODO przenies style do innego pliku i ustawic to jakos tak by by sie skalowalo i trzymalo proporcje -->
 
-        <script language="javascript" type="text/javascript" src="sketch.js"></script>
-        <script language="javascript" type="text/javascript" src="ship.js"></script>
-        <script language="javascript" type="text/javascript" src="shot.js"></script>
-        <script language="javascript" type="text/javascript" src="additionalSystemFunctions.js"></script>
-        <script language="javascript" type="text/javascript" src="bgStar.js"></script>
-        <script language="javascript" type="text/javascript" src="enemy.js"></script>
-        <script language="javascript" type="text/javascript" src="enemyShot.js"></script>
 
-    </div>
-    <div class="rightBar">
 
-</div>
-</div>
+
 
 
 </body>

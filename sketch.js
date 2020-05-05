@@ -1,7 +1,7 @@
 let IMGS = {};
 let SOUNDS_AND_MUSIC = {};
 //resolution parameters
-let RES_PARAMS = { canvasWidth:null, canvasHeight:null, canvasOriginX:null, canvasOriginY:null, scalingFactor:null }
+let RES_PARAMS = { canvasWidth:null, canvasHeight:null, canvasOriginX:null, canvasOriginY:null, scalingFactorHeight:null, scalingFactorWidth:null }
 {
     let countBgStars = 100;
     let bgStars = [countBgStars];
@@ -18,7 +18,8 @@ let RES_PARAMS = { canvasWidth:null, canvasHeight:null, canvasOriginX:null, canv
         RES_PARAMS.canvasHeight = div.offsetHeight;
         RES_PARAMS.canvasOriginX = div.offsetLeft;
         RES_PARAMS.canvasOriginY = div.offsetTop;
-        RES_PARAMS.scalingFactor = 937 / RES_PARAMS.canvasHeight; // przyjalem 937 jako referencyjna wysokosc canvasu, jak nie wiesz o co cho to zapytaj mnie na msg
+        RES_PARAMS.scalingFactorHeight = 937 / RES_PARAMS.canvasHeight; // przyjalem 937 jako referencyjna wysokosc canvasu, jak nie wiesz o co cho to zapytaj mnie na msg
+        RES_PARAMS.scalingFactorWidth = 1405 / RES_PARAMS.canvasWidth; // przyjalem 937 jako referencyjna szerokosc canvasu, jak nie wiesz o co cho to zapytaj mnie na msg
     }
 
     function setup() {

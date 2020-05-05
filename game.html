@@ -10,6 +10,8 @@
     <script src="https://cdn.jsdelivr.net/gh/bmoren/p5.collide2D/p5.collide2d.min.js"></script>
     <link rel="stylesheet" href="style/gamestyle.css">
     <script src="p5/addons/p5.sound.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/processing/p5.js/lib/addons/p5.sound.js"></script>
+
 
 </head>
 <body onload="introdution()">
@@ -26,20 +28,20 @@ document.getElementById('close').addEventListener('click',function(evt){
   }
 }, false);
 var i = 0,
-  text;
-text = "Hey stop! Who are you?                                       " + name+"?!  What are you doing here? Everyone else is fighting under Saturn!                           Ohhh ... it looks like your recovery procedure has failed            I don't know how much you remember but you must join your team on the battlefield as soon as possible!            We have some problems with connectivity - I can not guarantee you they are still alive ...  I need someone to check it for me, can you do it?";
-function typing() {
-  if (i < text.length) {
-    document.getElementById("text").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typing, 60);
-  }
-}
-typing();
-if (name != null) {
-  document.getElementById("playerName").innerHTML = name;
-}
-}
+//   text;
+// text = "Hey stop! Who are you?                                       " + name+"?!  What are you doing here? Everyone else is fighting under Saturn!                           Ohhh ... it looks like your recovery procedure has failed            I don't know how much you remember but you must join your team on the battlefield as soon as possible!            We have some problems with connectivity - I can not guarantee you they are still alive ...  I need someone to check it for me, can you do it?";
+// function typing() {
+//   if (i < text.length) {
+//     document.getElementById("text").innerHTML += text.charAt(i);
+//     i++;
+//     setTimeout(typing, 60);
+//   }
+// }
+// typing();
+// if (name != null) {
+//   document.getElementById("playerName").innerHTML = name;
+// }
+// }
 </script>
 
 
@@ -80,6 +82,7 @@ if (name != null) {
         <script language="javascript" type="text/javascript" src="bgStar.js"></script>
         <script language="javascript" type="text/javascript" src="enemy.js"></script>
         <script language="javascript" type="text/javascript" src="enemyShot.js"></script>
+        <script language="javascript" type="text/javascript" src="neutralDangerousObjects.js"></script>
 
     </div>
     <div class="rightBar">

@@ -3,6 +3,7 @@ let LAYER_IMG;
 let LASER_IMG;
 let LASER_ENEMY_IMG;
 let ENEMY_ONE_SMALL;
+let ASTEROID_IMG;
 {
     let countBgStars = 100;
     let BACKGROUND_MUSIC;
@@ -12,6 +13,7 @@ let ENEMY_ONE_SMALL;
     let enemies = [];
     let enemyShots = [];
     let playerShots = [];
+    let asteroid = [];
 
 
     function preload() {
@@ -22,6 +24,7 @@ let ENEMY_ONE_SMALL;
         SHOT_SOUND=loadSound("Sound/Effects/Lazers1.mp3");
         ENEMY_ONE_SMALL= loadImage('Models/Enemies/Pack1/Infantry/inf-a-7.png');
         LASER_ENEMY_IMG=loadImage('Models/Lazers/lazers2.png');
+        ASTEROID_IMG=loadImage("Models/Asteroids/7.png");
     }
 
     function setup() {
@@ -32,6 +35,7 @@ let ENEMY_ONE_SMALL;
         ship = new Ship(playerShots);
         prepareEnemies();
         prepareBgStars();
+        prepareasteroid();
 
 
         BACKGROUND_MUSIC.loop();
@@ -65,6 +69,10 @@ let ENEMY_ONE_SMALL;
             playerShots[i].show();
             playerShots[i].move();
         }
+        for (let i = 0; i < asteroid.length; i++) {
+        asteroid[i].show();
+        asteroid[i].move();
+        }
 
         // co pol sekundy triggeruj prawdopodobny strzal enenmy
         if (frameCount % 30 == 0) {
@@ -76,9 +84,23 @@ let ENEMY_ONE_SMALL;
         // kolizje
         enemyShotsCollisions();
         playerShotsCollisions();
+        prepareasteroid(5);
+        AsteroidCollisions()
+    }
+    function prepareasteroid(number) {
+      var createAsteroid=  getRandomInt(1,40);
+      console.log(createAsteroid);
+        if (createAsteroid<=2&&asteroid.length===0)
+        {
+            for (let i = 0; i <number; i++) {
+                if (createAsteroid===1)
+                asteroid[i] = new Asteroid(2,random(height));
+                if (createAsteroid===2)
+                    asteroid[i] = new Asteroid(random(width),2);
+            }
+        }
 
     }
-
     function prepareBgStars() {
         for (let i = 0; i < countBgStars; i++) {
             bgStars[i] = new BgStar();
@@ -100,6 +122,22 @@ let ENEMY_ONE_SMALL;
     };
 
     function enemyShotsCollisions() {
+        for (let i = 0; i < asteroid.length; i++) {
+            let collision = asteroid[i].checkCollision(ship);
+
+            if (collision == "player") {
+                asteroid.splice(i, 1);
+                i--;
+                ship.y = -100; // tymczasowo
+                // TODO tracenie zyc, respienie sie na srodku?
+
+            } else if (collision == "wall") {
+                asteroid.splice(i, 1);
+                i--;
+            }
+        }
+    }
+    function AsteroidCollisions() {
         for (let i = 0; i < enemyShots.length; i++) {
             let collision = enemyShots[i].checkCollision(ship);
 

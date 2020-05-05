@@ -33,7 +33,7 @@ let ASTEROID_IMG;
         canvas.parent('gameBar');
 
         ship = new Ship(playerShots);
-        prepareEnemies(enemies,enemyShots);
+        prepareEnemies(enemies,enemyShots,7);
         prepareBgStars(bgStars,countBgStars);
         prepareasteroid(asteroid,100,100,1);
 
@@ -52,34 +52,15 @@ let ASTEROID_IMG;
         // - - - - moving and drawing - - - -
         background(LAYER_IMG);
         moveAndDrawBgStars(bgStars,countBgStars);
-        for (let i = 0; i < enemies.length; i++) {
-            enemies[i].show();
-            enemies[i].update();
-            enemies[i].move();
-        }
 
-        ship.show();
-        ship.update();
+        // - - - - object actions - - - -
+        enemyActionFunction(enemies,enemyShots);
+        playerActionFunction(ship,playerShots);
+        neutralActionFunction(asteroid);
 
-        for (let i = 0; i < enemyShots.length; i++) {
-            enemyShots[i].show();
-            enemyShots[i].move();
-        }
-        for (let i = 0; i < playerShots.length; i++) {
-            playerShots[i].show();
-            playerShots[i].move();
-        }
-        for (let i = 0; i < asteroid.length; i++) {
-        asteroid[i].show();
-        asteroid[i].move();
-        }
 
-        // co pol sekundy triggeruj prawdopodobny strzal enenmy
-        if (frameCount % 30 == 0) {
-            for (let i = 0; i < enemies.length; i++)
-                enemies[i].attemptShooting()
 
-        }
+
 
         // kolizje
         enemyShotsCollisions(enemyShots,ship);

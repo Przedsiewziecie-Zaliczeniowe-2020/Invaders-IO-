@@ -1,8 +1,8 @@
 class Asteroid {
-    constructor(x, y) {
+    constructor(x, y,texture) {
         this.y = y;
         this.x = x;
-
+        this.texture=texture;
 
         this.vx = getRandomInt(-5,5);
         this.vy = getRandomInt(-5,5);
@@ -30,6 +30,6 @@ class Asteroid {
     };
 
     show() {
-        image(ASTEROID_IMG, this.x, this.y, 20, 30);
+        image(this.texture, this.x, this.y, 20, 30);
     };
 }

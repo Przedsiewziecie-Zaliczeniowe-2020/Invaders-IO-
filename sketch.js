@@ -33,9 +33,9 @@ let ASTEROID_IMG;
         canvas.parent('gameBar');
 
         ship = new Ship(playerShots);
-        prepareEnemies();
-        prepareBgStars();
-        prepareasteroid();
+        prepareEnemies(enemies,enemyShots);
+        prepareBgStars(bgStars,countBgStars);
+        prepareasteroid(asteroid,100,100,1);
 
 
         BACKGROUND_MUSIC.loop();
@@ -51,7 +51,7 @@ let ASTEROID_IMG;
     function draw() {
         // - - - - moving and drawing - - - -
         background(LAYER_IMG);
-        moveAndDrawBgStars();
+        moveAndDrawBgStars(bgStars,countBgStars);
         for (let i = 0; i < enemies.length; i++) {
             enemies[i].show();
             enemies[i].update();
@@ -82,93 +82,10 @@ let ASTEROID_IMG;
         }
 
         // kolizje
-        enemyShotsCollisions();
-        playerShotsCollisions();
-        prepareasteroid(5);
-        AsteroidCollisions()
-    }
-    function prepareasteroid(number) {
-      var createAsteroid=  getRandomInt(1,40);
-      console.log(createAsteroid);
-        if (createAsteroid<=2&&asteroid.length===0)
-        {
-            for (let i = 0; i <number; i++) {
-                if (createAsteroid===1)
-                asteroid[i] = new Asteroid(2,random(height));
-                if (createAsteroid===2)
-                    asteroid[i] = new Asteroid(random(width),2);
-            }
-        }
-
-    }
-    function prepareBgStars() {
-        for (let i = 0; i < countBgStars; i++) {
-            bgStars[i] = new BgStar();
-        }
-    };
-
-    function prepareEnemies() {
-        for (let i = 0; i < 6; i++) {
-            enemies.push(new Enemy(100 + (i * 150), 100, 0.1, enemyShots))
-        }
-    };
-
-    function moveAndDrawBgStars() {
-        for (let i = 0; i < countBgStars; i++) {
-            bgStars[i].show();
-            bgStars[i].move();
-            bgStars[i].update();
-        }
-    };
-
-    function enemyShotsCollisions() {
-        for (let i = 0; i < asteroid.length; i++) {
-            let collision = asteroid[i].checkCollision(ship);
-
-            if (collision == "player") {
-                asteroid.splice(i, 1);
-                i--;
-                ship.y = -100; // tymczasowo
-                // TODO tracenie zyc, respienie sie na srodku?
-
-            } else if (collision == "wall") {
-                asteroid.splice(i, 1);
-                i--;
-            }
-        }
-    }
-    function AsteroidCollisions() {
-        for (let i = 0; i < enemyShots.length; i++) {
-            let collision = enemyShots[i].checkCollision(ship);
-
-            if (collision == "player") {
-                enemyShots.splice(i, 1);
-                i--;
-                ship.y = -100; // tymczasowo
-                // TODO tracenie zyc, respienie sie na srodku?
-
-            } else if (collision == "wall") {
-                enemyShots.splice(i, 1);
-                i--;
-            }
-        }
+        enemyShotsCollisions(enemyShots,ship);
+        playerShotsCollisions(playerShots,enemies);
+        neutralObjestCollisions(asteroid,ship)
     }
 
-    function playerShotsCollisions() {
-        for (let i = 0; i < playerShots.length; i++) {
-            let collision = playerShots[i].checkCollision(enemies);
-
-            if (collision == -99) continue;
-            if (collision == -1) {
-                playerShots.splice(i, 1);
-                i--;
-
-            } else {
-                playerShots.splice(i, 1);
-                enemies.splice(collision, 1);
-                i--;
-            }
-        }
-    }
 
 }

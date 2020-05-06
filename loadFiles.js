@@ -17,6 +17,8 @@ function loadImgs() {
 
     //enemy weapons
     IMGS.enemyWeapon1 = loadImage('Models/Lazers/lazers2.png');
+    //neural object
+    IMGS.asteroid = loadImage('Models/Asteroids/7.png');
 
 }
 

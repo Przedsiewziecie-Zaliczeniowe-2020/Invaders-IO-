@@ -33,9 +33,10 @@
       <option name="presentableId" value="Default" />
       <updated>1587914922506</updated>
       <workItem from="1587914929012" duration="4000" />
+      <workItem from="1588544237257" duration="1000" />
     </task>
     <servers />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
 </project>

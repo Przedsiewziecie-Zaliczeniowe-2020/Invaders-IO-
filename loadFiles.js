@@ -1,6 +1,6 @@
 function loadImgs() {
     //players
-    IMGS.playership1 = loadImage('Models/Spaceships/PlayerOne.png');
+    IMGS.playerShip = loadImage('Models/Spaceships/PlayerOne.png');
     IMGS.playership2 = loadImage('Models/Spaceships/PlayerTwo.png');
 
     //enemies

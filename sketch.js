@@ -3,6 +3,7 @@ let LAYER_IMG;
 let LASER_IMG;
 let LASER_ENEMY_IMG;
 let ENEMY_ONE_SMALL;
+let ASTEROID_IMG;
 {
     let countBgStars = 100;
     let BACKGROUND_MUSIC;
@@ -12,6 +13,7 @@ let ENEMY_ONE_SMALL;
     let enemies = [];
     let enemyShots = [];
     let playerShots = [];
+    let asteroid = [];
 
 
     function preload() {
@@ -22,6 +24,7 @@ let ENEMY_ONE_SMALL;
         SHOT_SOUND=loadSound("Sound/Effects/Lazers1.mp3");
         ENEMY_ONE_SMALL= loadImage('Models/Enemies/Pack1/Infantry/inf-a-7.png');
         LASER_ENEMY_IMG=loadImage('Models/Lazers/lazers2.png');
+        ASTEROID_IMG=loadImage("Models/Asteroids/7.png");
     }
 
     function setup() {
@@ -30,8 +33,9 @@ let ENEMY_ONE_SMALL;
         canvas.parent('gameBar');
 
         ship = new Ship(playerShots);
-        prepareEnemies();
-        prepareBgStars();
+        prepareEnemies(enemies,enemyShots,7);
+        prepareBgStars(bgStars,countBgStars);
+        prepareasteroid(asteroid,100,100,1);
 
 
         BACKGROUND_MUSIC.loop();
@@ -47,90 +51,22 @@ let ENEMY_ONE_SMALL;
     function draw() {
         // - - - - moving and drawing - - - -
         background(LAYER_IMG);
-        moveAndDrawBgStars();
-        for (let i = 0; i < enemies.length; i++) {
-            enemies[i].show();
-            enemies[i].update();
-            enemies[i].move();
-        }
+        moveAndDrawBgStars(bgStars,countBgStars);
 
-        ship.show();
-        ship.update();
+        // - - - - object actions - - - -
+        enemyActionFunction(enemies,enemyShots);
+        playerActionFunction(ship,playerShots);
+        neutralActionFunction(asteroid);
 
-        for (let i = 0; i < enemyShots.length; i++) {
-            enemyShots[i].show();
-            enemyShots[i].move();
-        }
-        for (let i = 0; i < playerShots.length; i++) {
-            playerShots[i].show();
-            playerShots[i].move();
-        }
 
-        // co pol sekundy triggeruj prawdopodobny strzal enenmy
-        if (frameCount % 30 == 0) {
-            for (let i = 0; i < enemies.length; i++)
-                enemies[i].attemptShooting()
 
-        }
+
 
         // kolizje
-        enemyShotsCollisions();
-        playerShotsCollisions();
-
+        enemyShotsCollisions(enemyShots,ship);
+        playerShotsCollisions(playerShots,enemies);
+        neutralObjestCollisions(asteroid,ship)
     }
 
-    function prepareBgStars() {
-        for (let i = 0; i < countBgStars; i++) {
-            bgStars[i] = new BgStar();
-        }
-    };
-
-    function prepareEnemies() {
-        for (let i = 0; i < 6; i++) {
-            enemies.push(new Enemy(100 + (i * 150), 100, 0.1, enemyShots))
-        }
-    };
-
-    function moveAndDrawBgStars() {
-        for (let i = 0; i < countBgStars; i++) {
-            bgStars[i].show();
-            bgStars[i].move();
-            bgStars[i].update();
-        }
-    };
-
-    function enemyShotsCollisions() {
-        for (let i = 0; i < enemyShots.length; i++) {
-            let collision = enemyShots[i].checkCollision(ship);
-
-            if (collision == "player") {
-                enemyShots.splice(i, 1);
-                i--;
-                ship.y = -100; // tymczasowo
-                // TODO tracenie zyc, respienie sie na srodku?
-
-            } else if (collision == "wall") {
-                enemyShots.splice(i, 1);
-                i--;
-            }
-        }
-    }
-
-    function playerShotsCollisions() {
-        for (let i = 0; i < playerShots.length; i++) {
-            let collision = playerShots[i].checkCollision(enemies);
-
-            if (collision == -99) continue;
-            if (collision == -1) {
-                playerShots.splice(i, 1);
-                i--;
-
-            } else {
-                playerShots.splice(i, 1);
-                enemies.splice(collision, 1);
-                i--;
-            }
-        }
-    }
 
 }

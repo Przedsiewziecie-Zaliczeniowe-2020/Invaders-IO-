@@ -29,3 +29,79 @@ body {
     left: -50%;
 }
 
+/* ANDROID WOMAN DIALOG STYLE */
+
+.column {
+    float: left;
+    padding: 10px;
+    cursor: auto;
+
+}
+.left {
+    width: 35%;
+    cursor: auto;
+}
+.left img{
+    max-width: 100%;
+    max-height: 100%;
+    box-shadow: 0 0 20px #17182f;
+    cursor: auto;
+}
+
+.right {
+    width: 55%;
+    float: right;
+    text-align: left;
+    letter-spacing: 1px;
+    cursor: auto;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+    cursor: auto;
+}
+
+#dialogBox{
+    font-family: 'Orbitron', sans-serif;
+    width: 50%;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 0 20px #17182f;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 9999;
+    padding: 10px;
+    text-align: center;
+    cursor: auto;
+    display: none;
+}
+
+#dialogBox h1{
+    color: #000;
+    cursor: auto;
+}
+
+.close{
+    font-size: 16px;
+    color: #17182f;
+    padding: 10px 20px;
+    cursor: pointer;
+    background: #fff;
+    display: inline-block;
+    border-radius: 8px;
+    border: 2px solid #17182f;
+    margin-top: 5%;
+}
+
+.close:hover{
+    transform: scale(1.1);
+    background: #17182f;
+    color: #fff;
+}
+
+
+/* ANDROID WOMAN DIALOG STYLE END */

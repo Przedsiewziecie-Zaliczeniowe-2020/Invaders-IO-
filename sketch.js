@@ -6,6 +6,7 @@ let IS_GAME_PAUSED = false; //
 let IS_GAME_DIALOG_ON = false;
 let MOUSE_X;
 let MOUSE_Y;
+let PLAYER_NAME;
 {
     let countBgStars = 100;
     let bgStars = [countBgStars];
@@ -43,9 +44,7 @@ let MOUSE_Y;
         prepareBgStars();
         SOUNDS_AND_MUSIC.too_soon.loop();
 
-        setupNameInput();
-        IS_GAME_PAUSED = true;
-        IS_GAME_DIALOG_ON = true;
+       setupNameInput();
     }
 
     function keyPressed() {

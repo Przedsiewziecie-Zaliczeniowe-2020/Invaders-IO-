@@ -13,7 +13,7 @@ function prepareBgStars(bgStars,countBgStars) {
 
 function prepareEnemies(enemies,enemyShots,number) {
     for (let i = 0; i < number; i++) {
-        enemies.push(new Enemy(100 + (i * 150), 100, 0.1, enemyShots))
+        enemies.push(new Enemy(100 + (i * 150), -100, 0.1, enemyShots))
     }
 };
 
@@ -78,7 +78,8 @@ function enemyActionFunction(enemies,enemyShots)
 {
     for (let i = 0; i < enemies.length; i++) {
         enemies[i].show();
-        enemies[i].update();
+       // enemies[i].update();
+        enemies[i].EndPositon(100 + (i * 150), 100);
         enemies[i].move();
     }
     for (let i = 0; i < enemyShots.length; i++) {
@@ -86,9 +87,9 @@ function enemyActionFunction(enemies,enemyShots)
         enemyShots[i].move();
     }
     // co pol sekundy triggeruj prawdopodobny strzal enenmy
-    if (frameCount % 30 == 0) {
+    if (frameCount % 30 === 0) {
         for (let i = 0; i < enemies.length; i++)
-            enemies[i].attemptShooting()
+            enemies[i].attemptShooting();
 
     }
 }

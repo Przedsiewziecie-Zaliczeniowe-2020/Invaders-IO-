@@ -27,7 +27,7 @@ class Shot {
     };
 
     show() {
-        image(LASER_IMG, this.x, this.y, 20, 30);
+        image(IMGS.playerWeapon1, this.x, this.y, 20, 30);
     };
 
 }

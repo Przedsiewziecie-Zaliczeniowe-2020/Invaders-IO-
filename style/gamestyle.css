@@ -1,153 +1,107 @@
-*{
-  margin: 0 !important;
-  cursor: none;
-
+body {
+    background: #000;
+    margin: 0 !important;
 }
 
-body{
-  background: #000;
 
+#sketchHolder{
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 0; /* fix buga https://stackoverflow.com/questions/15807833/div-containing-canvas-have-got-a-strange-bottom-margin-of-5px */
+  width: 150vh;
+  height: 100vh;
 }
+
+#nameInput{
+    position: fixed;
+    background-color: white;
+    visibility: collapse;
+}
+.center{
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+}
+.centerfix
+{
+    position: relative;
+    left: -50%;
+}
+
+/* ANDROID WOMAN DIALOG STYLE */
 
 .column {
-  float: left;
-  padding: 10px;
-  cursor: auto;
+    float: left;
+    padding: 10px;
+    cursor: auto;
 
 }
 .left {
-  width: 35%;
-  cursor: auto;
+    width: 35%;
+    cursor: auto;
 }
 .left img{
-  max-width: 100%;
-  max-height: 100%;
-  box-shadow: 0 0 20px #17182f;
-  cursor: auto;
+    max-width: 100%;
+    max-height: 100%;
+    box-shadow: 0 0 20px #17182f;
+    cursor: auto;
 }
 
 .right {
-  width: 55%;
-  float: right;
-  text-align: left;
-  letter-spacing: 1px;
-  cursor: auto;
+    width: 55%;
+    float: right;
+    text-align: left;
+    letter-spacing: 1px;
+    cursor: auto;
 }
 
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
-  cursor: auto;
+    content: "";
+    display: table;
+    clear: both;
+    cursor: auto;
 }
 
-#text {}
-
-#box{
-  font-family: 'Orbitron', sans-serif;
-  width: 50%;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 0 20px #17182f;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  z-index: 9999;
-  padding: 10px;
-  text-align: center;
-  cursor: auto;
-  display: none;
+#dialogBox{
+    font-family: 'Orbitron', sans-serif;
+    width: 50%;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 0 20px #17182f;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 9999;
+    padding: 10px;
+    text-align: center;
+    cursor: auto;
+    display: none;
 }
 
-#box h1{
-  color: #000;
-  cursor: auto;
+#dialogBox h1{
+    color: #000;
+    cursor: auto;
 }
 
 .close{
-  font-size: 16px;
-  color: #17182f;
-  padding: 10px 20px;
-  cursor: pointer;
-  background: #fff;
-  display: inline-block;
-  border-radius: 8px;
-  border: 2px solid #17182f;
-  color: #17182f;
-  margin-top: 5%;
+    font-size: 16px;
+    color: #17182f;
+    padding: 10px 20px;
+    cursor: pointer;
+    background: #fff;
+    display: inline-block;
+    border-radius: 8px;
+    border: 2px solid #17182f;
+    margin-top: 5%;
 }
 
 .close:hover{
-  transform: scale(1.1);
-  background: #17182f;
-  color: #fff;
-}
-
-.leftBar{
-  width: 30vh;
-  height: 100vh;
- background-color: #17182f;
-  float: left;
-  cursor: auto;
-  border-right: 2px solid #fff;
-}
-
-.playerInfo{
-  position: absolute;
-  top: 30%;
-  color: #fff;
-  padding: 20px;
-  font-family: 'Mr Dafoe', cursive;
-  font-style: italic;
-}
-
-.playerInfo span{
-  color: #F29;
-  font-style: normal;
-  font-size: 1.5rem;
-  -webkit-filter: drop-shadow(0 0 22px #000);
-          filter: drop-shadow(0 0 22px #000);
-
-}
-
-.rightBar{
-  width: 30vh;
-  height: 100vh;
- background-color: #17182f;
-  float: right;
-  cursor: auto;
-  border-left: 2px solid #fff;
-}
-
-.leftBar a {
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer;
-  background: none;
-  padding: 20px;
-}
-.neon {
-  grid-area: NEON;
-  z-index: 2;
-  font-family: 'Mr Dafoe', cursive;
-  font-size: 50px;
-  font-weight: 100;
-  color: #fff;
-  -webkit-filter: drop-shadow(0 0 22px #000);
-          filter: drop-shadow(0 0 22px #000);
-
-  -webkit-transform: rotateZ(-15deg);
-          transform: rotateZ(-15deg);
-
-}
-.neon a:hover {
-  color: #f29;
+    transform: scale(1.1);
+    background: #17182f;
+    color: #fff;
 }
 
 
-/*#defaultCanvas0{*/
-/*    float: right;*/
-
-
-/*}*/
+/* ANDROID WOMAN DIALOG STYLE END */

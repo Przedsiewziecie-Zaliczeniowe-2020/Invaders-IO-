@@ -2,21 +2,25 @@ class Ship {
     constructor(playerShots) {
         this.playerShots = playerShots;
 
-        this.y = height - 120;
-        this.x = mouseX;
         this.width = 80;
         this.height= 90;
+        this.y = height - 120;
+        MOUSE_X = width/2-(this.width/2);
+        this.x = MOUSE_X;
     };
 
     show() {
-        image(SHIP_IMG, this.x, this.y, this.width, this.height);
+        image(IMGS.playerShip, this.x, this.y, this.width, this.height);
+        //image( this.x, this.y, this.width, this.height);
+        //image(IMGS.enemyLvl1Small,this.x, this.y,60,60);
     };
 
     update() {
-        if(mouseX>10&&mouseX<width-80)
-        this.x = mouseX;
+        if(MOUSE_X < 10) MOUSE_X = 10;
+        if(MOUSE_X > width-80) MOUSE_X = width-80;
 
-
+        // if(mouseX > 10&&mouseX<width-80)
+        this.x = MOUSE_X;
     };
 
     shoot() {

@@ -1,7 +1,7 @@
-function prepareasteroid(x,y,number,asteroid) {
+function prepareasteroid(asteroid,x,y,number) {
     for (let i = 0; i <number; i++) {
 
-        asteroid[i] = new Asteroid(x,y,ASTEROID_IMG);
+        asteroid[i] = new Asteroid(x,y,IMGS.asteroid);
     }
 
 }

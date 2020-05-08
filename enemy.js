@@ -9,28 +9,38 @@ class Enemy {
         this.height = 40;
         this.startX = this.x;
         this.moveDirection = "right";
-        this.moveRange = 100;
+        this.movgeRange = 100;
         this.vx = 0;
         this.vy = 0;
     };
+    EndPositon(X,Y)
+    {
+        if (this.y!==Y)
+        {
+         //   this.x+=2;
+            this.y+=2;
+        }
 
-    update() {
-        if (this.x < this.startX + this.moveRange && this.moveDirection == "right") {
-            this.vx = +2;
-        }
-        if (this.x > this.startX - this.moveRange && this.moveDirection == "left") {
-            this.vx = -2;
-        }
+    }
 
-        // jesli dolecial do prawego konca trasy, zmien kierunek na lewo
-        if (this.x >= this.startX + 200) {
-            this.moveDirection = "left";
-        }
-        // analogicznie..
-        if (this.x <= this.startX) {
-            this.moveDirection = "right";
-        }
-    };
+
+    // update() {
+    //     if (this.x < this.startX + this.moveRange && this.moveDirection == "right") {
+    //         this.vx = +2;
+    //     }
+    //     if (this.x > this.startX - this.moveRange && this.moveDirection == "left") {
+    //         this.vx = -2;
+    //     }
+    //
+    //     // jesli dolecial do prawego konca trasy, zmien kierunek na lewo
+    //     if (this.x >= this.startX + 200) {
+    //         this.moveDirection = "left";
+    //     }
+    //     // analogicznie..
+    //     if (this.x <= this.startX) {
+    //         this.moveDirection = "right";
+    //     }
+    // };
 
     move() {
         this.y += this.vy;
@@ -45,6 +55,7 @@ class Enemy {
         let rand = random(); // random() bez argumentow zwraca float z przedzialu <0;1)
         if (rand < this.shootProbability) {
             this.shoot();
+
         }
     };
 

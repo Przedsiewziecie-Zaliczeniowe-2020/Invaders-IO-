@@ -11,9 +11,9 @@ function prepareBgStars(bgStars,countBgStars) {
     }
 };
 
-function prepareEnemies(enemies,enemyShots,number,enemyTexture) {
+function prepareEnemies(enemies,enemyShots,number,enemyTexture,X,Y) {
     for (let i = 0; i < number; i++) {
-        enemies.push(new Enemy(100 + (i * 150), -100, 0.1, enemyShots,enemyTexture))
+        enemies.push(new Enemy(100 + (i * 150), -100, 0.1, enemyShots,enemyTexture,X,Y))
 
     }
     countEnemies += number;
@@ -33,7 +33,7 @@ function enemyActionFunction(enemies,enemyShots)
     for (let i = 0; i < enemies.length; i++) {
         enemies[i].show();
        // enemies[i].update();
-        enemies[i].EndPositon(100 + (i * 150), 100);
+        enemies[i].EndPositon();
         enemies[i].move();
     }
     for (let i = 0; i < enemyShots.length; i++) {

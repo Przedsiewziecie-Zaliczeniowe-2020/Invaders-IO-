@@ -1,5 +1,5 @@
 class Enemy {
-    constructor(x, y, shootProbability, enemyShots,enemyTexture) {
+    constructor(x, y, shootProbability, enemyShots,enemyTexture,X,Y) {
         this.x = x;
         this.y = y;
         this.shootProbability = shootProbability;
@@ -12,13 +12,15 @@ class Enemy {
         this.movgeRange = 100;
         this.vx = 0;
         this.vy = 0;
+        this.Y=Y;
+        this.X=X;
         this.texture=enemyTexture
     };
-    EndPositon(X,Y)
+    EndPositon()
     {
-        if (this.y!==Y)
+        if (this.y!==this.Y)
         {
-         //   this.x+=2;
+           this.x+=2;
             this.y+=2;
         }
 

@@ -17,11 +17,12 @@ var Lv1 = function() {
 console.log(deadEnemy);
         if (deadEnemy===0)
        StageOne(enemies,enemyShots);
-        if (deadEnemy===1)
+        if (deadEnemy===countEnemies)
             StageTwo(enemies,enemyShots);
-        if (deadEnemy===5)
+        if (deadEnemy===countEnemies)
             StageThree(enemies,enemyShots)
-//TODO Zrobić coś żeby przychodziła liczba przeciwników po zabicu stag'a  żeby do wyboru stage nie używać jak wyżej 0,1,5
+//TODO Zrobić żeby stage się zmieniały, bo wpada w pętle przy 2 stage'u, albo inaczej sprawdzać zmiane stagu, albo ustawić zamiast 'countEnemies' sztywne wartosci zależne od ilości przeiwnikow w stagu.
+
 
 // if (deadEnemy===koncowailosc)
         //     actualLevel++;

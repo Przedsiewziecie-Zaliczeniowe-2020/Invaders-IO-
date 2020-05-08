@@ -14,7 +14,9 @@ function prepareBgStars(bgStars,countBgStars) {
 function prepareEnemies(enemies,enemyShots,number) {
     for (let i = 0; i < number; i++) {
         enemies.push(new Enemy(100 + (i * 150), -100, 0.1, enemyShots))
+
     }
+    countEnemies += number;
 };
 
 function moveAndDrawBgStars(bgStars,countBgStars) {

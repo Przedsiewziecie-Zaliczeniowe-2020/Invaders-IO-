@@ -1,6 +1,4 @@
 let IMGS = {};
-let deadEnemy = 0;
-let actualLevel=1;
 let SOUNDS_AND_MUSIC = {};
 //resolution parameters
 let RES_PARAMS = {
@@ -93,7 +91,8 @@ let points=0;
             level.setStrategy (lv1);
             level.setLevel (enemies, enemyShots,deadEnemy);
         }
-
+        console.log('przeciwnicy ogółem:'+countEnemies);
+        console.log('zniszczeni przeciwnicy'+deadEnemy);
         {
             if (IS_GAME_PAUSED) {
                 noLoop ();

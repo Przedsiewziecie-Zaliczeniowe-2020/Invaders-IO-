@@ -1,4 +1,6 @@
 let IMGS = {};
+let deadEnemy = 0;
+let actualLevel=1;
 let SOUNDS_AND_MUSIC = {};
 //resolution parameters
 let RES_PARAMS = {
@@ -14,6 +16,7 @@ let IS_GAME_DIALOG_ON = false;
 let MOUSE_X;
 let MOUSE_Y;
 let PLAYER_NAME;
+let points=0;
 {
     let countBgStars = 100;
     let bgStars = [countBgStars];
@@ -22,8 +25,17 @@ let PLAYER_NAME;
     let enemyShots = [];
     let playerShots = [];
     let asteroid = [];
+    let lv1;
+    let level;
 
     function preload() {
+        //--Zrobić funkcje do osobnego ładowania lv--
+        lv1 = new Lv1 ();
+
+        level = new Level ();
+
+        ///////////////////////
+
         loadImgs ();
         loadSoundsAndMusic ();
 
@@ -39,6 +51,7 @@ let PLAYER_NAME;
     }
 
     function setup() {
+
         var canvas = createCanvas (RES_PARAMS.canvasWidth, RES_PARAMS.canvasHeight);
         canvas.parent ('sketchHolder');
         canvas.width = RES_PARAMS.canvasWidth;
@@ -47,9 +60,9 @@ let PLAYER_NAME;
         pointerLockSetup ();
 
         ship = new Ship (playerShots);
-        prepareEnemies(enemies,enemyShots,7);
-        prepareBgStars(bgStars,countBgStars);
-        prepareasteroid(asteroid,100,100,1);
+        //prepareEnemies(enemies,enemyShots,7);
+        prepareBgStars (bgStars, countBgStars);
+        prepareasteroid (asteroid, 100, 100, 1);
         SOUNDS_AND_MUSIC.too_soon.loop ();
 
         setupNameInput ();
@@ -65,12 +78,22 @@ let PLAYER_NAME;
     function draw() {
         // - - - - MOVING AND DRAWING - - - -
         background (IMGS.bg1);
+
+        // var LoadLevel1   = new Level(Lv1Strategy);
+        // LoadLevel1.level(enemies,enemyShots);
+
         moveAndDrawBgStars (bgStars, countBgStars);
         // - - - - object actions - - - -
         enemyActionFunction (enemies, enemyShots);
         playerActionFunction (ship, playerShots);
         neutralActionFunction (asteroid);
         //  sprawdz czy pauza
+
+        if (actualLevel === 1) {
+            level.setStrategy (lv1);
+            level.setLevel (enemies, enemyShots,deadEnemy);
+        }
+
         {
             if (IS_GAME_PAUSED) {
                 noLoop ();

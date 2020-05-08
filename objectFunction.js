@@ -11,9 +11,9 @@ function prepareBgStars(bgStars,countBgStars) {
     }
 };
 
-function prepareEnemies(enemies,enemyShots,number) {
+function prepareEnemies(enemies,enemyShots,number,enemyTexture) {
     for (let i = 0; i < number; i++) {
-        enemies.push(new Enemy(100 + (i * 150), -100, 0.1, enemyShots))
+        enemies.push(new Enemy(100 + (i * 150), -100, 0.1, enemyShots,enemyTexture))
 
     }
     countEnemies += number;

@@ -1,5 +1,5 @@
 class Enemy {
-    constructor(x, y, shootProbability, enemyShots) {
+    constructor(x, y, shootProbability, enemyShots,enemyTexture) {
         this.x = x;
         this.y = y;
         this.shootProbability = shootProbability;
@@ -12,6 +12,7 @@ class Enemy {
         this.movgeRange = 100;
         this.vx = 0;
         this.vy = 0;
+        this.texture=enemyTexture
     };
     EndPositon(X,Y)
     {
@@ -48,7 +49,7 @@ class Enemy {
     };
 
     show() {
-        image(IMGS.enemyLvl1Small,this.x, this.y,60,60)
+        image(this.texture,this.x, this.y,60,60)
     };
 
     attemptShooting() {

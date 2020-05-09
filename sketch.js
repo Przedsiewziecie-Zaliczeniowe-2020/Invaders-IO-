@@ -98,9 +98,12 @@ let points=0;
 
         // co pol sekundy triggeruj prawdopodobny strzal enenmy
 
+        PAUSE_MANAGER.attemptShowPauseText();
+
         // kolizje
         enemyShotsCollisions (enemyShots, ship);
         playerShotsCollisions (playerShots, enemies);
         neutralObjestCollisions (asteroid, ship)
+
     }
 }

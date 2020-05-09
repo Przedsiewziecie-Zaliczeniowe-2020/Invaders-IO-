@@ -9,8 +9,8 @@ let RES_PARAMS = {
     scalingFactorHeight: null,
     scalingFactorWidth: null
 }
-let IS_GAME_PAUSED = false; //
-let IS_GAME_DIALOG_ON = false;
+let PAUSE_MANAGER = new PauseManager();
+let DIALOG_MANAGER = new DialogsManager();
 let MOUSE_X;
 let MOUSE_Y;
 let PLAYER_NAME;
@@ -27,9 +27,8 @@ let points=0;
     let level;
 
     function preload() {
-        //--Zrobić funkcje do osobnego ładowania lv--
+        // TODO zrobić funkcje do osobnego ładowania lvl
         lv1 = new Lv1 ();
-
         level = new Level ();
 
         ///////////////////////
@@ -46,24 +45,23 @@ let points=0;
         RES_PARAMS.canvasOriginY = div.offsetTop;
         RES_PARAMS.scalingFactorHeight = 937 / RES_PARAMS.canvasHeight; // przyjalem 937 jako referencyjna wysokosc canvasu, jak nie wiesz o co cho to zapytaj mnie na msg
         RES_PARAMS.scalingFactorWidth = 1405 / RES_PARAMS.canvasWidth; // przyjalem 1405 jako referencyjna szerokosc canvasu, jak nie wiesz o co cho to zapytaj mnie na msg
+
+        scaleNameInputDialog();
+        showNameInputDialog();
     }
 
     function setup() {
-
         var canvas = createCanvas (RES_PARAMS.canvasWidth, RES_PARAMS.canvasHeight);
         canvas.parent ('sketchHolder');
         canvas.width = RES_PARAMS.canvasWidth;
         canvas.height = RES_PARAMS.canvasHeight;
 
         pointerLockSetup ();
-
         ship = new Ship (playerShots);
         //prepareEnemies(enemies,enemyShots,7);
         prepareBgStars (bgStars, countBgStars);
         prepareasteroid (asteroid, 100, 100, 1);
         SOUNDS_AND_MUSIC.too_soon.loop ();
-
-        setupNameInput ();
     }
 
     function keyPressed() {
@@ -76,11 +74,13 @@ let points=0;
     function draw() {
         // - - - - MOVING AND DRAWING - - - -
         background (IMGS.bg1);
+        moveAndDrawBgStars (bgStars, countBgStars);
+        DIALOG_MANAGER.attemptDialog(true);
 
         // var LoadLevel1   = new Level(Lv1Strategy);
         // LoadLevel1.level(enemies,enemyShots);
 
-        moveAndDrawBgStars (bgStars, countBgStars);
+
         // - - - - object actions - - - -
         enemyActionFunction (enemies, enemyShots);
         playerActionFunction (ship, playerShots);
@@ -93,19 +93,6 @@ let points=0;
         }
         console.log('przeciwnicy ogółem:'+countEnemies);
         console.log('zniszczeni przeciwnicy'+deadEnemy);
-        {
-            if (IS_GAME_PAUSED) {
-                noLoop ();
-                if (!IS_GAME_DIALOG_ON) {
-                    background (0, 0, 0, 70);
-                    fill (255, 255, 255);
-                    textSize (50);
-                    textAlign (CENTER, CENTER);
-                    text ('game paused', RES_PARAMS.canvasWidth / 2, RES_PARAMS.canvasHeight / 2);
-
-                }
-            }
-        }
 
         // @ @ @ @ END OF MOVING AND DRAWING @ @ @ @
 
@@ -116,5 +103,4 @@ let points=0;
         playerShotsCollisions (playerShots, enemies);
         neutralObjestCollisions (asteroid, ship)
     }
-
 }

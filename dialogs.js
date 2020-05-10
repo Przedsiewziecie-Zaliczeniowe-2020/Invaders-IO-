@@ -7,9 +7,7 @@ function scaleNameInputDialog() {
 }
 
 
-// jako argumenty podawany jest tekst do wyswietlenia
-// mimo, ze wydaje sie ze funkcja nie przyjmuje argumentow to sa to argumenty ukryte i tak naprawde mozna podac dowolna ilosc
-function showNameInputDialog() {
+function showNameInputDialog(music) {
     let div = document.getElementById('nameInput');
     div.style.visibility = 'visible';
     PAUSE_MANAGER.pauseGame();
@@ -28,10 +26,13 @@ function showNameInputDialog() {
         div.style.visibility = 'collapse';
         PAUSE_MANAGER.unPauseGame();
         DIALOG_MANAGER.flagNameInputDialog = false;
+        music.loop();
 
     }, false);
 }
 
+// jako argumenty podawany jest tekst do wyswietlenia
+// mimo, ze wydaje sie ze funkcja nie przyjmuje argumentow to sa to argumenty ukryte i tak naprawde mozna podac dowolna ilosc
 function showDialogBox() {
     let box = document.getElementById('dialogBox');
     box.style.display = 'block';

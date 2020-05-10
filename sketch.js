@@ -28,7 +28,7 @@ let points=0;
         loadSoundsAndMusic ();
         setupResParamas();
         scaleNameInputDialog();
-        showNameInputDialog();
+        showNameInputDialog(SOUNDS_AND_MUSIC.too_soon);
     }
 
     function setup() {
@@ -40,7 +40,6 @@ let points=0;
         //prepareEnemies(enemies,enemyShots,7);
         prepareBgStars (bgStars, countBgStars);
         prepareasteroid (asteroid, 100, 100, 1);
-        SOUNDS_AND_MUSIC.too_soon.loop ();
     }
 
     function keyPressed() {

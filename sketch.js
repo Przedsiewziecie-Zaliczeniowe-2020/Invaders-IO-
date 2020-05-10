@@ -1,14 +1,5 @@
 let IMGS = {};
 let SOUNDS_AND_MUSIC = {};
-//resolution parameters
-let RES_PARAMS = {
-    canvasWidth: null,
-    canvasHeight: null,
-    canvasOriginX: null,
-    canvasOriginY: null,
-    scalingFactorHeight: null,
-    scalingFactorWidth: null
-}
 let PAUSE_MANAGER = new PauseManager();
 let DIALOG_MANAGER = new DialogsManager();
 let MOUSE_X;
@@ -35,17 +26,7 @@ let points=0;
 
         loadImgs ();
         loadSoundsAndMusic ();
-
-        let div = document.getElementById ('sketchHolder');
-
-        // TODO mozna by je przenies do osobnej funkcji, tylko nie wiem w jakim pliku ja dac
-        RES_PARAMS.canvasWidth = div.offsetWidth;
-        RES_PARAMS.canvasHeight = div.offsetHeight;
-        RES_PARAMS.canvasOriginX = div.offsetLeft;
-        RES_PARAMS.canvasOriginY = div.offsetTop;
-        RES_PARAMS.scalingFactorHeight = 937 / RES_PARAMS.canvasHeight; // przyjalem 937 jako referencyjna wysokosc canvasu, jak nie wiesz o co cho to zapytaj mnie na msg
-        RES_PARAMS.scalingFactorWidth = 1405 / RES_PARAMS.canvasWidth; // przyjalem 1405 jako referencyjna szerokosc canvasu, jak nie wiesz o co cho to zapytaj mnie na msg
-
+        setupResParamas();
         scaleNameInputDialog();
         showNameInputDialog();
     }
@@ -53,8 +34,6 @@ let points=0;
     function setup() {
         var canvas = createCanvas (RES_PARAMS.canvasWidth, RES_PARAMS.canvasHeight);
         canvas.parent ('sketchHolder');
-        canvas.width = RES_PARAMS.canvasWidth;
-        canvas.height = RES_PARAMS.canvasHeight;
 
         pointerLockSetup ();
         ship = new Ship (playerShots);

@@ -5,7 +5,7 @@ let DIALOG_MANAGER = new DialogsManager();
 let MOUSE_X;
 let MOUSE_Y;
 let PLAYER_NAME;
-let points=0;
+let points = 0;
 {
     let countBgStars = 100;
     let bgStars = [countBgStars];
@@ -19,40 +19,42 @@ let points=0;
 
     function preload() {
         // TODO zrobić funkcje do osobnego ładowania lvl
-        lv1 = new Lv1 ();
-        level = new Level ();
+        lv1 = new Lv1();
+        level = new Level();
 
         ///////////////////////
 
-        loadImgs ();
-        loadSoundsAndMusic ();
+        loadImgs();
+        loadSoundsAndMusic();
         setupResParamas();
         scaleNameInputDialog();
         showNameInputDialog(SOUNDS_AND_MUSIC.too_soon);
     }
 
     function setup() {
-        var canvas = createCanvas (RES_PARAMS.canvasWidth, RES_PARAMS.canvasHeight);
-        canvas.parent ('sketchHolder');
+        var canvas = createCanvas(RES_PARAMS.canvasWidth, RES_PARAMS.canvasHeight);
+        canvas.parent('sketchHolder');
 
-        pointerLockSetup ();
-        ship = new Ship (playerShots);
+        pointerLockSetup();
+        ship = new Ship(playerShots);
         //prepareEnemies(enemies,enemyShots,7);
-        prepareBgStars (bgStars, countBgStars);
-        prepareasteroid (asteroid, 100, 100, 1);
+        prepareBgStars(bgStars, countBgStars);
+        prepareasteroid(asteroid, 100, 100, 1);
     }
 
     function keyPressed() {
         if (key == ' ') {
-            ship.shoot ();
-            SOUNDS_AND_MUSIC.shot.play ();
+            if (!PAUSE_MANAGER.isGamePaused) {
+                ship.shoot();
+                SOUNDS_AND_MUSIC.shot.play();
+            }
         }
     }
 
     function draw() {
         // - - - - MOVING AND DRAWING - - - -
-        background (IMGS.bg1);
-        moveAndDrawBgStars (bgStars, countBgStars);
+        background(IMGS.bg1);
+        moveAndDrawBgStars(bgStars, countBgStars);
         DIALOG_MANAGER.attemptDialog(true);
 
         // var LoadLevel1   = new Level(Lv1Strategy);
@@ -60,17 +62,17 @@ let points=0;
 
 
         // - - - - object actions - - - -
-        enemyActionFunction (enemies, enemyShots);
-        playerActionFunction (ship, playerShots);
-        neutralActionFunction (asteroid);
+        enemyActionFunction(enemies, enemyShots);
+        playerActionFunction(ship, playerShots);
+        neutralActionFunction(asteroid);
         //  sprawdz czy pauza
 
         if (actualLevel === 1) {
-            level.setStrategy (lv1);
-            level.setLevel (enemies, enemyShots,deadEnemy);
+            level.setStrategy(lv1);
+            level.setLevel(enemies, enemyShots, deadEnemy);
         }
-        console.log('przeciwnicy ogółem:'+countEnemies);
-        console.log('zniszczeni przeciwnicy'+deadEnemy);
+        console.log('przeciwnicy ogółem:' + countEnemies);
+        console.log('zniszczeni przeciwnicy' + deadEnemy);
 
         // @ @ @ @ END OF MOVING AND DRAWING @ @ @ @
 
@@ -79,9 +81,9 @@ let points=0;
         PAUSE_MANAGER.attemptShowPauseText();
 
         // kolizje
-        enemyShotsCollisions (enemyShots, ship);
-        playerShotsCollisions (playerShots, enemies);
-        neutralObjestCollisions (asteroid, ship)
+        enemyShotsCollisions(enemyShots, ship);
+        playerShotsCollisions(playerShots, enemies);
+        neutralObjestCollisions(asteroid, ship)
 
     }
 }

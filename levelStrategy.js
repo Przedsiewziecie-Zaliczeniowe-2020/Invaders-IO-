@@ -5,6 +5,6 @@ class LevelStrategy{
         this.level = level;
     }
     run(){
-        this.level.action()
+        return this.level.action()
     }
 }

@@ -1,26 +1,19 @@
 class Enemy {
-    constructor(x, y, shootProbability, enemyShots) {
+    enemyShots;
+
+    constructor(x, y, shootProbability, speed) {
         this.x = x;
         this.y = y;
         this.shootProbability = shootProbability;
-        this.enemyShots = enemyShots;
 
         this.width = 40;
         this.height = 40;
-        this.startX = this.x;
-        this.moveDirection = "right";
-        this.movgeRange = 100;
-        this.vx = 0;
-        this.vy = 0;
+        this.vx = speed;
+        this.vy = speed;
     };
-    EndPositon(X,Y)
-    {
-        if (this.y!==Y)
-        {
-         //   this.x+=2;
-            this.y+=2;
-        }
 
+    setupEnemyShots(enemyShots) {
+        this.enemyShots = enemyShots;
     }
 
 
@@ -47,8 +40,37 @@ class Enemy {
         this.x += this.vx;
     };
 
+    //zwraca prawde gdy dolecial, jezeli nie to leci i zwraca falsz
+    flyTo(toX, toY) {
+        if (this.x === toX && this.y === toY)
+            return true;
+
+        if (Math.abs(this.x - toX) < Math.abs(this.vx))
+            this.x = toX;
+        else {
+            if((this.x - toX) > 0)
+                this.vx = (this.vx > 0)? -this.vx: this.vx;
+            else{
+                this.vx = (this.vx > 0)? this.vx: -this.vx;
+            }
+            this.x += this.vx;
+        }
+
+        if (Math.abs(this.y - toY) < Math.abs(this.vy))
+            this.y = toY;
+        else {
+            if((this.y - toY) > 0)
+                this.vy = (this.vy > 0)? -this.vy: this.vy;
+            else{
+                this.vy = (this.vy > 0)? this.vy: -this.vy;
+            }
+            this.y += this.vy;
+        }
+        return false;
+    }
+
     show() {
-        image(IMGS.enemyLvl1Small,this.x, this.y,60,60)
+        image(IMGS.enemyLvl1Small, this.x, this.y, 60, 60)
     };
 
     attemptShooting() {
@@ -60,8 +82,6 @@ class Enemy {
     };
 
     shoot() {
-        this.enemyShots.push(new EnemyShot(this.x+35, this.y, this.vx))
-
+        this.enemyShots.push(new EnemyShot(this.x + 35, this.y, this.vx))
     };
-
 }

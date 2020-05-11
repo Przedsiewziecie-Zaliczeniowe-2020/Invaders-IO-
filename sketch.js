@@ -1,7 +1,9 @@
 let IMGS = {};
 let SOUNDS_AND_MUSIC = {};
-let PAUSE_MANAGER = new PauseManager();
-let DIALOG_MANAGER = new DialogsManager();
+let PAUSE_MANAGER;
+let DIALOG_MANAGER;
+let COLLISION_DETECTOR;
+let GAME_OVER;
 let MOUSE_X;
 let MOUSE_Y;
 let PLAYER_NAME;
@@ -14,15 +16,32 @@ let points = 0;
     let enemyShots = [];
     let playerShots = [];
     let asteroid = [];
-    let lv1;
-    let level;
+    let levelStrategy = new LevelStrategy();
 
     function preload() {
-        // TODO zrobić funkcje do osobnego ładowania lvl
-        lv1 = new Lv1();
-        level = new Level();
+        PAUSE_MANAGER = new PauseManager();
+        DIALOG_MANAGER = new DialogsManager();
+        COLLISION_DETECTOR = new CollisionDetector();
 
-        ///////////////////////
+        // Tworzenie levelu 1
+        // Stworzenie wrogow
+        let enemies = [];
+        for(let i = 0; i < 5; i++)
+        {
+            let enemy = new Enemy(100+(i*100), 100, 0.2, 2);
+            enemies.push(enemy);
+        }
+
+        // Stworzenie stagow
+        let stages = [];
+        for(let i = 0; i < 3; i++){
+            let stage = new Stage(enemies);
+            stages.push(stage);
+        }
+
+        // Stworzenie levelu
+        let level = new Level(stages);
+        levelStrategy.setLevel(level);
 
         loadImgs();
         loadSoundsAndMusic();
@@ -37,9 +56,10 @@ let points = 0;
 
         pointerLockSetup();
         ship = new Ship(playerShots);
-        //prepareEnemies(enemies,enemyShots,7);
+        COLLISION_DETECTOR.setupShip(ship, GAME_OVER)
+        COLLISION_DETECTOR.setupPlayerShots(playerShots);
         prepareBgStars(bgStars, countBgStars);
-        prepareasteroid(asteroid, 100, 100, 1);
+        // prepareasteroid(asteroid, 100, 100, 1);
     }
 
     function keyPressed() {
@@ -57,33 +77,20 @@ let points = 0;
         moveAndDrawBgStars(bgStars, countBgStars);
         DIALOG_MANAGER.attemptDialog(true);
 
-        // var LoadLevel1   = new Level(Lv1Strategy);
-        // LoadLevel1.level(enemies,enemyShots);
-
-
-        // - - - - object actions - - - -
-        enemyActionFunction(enemies, enemyShots);
         playerActionFunction(ship, playerShots);
-        neutralActionFunction(asteroid);
-        //  sprawdz czy pauza
-
-        if (actualLevel === 1) {
-            level.setStrategy(lv1);
-            level.setLevel(enemies, enemyShots, deadEnemy);
-        }
-        console.log('przeciwnicy ogółem:' + countEnemies);
-        console.log('zniszczeni przeciwnicy' + deadEnemy);
-
+        if(!levelStrategy.run())
+            console.log('strategy gameover')
         // @ @ @ @ END OF MOVING AND DRAWING @ @ @ @
 
-        // co pol sekundy triggeruj prawdopodobny strzal enenmy
+        if(frameCount % 60 == 0) console.dir(levelStrategy);
 
+        COLLISION_DETECTOR.detect();
         PAUSE_MANAGER.attemptShowPauseText();
 
-        // kolizje
-        enemyShotsCollisions(enemyShots, ship);
-        playerShotsCollisions(playerShots, enemies);
-        neutralObjestCollisions(asteroid, ship)
+    }
 
+    GAME_OVER = function() {
+       // PAUSE_MANAGER.pauseGame();
+        console.log('no playerdown gameover');
     }
 }

@@ -1,6 +1,5 @@
 class Enemy {
-    enemyShots;
-
+    flyDirection = 'right';
     constructor(x, y, shootProbability, speed) {
         this.x = x;
         this.y = y;
@@ -15,25 +14,6 @@ class Enemy {
     setupEnemyShots(enemyShots) {
         this.enemyShots = enemyShots;
     }
-
-
-    // update() {
-    //     if (this.x < this.startX + this.moveRange && this.moveDirection == "right") {
-    //         this.vx = +2;
-    //     }
-    //     if (this.x > this.startX - this.moveRange && this.moveDirection == "left") {
-    //         this.vx = -2;
-    //     }
-    //
-    //     // jesli dolecial do prawego konca trasy, zmien kierunek na lewo
-    //     if (this.x >= this.startX + 200) {
-    //         this.moveDirection = "left";
-    //     }
-    //     // analogicznie..
-    //     if (this.x <= this.startX) {
-    //         this.moveDirection = "right";
-    //     }
-    // };
 
     move() {
         this.y += this.vy;
@@ -84,4 +64,17 @@ class Enemy {
     shoot() {
         this.enemyShots.push(new EnemyShot(this.x + 35, this.y, this.vx))
     };
+
+    flyToRightAndBack(leftX, rightX){
+        if(this.flyDirection === 'right'){
+            if(this.flyTo(rightX, this.y))
+                this.flyDirection = 'left';
+        }
+
+        if(this.flyDirection === 'left'){
+            if(this.flyTo(leftX, this.y)){
+                this.flyDirection = 'right';
+            }
+        }
+    }
 }

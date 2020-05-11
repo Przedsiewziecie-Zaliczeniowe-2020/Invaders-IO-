@@ -1,8 +1,6 @@
 class CollisionDetector {
     ship = null;
-    callbackShip = null;
     enemies = new Array(0);
-    callbackEnemies = null;
     enemyShots = new Array(0);
     playerShots = new Array(0);
     neutralObjects = new Array(0);
@@ -10,10 +8,12 @@ class CollisionDetector {
     setupShip(ship, callbackShip) {
         this.ship = ship;
         this.callbackShip = callbackShip;
+
     }
-    setupEnemies(enemies, callbackEnemies) {
+    setupEnemies(enemies, callbackEnemies, myCaller) {
         this.enemies = enemies;
         this.callbackEnemies = callbackEnemies;
+        this.callbackEnemiesCaller = myCaller;
     }
     setupEnemyShots(enemyShots) {
         this.enemyShots = enemyShots;
@@ -38,7 +38,7 @@ class CollisionDetector {
                         if(checkPlayerShotHitEnemy(this.playerShots[i], this.enemies[j])){
                             this.playerShots.splice(i,1);
                             i--;
-                            callbackEnemies(j);
+                            this.callbackEnemies.call(this.callbackEnemiesCaller, j);
                             break;
                         }
                     }
@@ -48,15 +48,15 @@ class CollisionDetector {
         //enemyShots
         if(this.ship != null && this.enemyShots.length > 0){
             for(let i = 0; i < this.enemyShots.length; i++){
-                if(checkEnemyShotHitWall(enemyShots[i])){
+                if(checkEnemyShotHitWall(this.enemyShots[i])){
                     this.enemyShots.splice(i,1);
                     i--;
                     continue;
                 }
-                if(checkEnemyShotHitShip(enemyShots[i], ship)){
-                    this.playerShots.splice(i, 1);
+                if(checkEnemyShotHitShip(this.enemyShots[i], this.ship)){
+                    this.enemyShots.splice(i, 1);
                     i--;
-                    callBackShip();
+                    this.callbackShip();
                 }
             }
         }
@@ -71,7 +71,7 @@ class CollisionDetector {
                 if(checkNeutralObjectHitShip(this.neutralObjects[i], this.ship)){
                     this.neutralObjects.splice(i, 1);
                     i--;
-                    callBackShip();
+                    this.callbackShip();
                 }
             }
         }

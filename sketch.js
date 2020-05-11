@@ -7,56 +7,44 @@ let GAME_OVER;
 let MOUSE_X;
 let MOUSE_Y;
 let PLAYER_NAME;
-let points = 0;
 {
     let countBgStars = 100;
     let bgStars = [countBgStars];
     let ship;
-    let enemies = [];
-    let enemyShots = [];
     let playerShots = [];
-    let asteroid = [];
     let levelStrategy = new LevelStrategy();
+    let levels = [];
+    let actualLevel;
 
     function preload() {
         PAUSE_MANAGER = new PauseManager();
         DIALOG_MANAGER = new DialogsManager();
         COLLISION_DETECTOR = new CollisionDetector();
 
-        // Tworzenie levelu 1
-        // Stworzenie wrogow
-        let enemies = [];
-        for(let i = 0; i < 5; i++)
-        {
-            let enemy = new Enemy(100+(i*100), 100, 0.2, 2);
-            enemies.push(enemy);
-        }
-
-        // Stworzenie stagow
-        let stages = [];
-        for(let i = 0; i < 3; i++){
-            let stage = new Stage(enemies);
-            stages.push(stage);
-        }
-
-        // Stworzenie levelu
-        let level = new Level(stages);
-        levelStrategy.setLevel(level);
-
         loadImgs();
         loadSoundsAndMusic();
         setupResParamas();
         scaleNameInputDialog();
-        showNameInputDialog(SOUNDS_AND_MUSIC.too_soon);
+
     }
 
     function setup() {
+        showNameInputDialog(SOUNDS_AND_MUSIC.too_soon);
         var canvas = createCanvas(RES_PARAMS.canvasWidth, RES_PARAMS.canvasHeight);
         canvas.parent('sketchHolder');
 
         pointerLockSetup();
+
+        for (let i = 0; i < 2; i++) {
+            levels.push(Level1()) // narazie robie 2 razy ten sam level
+        }
+        levelStrategy.setLevel(levels[0]);
+        levels[0].setupCollisionDetection();
+        actualLevel = 0;
+
         ship = new Ship(playerShots);
-        COLLISION_DETECTOR.setupShip(ship, GAME_OVER)
+
+        COLLISION_DETECTOR.setupShip(ship, GAME_OVER, this)
         COLLISION_DETECTOR.setupPlayerShots(playerShots);
         prepareBgStars(bgStars, countBgStars);
         // prepareasteroid(asteroid, 100, 100, 1);
@@ -78,19 +66,33 @@ let points = 0;
         DIALOG_MANAGER.attemptDialog(true);
 
         playerActionFunction(ship, playerShots);
-        if(!levelStrategy.run())
-            console.log('strategy gameover')
-        // @ @ @ @ END OF MOVING AND DRAWING @ @ @ @
 
-        if(frameCount % 60 == 0) console.dir(levelStrategy);
+        if(frameCount % 30 == 0) console.dir(levelStrategy);
+
+        if (!levelStrategy.run()) // jesli skonczyly sie stage
+        {
+            // jesli jest nastepny poziom to zmien na niego
+            // Tutaj nastepuje zmiana levelu, wiec mozna by zrobic jakies wodostryksi xD
+            if (actualLevel + 1 < levels.length) {
+                actualLevel += 1;
+                levelStrategy.setLevel(levels[actualLevel]);
+                levels[actualLevel].setupCollisionDetection();
+            }
+            // gracz ukonczyl gre
+            else {
+                console.log('gracz ukonczyl gre');
+            }
+        }
+        // @ @ @ @ END OF MOVING AND DRAWING @ @ @ @
 
         COLLISION_DETECTOR.detect();
         PAUSE_MANAGER.attemptShowPauseText();
-
     }
 
-    GAME_OVER = function() {
-       // PAUSE_MANAGER.pauseGame();
+    GAME_OVER = function () {
+        // PAUSE_MANAGER.pauseGame();
+        ship.y = - 200;
+        // TODO zrobic napis game over i pause i wgl wszystko xd
         console.log('no playerdown gameover');
     }
 }

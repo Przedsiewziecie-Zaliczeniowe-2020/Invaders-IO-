@@ -1,7 +1,7 @@
 setTimeout(function() {
     // Make #foo_2 visible
-    $('#foo_2').show();
+    $('#btnPlay').show();
 
     // Fade out #foo_1
-    $('#foo_1').fadeOut('slow')
+    $('#btnSkip').fadeOut('slow')
 }, 15000);

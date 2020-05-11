@@ -73,7 +73,7 @@ body{
   font-style: italic;
 }
 
-#foo_1 a{
+#btnSkip a{
   position: absolute;
   top: 90%;
   left: 75%;
@@ -93,11 +93,11 @@ body{
 
 }
 
-#foo_1 a i{
+#btnSkip a i{
   float: right;
 }
 
-#foo_1 a:hover{
+#btnSkip a:hover{
   transform: scale(1.1);
   color: white;
   cursor: pointer;
@@ -108,7 +108,7 @@ body{
 
 
 
-#foo_2 a{
+#btnPlay a{
   position: absolute;
   top: 90%;
   left: 75%;
@@ -127,12 +127,12 @@ body{
   font-weight: bolder;
 }
 
-#foo_2 a i{
+#btnPlay a i{
   float: right;
 }
 
 
-#foo_2 a:hover{
+#btnPlay a:hover{
   transform: scale(1.1);
   color: white;
   cursor: pointer;

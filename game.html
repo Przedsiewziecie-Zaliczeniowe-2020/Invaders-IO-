@@ -12,6 +12,8 @@
 
     <script src="https://cdn.jsdelivr.net/gh/processing/p5.js/lib/addons/p5.sound.js"></script>
 
+    <!-- Font-awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 </head>
 
@@ -19,6 +21,12 @@
 
 <div id="container">
     <div id="sketchHolder">
+        <script type="text/javascript" src="pauseManager.js"></script>
+        <script type="text/javascript" src="dialogsManager.js"></script>
+        <script type="text/javascript" src="collisionDetector.js"></script>
+        <script type="text/javascript" src="levelFactories.js"></script>
+        <script type="text/javascript" src="levelStrategy.js"></script>
+        <script type="text/javascript" src="level.js"></script>
         <script type="text/javascript" src="sketch.js"></script>
         <script type="text/javascript" src="loadFiles.js"></script>
         <script type="text/javascript" src="dialogs.js"></script>
@@ -31,19 +39,30 @@
         <script type="text/javascript" src="enemyShot.js"></script>
         <script type="text/javascript" src="objectFunction.js"></script>
         <script type="text/javascript" src="neutralDangerousObjects.js"></script>
-        <script type="text/javascript" src="collisionsSystem.js"></script>
-        <script type="text/javascript" src="levels.js"></script>
+        <script type="text/javascript" src="collisionFunctions.js"></script>
+
         <script type="text/javascript" src="stage.js"></script>
         <script type="text/javascript" src="gameStatus.js"></script>
+        <script type="text/javascript" src="resolution.js"></script>
     </div>
 
     <div id="nameInput">
         <div class="center">
             <div class="centerfix">
-                <p>Select your name:</p>
-                <input name="playerName" id="playerName" type="text">
+              <div class="herotext">Select your name!</div>
+              <br/>
+              <div class="text-input">
+                    <input name="playerName" id="playerName" type="text" placeholder="Your name">
+                     <label for="playerName">Name</label>
+                  </div>
                 <br/>
-                <button id="btnEnterName">enter</button>
+
+                <button id="btnEnterName"><p>Accept <i class="fa fa-check-circle"></i></p></button>
+
+            
+                <br/>
+                <span id="txtError" ></span>
+
             </div>
         </div>
     </div>

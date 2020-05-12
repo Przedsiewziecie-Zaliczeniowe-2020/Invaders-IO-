@@ -14,13 +14,13 @@ body {
 
 #nameInput{
     position: fixed;
-    background-color: white;
+    background-color: black;
     visibility: collapse;
 }
 .center{
     position: absolute;
     text-align: center;
-    top: 50%;
+    top: 20%;
     left: 50%;
 }
 .centerfix
@@ -28,6 +28,96 @@ body {
     position: relative;
     left: -50%;
 }
+
+.herotext{
+  color:white;
+  font-family: 'Saira', sans-serif;
+	font-weight: 700;
+  display: block;
+   background: linear-gradient(to bottom,  #00f2ff 0%,#e2fbff 50%,#0a343f 51%,#0094f7 100%);
+   background-blend-mode: multiply;
+   background-repeat: repeat;
+   line-height: 1;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 50px;
+  -webkit-filter: drop-shadow(0 0 40px #12208a);
+        filter: drop-shadow(0 0 40px #12208a);
+}
+
+
+#btnEnterName {
+  font-size: 16px;
+  color: #17182f;
+  cursor: pointer;
+  background: #fff;
+  display: inline-block;
+  border-radius: 8px;
+  border: 2px solid #17182f;
+  padding: 0px 20px;
+}
+
+#btnEnterName i{
+
+}
+
+#btnEnterName:hover{
+  transform: scale(1.1);
+  background: #17182f;
+  color: #fff;
+  box-shadow: 0px 0px 2px 2px rgba(0,249,255,1);
+
+}
+
+.text-input{
+
+  position: relative;
+  margin-top: 50px;
+}
+  #playerName[type="text"]{
+    display: inline-block;
+    width: 500px;
+    height: 40px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 10px 10px 10px 100px;
+    transition: all 0.1s ease-out;
+  }
+
+  #playerName[type="text"] + label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 40px;
+    line-height: 40px;
+    color: white;
+    border-radius: 3px 0 0 3px;
+    padding: 0 20px;
+    background: #17182f;
+    transform: translateZ(0) translateX(0);
+    transition: all 0.3s ease-in;
+    transition-delay: 0.2s;
+  }
+
+  #playerName[type="text"]:focus + label{
+    transform: translateY(-120%) translateX(0%);
+    border-radius: 3px;
+    transition: all 0.1s ease-out;
+      box-shadow: 0px 0px 2px 2px rgba(0,249,255,1);
+  }
+
+  #playerName[type="text"]:focus{
+    padding: 10px;
+    transition: all 0.3s ease-out;
+    transition-delay: 0.2s;
+      box-shadow: 0px 0px 2px 2px rgba(0,249,255,1);
+  }
+
+
+
 
 /* ANDROID WOMAN DIALOG STYLE */
 

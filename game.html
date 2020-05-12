@@ -12,6 +12,8 @@
 
     <script src="https://cdn.jsdelivr.net/gh/processing/p5.js/lib/addons/p5.sound.js"></script>
 
+    <!-- Font-awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 </head>
 
@@ -47,12 +49,20 @@
     <div id="nameInput">
         <div class="center">
             <div class="centerfix">
-                <p>Select your name:</p>
-                <input name="playerName" id="playerName" type="text">
+              <div class="herotext">Select your name!</div>
+              <br/>
+              <div class="text-input">
+                    <input name="playerName" id="playerName" type="text" placeholder="Your name">
+                     <label for="playerName">Name</label>
+                  </div>
                 <br/>
-                <button id="btnEnterName">enter</button>
+
+                <button id="btnEnterName"><p>Accept <i class="fa fa-check-circle"></i></p></button>
+
+            
                 <br/>
                 <span id="txtError" ></span>
+
             </div>
         </div>
     </div>

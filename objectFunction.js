@@ -1,3 +1,5 @@
+// TODO mozna pousuwac troche tych funkcji
+
 function prepareasteroid(asteroid,x,y,number) {
     for (let i = 0; i <number; i++) {
 

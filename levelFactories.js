@@ -16,3 +16,42 @@ function Level1() {
     }
    return new Level(stages);
 }
+
+
+// Stad kopiujcie sobie kod, tworzac nowy level
+function LevelTemplate()
+{
+    let stages = [];
+
+    // Stage 1(czyli inaczej to po prostu wave 1)
+    let enemies_1 = [];
+    enemies_1.push(new Enemy(100, 100, 0.1, 2));
+    enemies_1.push(new Enemy(250, 100, 0.1, 2));
+    enemies_1.push(new Enemy(400, 100, 0.1, 2));
+    enemies_1.push(new Enemy(550, 100, 0.1, 2));
+    enemies_1.push(new Enemy(700, 100, 0.1, 2));
+    stages.push(new Stage(enemies_1));
+
+    // Stage 2
+    let enemies_2 = [];
+    enemies_2.push(new Enemy(100, 100, 0.1, 2));
+    enemies_2.push(new Enemy(250, 100, 0.1, 2));
+    enemies_2.push(new Enemy(400, 100, 0.1, 2));
+    stages.push(new Stage(enemies_2));
+
+    // Stage 3
+    let enemies_3 = [];
+    enemies_3.push(new Enemy(100, 100, 0.1, 2));
+    enemies_3.push(new Enemy(250, 100, 0.1, 2));
+    enemies_3.push(new Enemy(400, 100, 0.1, 2));
+    stages.push(new Stage(enemies_3));
+
+    // Boss
+    let boss = [];
+    boss.push(new Enemy(500, 100, 0.1, 2));
+    stages.push(new Stage(boss));
+
+
+    //-----------------
+    return new Level(stages);
+}

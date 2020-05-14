@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <title>GAME - Robots Invaders</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
-          rel="stylesheet">
-    <link rel="stylesheet" href="style/gamestyle.css">
+    <!-- https://cdnjs.com/libraries/p5.js --> <!-- https://p5js.org/reference/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+    <!-- https://cdnjs.com/libraries/howler --> <!-- https://github.com/goldfire/howler.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.3/howler.js"></script>
+    <!-- https://github.com/bmoren/p5.collide2D -->
     <script src="https://cdn.jsdelivr.net/gh/bmoren/p5.collide2D/p5.collide2d.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/gh/processing/p5.js/lib/addons/p5.sound.js"></script>
 
     <!-- Font-awesome -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="style/gamestyle.css" rel="stylesheet">
 
 </head>
 
@@ -49,19 +52,19 @@
     <div id="nameInput">
         <div class="center">
             <div class="centerfix">
-              <div class="herotext">Select your name!</div>
-              <br/>
-              <div class="text-input">
+                <div class="herotext">Select your name!</div>
+                <br/>
+                <div class="text-input">
                     <input name="playerName" id="playerName" type="text" placeholder="Your name">
-                     <label for="playerName">Name</label>
-                  </div>
+                    <label for="playerName">Name</label>
+                </div>
                 <br/>
 
                 <button id="btnEnterName"><p>Accept <i class="fa fa-check-circle"></i></p></button>
 
-            
+
                 <br/>
-                <span id="txtError" ></span>
+                <span id="txtError"></span>
 
             </div>
         </div>

@@ -24,6 +24,19 @@ function loadImgs() {
 
 function loadSoundsAndMusic()
 {
-    SOUNDS_AND_MUSIC.too_soon = loadSound("Sound/General/Too Soon.mp3");
-    SOUNDS_AND_MUSIC.shot = loadSound("Sound/Effects/Lazers1.mp3");
+    // SOUNDS_AND_MUSIC.too_soon = loadSound("Sound/General/Too Soon.mp3");
+    // SOUNDS_AND_MUSIC.shot = loadSound("Sound/Effects/Lazers1.mp3");
+
+    SOUNDS_AND_MUSIC.too_soon = new Howl({
+        src: ['Sound/General/Too Soon.mp3'],
+        loop: true,
+        volume: 0.7,
+    });
+
+    SOUNDS_AND_MUSIC.shot = new Howl({
+        src: ['Sound/Effects/Lazers1.mp3'],
+        volume: 0.4,
+    });
+
+
 }

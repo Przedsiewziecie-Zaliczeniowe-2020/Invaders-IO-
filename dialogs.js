@@ -26,7 +26,7 @@ function showNameInputDialog(music) {
         div.style.visibility = 'collapse';
         PAUSE_MANAGER.unPauseGame();
         DIALOG_MANAGER.flagNameInputDialog = false;
-        music.loop();
+        music.play();
 
     }, false);
 }

@@ -35,8 +35,8 @@ let PLAYER_NAME;
 
         pointerLockSetup();
 
-        for (let i = 0; i < 2; i++) {
-            levels.push(Level1()) // narazie robie 2 razy ten sam level
+        for (let i = 0; i < 1; i++) {
+            levels.push(LevelTemplate()) // narazie robie 2 razy ten sam level
         }
         levelStrategy.setLevel(levels[0]);
         levels[0].setupCollisionDetection();

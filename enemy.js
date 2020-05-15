@@ -1,12 +1,12 @@
 class Enemy {
     flyDirection = 'right';
-    constructor(x, y, shootProbability, speed,texture,w,h) {
+    constructor(x, y, shootProbability, speed,texture,width,height) {
         this.x = x;
         this.y = y;
         this.shootProbability = shootProbability;
         this.texture=texture;
-        this.width = w;
-        this.height = h;
+        this.width = width;
+        this.height = height;
         this.vx = speed;
         this.vy = speed;
     };
@@ -50,7 +50,7 @@ class Enemy {
     }
 
     show() {
-        image(this.texture, this.x, this.y, 60, 60)
+        image(this.texture, this.x, this.y, this.width, this.height)
     };
 
     attemptShooting() {

@@ -24,7 +24,7 @@ class Ship {
     };
 
     shoot() {
-        this.playerShots.push(new Shot(this.x+30, this.y)) //TODO zrobic by strzelal ze srodka
+        this.playerShots.push(new Shot(this.x+30, this.y))
     };
 
 }

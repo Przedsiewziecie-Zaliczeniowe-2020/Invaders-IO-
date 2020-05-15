@@ -25,30 +25,30 @@ function LevelTemplate()
 
     // Stage 1(czyli inaczej to po prostu wave 1)
     let enemies_1 = [];
-    enemies_1.push(new Enemy(100, 100, 0.1, 2));
-    enemies_1.push(new Enemy(250, 100, 0.1, 2));
-    enemies_1.push(new Enemy(400, 100, 0.1, 2));
-    enemies_1.push(new Enemy(550, 100, 0.1, 2));
-    enemies_1.push(new Enemy(700, 100, 0.1, 2));
+    enemies_1.push(new Enemy(100, 100, 0.1, 2,IMGS.enemyLvl1Small,40,40));
+    enemies_1.push(new Enemy(250, 100, 0.1, 2,IMGS.enemyLvl1Small,40,40));
+    enemies_1.push(new Enemy(400, 100, 0.1, 2,IMGS.enemyLvl1Small,40,40));
+    enemies_1.push(new Enemy(550, 100, 0.1, 2,IMGS.enemyLvl1Small,40,40));
+    enemies_1.push(new Enemy(700, 100, 0.1, 2,IMGS.enemyLvl1Small,40,40));
     stages.push(new Stage(enemies_1));
 
     // Stage 2
     let enemies_2 = [];
-    enemies_2.push(new Enemy(100, 100, 0.1, 2));
-    enemies_2.push(new Enemy(250, 100, 0.1, 2));
-    enemies_2.push(new Enemy(400, 100, 0.1, 2));
+    enemies_2.push(new Enemy(100, 100, 0.1, 2,IMGS.enemyLvl1Small,40,40));
+    enemies_2.push(new Enemy(250, 100, 0.1, 2,IMGS.enemyLvl1Medium,60,60));
+    enemies_2.push(new Enemy(400, 100, 0.1, 2,IMGS.enemyLvl1Small,40,40));
     stages.push(new Stage(enemies_2));
 
     // Stage 3
     let enemies_3 = [];
-    enemies_3.push(new Enemy(100, 100, 0.1, 2));
-    enemies_3.push(new Enemy(250, 100, 0.1, 2));
-    enemies_3.push(new Enemy(400, 100, 0.1, 2));
+    enemies_3.push(new Enemy(100, 100, 0.1, 2,IMGS.enemyLvl1Medium,60,60));
+    enemies_3.push(new Enemy(250, 100, 0.1, 2,IMGS.enemyLvl1Medium,60,60));
+    enemies_3.push(new Enemy(400, 100, 0.1, 2,IMGS.enemyLvl1Big,65,65));
     stages.push(new Stage(enemies_3));
 
     // Boss
     let boss = [];
-    boss.push(new Enemy(500, 100, 0.1, 2));
+    boss.push(new Enemy(500, 100, 0.1, 2,IMGS.enemyLvl1Boss,80,90));
     stages.push(new Stage(boss));
 
 

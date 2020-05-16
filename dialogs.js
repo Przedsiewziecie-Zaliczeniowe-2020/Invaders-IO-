@@ -18,7 +18,7 @@ function showNameInputDialog(music) {
         let selectedName = document.getElementById('playerName').value;
         let legalChars = new RegExp('^[a-zA-Z0-9 ]{1,36}$');
         if (!legalChars.test(selectedName)) {
-            document.getElementById('txtError').innerText = 'Wpisz poprawny nick!';
+            document.getElementById('txtError').innerText = 'Please, insert correct name!';
             return;
         }
 
@@ -69,7 +69,3 @@ let DIALOG_TEXTS =
 
 
     }
-
-
-
-

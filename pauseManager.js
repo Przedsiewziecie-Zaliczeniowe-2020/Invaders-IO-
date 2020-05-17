@@ -19,13 +19,18 @@ class PauseManager {
 
     attemptShowPauseText()
     {
+
         if(this.isPauseTextOn){
             this.isPauseTextOn = false;
-            background(0, 0, 0, 70);
-            fill(255, 255, 255);
+            var info ='click the screen to play';
+            background(0, 0, 0, 150);
+            fill(0, 249, 255);
             textSize(50);
             textAlign(CENTER, CENTER);
-            text('game paused', RES_PARAMS.canvasWidth / 2, RES_PARAMS.canvasHeight / 2);
+            text('Game Paused', RES_PARAMS.canvasWidth / 2, RES_PARAMS.canvasHeight / 2);
+            text(info, RES_PARAMS.canvasWidth/2, RES_PARAMS.canvasHeight/2+50);
+
+
         }
     }
 

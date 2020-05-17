@@ -66,9 +66,7 @@ let PLAYER_NAME;
         DIALOG_MANAGER.attemptDialog(true);
 
         playerActionFunction(ship, playerShots);
-
-        if(frameCount % 30 == 0) console.dir(levelStrategy);
-
+        
         if (!levelStrategy.run()) // jesli skonczyly sie stage
         {
             // jesli jest nastepny poziom to zmien na niego

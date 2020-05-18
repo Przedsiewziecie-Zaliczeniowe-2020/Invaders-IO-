@@ -13,12 +13,12 @@ function loadImgs() {
     IMGS.bg1 = loadImage('Models/Layer/Layer 1.png');
 
     //playerweapons
-    IMGS.playerWeapon1 = loadImage('Models/Lazers/lazers1.png');
+    IMGS.playerWeapon1 = loadImage('Models/Lazers/Level1/lazers1.png');
 
     //enemy weapons
-    IMGS.enemyWeapon1 = loadImage('Models/Lazers/lazers2.png');
+    IMGS.enemyWeapon1 = loadImage('Models/Lazers/Level1/enemyLazers1.png');
     //neural object
-    IMGS.asteroid = loadImage('Models/Asteroids/7.png');
+    IMGS.asteroid = loadImage('Models/Asteroids/Level1/1.png');
 
 }
 

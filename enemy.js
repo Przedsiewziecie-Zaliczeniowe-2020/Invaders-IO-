@@ -10,13 +10,24 @@ class Enemy {
         this.vx = speed;
         this.vy = speed;
         this.hp=hp;
+        this.hitted=false;
     };
 
     setupEnemyShots(enemyShots) {
         this.enemyShots = enemyShots;
     }
-    hitted(){
+    showEnemyLife()
+    {
+        if (this.hitted&&this.hp!==0)
+        {
+            rect(this.x,this.y,this.width,3);
+        }
+    }
+
+
+    isHitted(){
         this.hp--;
+        this.hitted=true;
         if (this.hp===0)
         {
             return true;

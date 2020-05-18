@@ -38,7 +38,7 @@ class CollisionDetector {
                         if(checkPlayerShotHitEnemy(this.playerShots[i], this.enemies[j])){
                             this.playerShots.splice(i,1);
                             i--;
-                            if(this.enemies[j].hitted())
+                            if(this.enemies[j].isHitted())
                             this.callbackEnemies.call(this.callbackEnemiesCaller, j);
                             break;
                         }

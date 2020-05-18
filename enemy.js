@@ -1,6 +1,6 @@
 class Enemy {
     flyDirection = 'right';
-    constructor(x, y, shootProbability, speed,texture,width,height) {
+    constructor(x, y, shootProbability, speed,texture,width,height,hp) {
         this.x = x;
         this.y = y;
         this.shootProbability = shootProbability;
@@ -9,11 +9,24 @@ class Enemy {
         this.height = height;
         this.vx = speed;
         this.vy = speed;
+        this.hp=hp;
     };
 
     setupEnemyShots(enemyShots) {
         this.enemyShots = enemyShots;
     }
+    hitted(){
+        this.hp--;
+        if (this.hp===0)
+        {
+            return true;
+        }
+      else{
+            return false;
+        }
+
+
+}
 
     move() {
         this.y += this.vy;

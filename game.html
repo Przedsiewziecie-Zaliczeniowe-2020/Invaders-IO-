@@ -22,6 +22,10 @@
 
 <body>
 
+  <div class="load">
+  <hr/><hr/><hr/><hr/>
+</div>
+
 <div id="container">
     <div id="sketchHolder">
         <script type="text/javascript" src="pauseManager.js"></script>
@@ -45,7 +49,7 @@
         <script type="text/javascript" src="collisionFunctions.js"></script>
 
         <script type="text/javascript" src="stage.js"></script>
-        <script type="text/javascript" src="gameStatus.js"></script>
+        <script type="text/javascript" src="DetailsOfSpecificEnemy.js"></script>
         <script type="text/javascript" src="resolution.js"></script>
     </div>
 
@@ -57,14 +61,18 @@
                 <div class="text-input">
                     <input name="playerName" id="playerName" type="text" placeholder="Your name">
                     <label for="playerName">Name</label>
+                    <br/>
+
+
+                    <br/>
+
                 </div>
-                <br/>
 
                 <button id="btnEnterName"><p>Accept <i class="fa fa-check-circle"></i></p></button>
-
+                <div class="txtError" id="txtError"></div>
 
                 <br/>
-                <span id="txtError"></span>
+
 
             </div>
         </div>
@@ -72,7 +80,7 @@
     <div id="dialogBox">
         <div class="row">
             <div class="column left">
-                <img src="Pictures/Characters/android-girl.jpg" alt="Android woman">
+                <img src="Models/Characters/android-girl.jpg" alt="Android woman">
             </div>
             <div class="column right">
                 <h2>Android Woman:</h2>
@@ -86,5 +94,7 @@
 </div>
 
 
+
+</script>
 </body>
 </html>

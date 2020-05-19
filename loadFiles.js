@@ -40,3 +40,10 @@ function loadSoundsAndMusic()
 
 
 }
+
+function loadFonts()
+{
+
+//fonts
+FONTS.sairaFont = loadFont('Fonts/Saira-Bold.ttf');
+}

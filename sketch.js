@@ -1,4 +1,5 @@
 let IMGS = {};
+let FONTS = {};
 let SOUNDS_AND_MUSIC = {};
 let PAUSE_MANAGER;
 let DIALOG_MANAGER;
@@ -23,6 +24,7 @@ let PLAYER_NAME;
 
         loadImgs();
         loadSoundsAndMusic();
+        loadFonts();
         setupResParamas();
         scaleNameInputDialog();
 

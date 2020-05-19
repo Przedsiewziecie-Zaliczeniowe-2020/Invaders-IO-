@@ -66,6 +66,7 @@ class Stage {
             }
 
             this.enemies[i].show();
+            this.enemies[i].showEnemyLife();
         }
         for (let i = 0; i < this.enemyShots.length; i++) {
             this.enemyShots[i].move();

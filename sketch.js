@@ -69,6 +69,9 @@ let PLAYER_NAME;
 
         playerActionFunction(ship, playerShots);
 
+
+
+
         if(frameCount % 30 == 0) console.dir(levelStrategy);
 
         if (!levelStrategy.run()) // jesli skonczyly sie stage

@@ -84,7 +84,7 @@ class Enemy {
     };
 
     shoot() {
-        this.enemyShots.push (new EnemyShot (this.x + 35, this.y, this.vx))
+        this.enemyShots.push (new EnemyShot (this.x +(this.width/2), this.y+(this.height/2), this.vx))
     };
 
     flyToRightAndBack(leftX, rightX) {

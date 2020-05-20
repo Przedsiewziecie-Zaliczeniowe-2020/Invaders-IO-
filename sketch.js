@@ -50,13 +50,13 @@ let PLAYER_NAME;
         // prepareasteroid(asteroid, 100, 100, 1);
     }
 
-    function keyPressed() {
-        if (key == ' ') {
+    function mouseClicked() {
+
             if (!PAUSE_MANAGER.isGamePaused) {
                 ship.shoot();
                 SOUNDS_AND_MUSIC.shot.play();
             }
-        }
+
     }
 
     function draw() {

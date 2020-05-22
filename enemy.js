@@ -1,5 +1,9 @@
 class Enemy {
     flyDirection = 'right';
+    isExploding = false;
+    explodingFinished = false;
+    explodeFrame = 0;
+    Opacity = 256;
 
     constructor(x, y, shootProbability, speed, texture, width, height, hp) {
         this.x = x;
@@ -21,8 +25,8 @@ class Enemy {
 
     showEnemyLife() {
         if (this.hitted && this.hp !== 0) {
-            fill (255, 0, 0);
-            rect (this.x, this.y, this.hp * 100 / this.startHp, 3);
+            fill(255, 0, 0);
+            rect(this.x, this.y, this.hp * 100 / this.startHp, 3);
         }
     }
 
@@ -44,10 +48,13 @@ class Enemy {
 
     //zwraca prawde gdy dolecial, jezeli nie to leci i zwraca falsz
     flyTo(toX, toY) {
+        if (this.isExploding === true)
+            return true;
+
         if (this.x === toX && this.y === toY)
             return true;
 
-        if (Math.abs (this.x - toX) < Math.abs (this.vx))
+        if (Math.abs(this.x - toX) < Math.abs(this.vx))
             this.x = toX;
         else {
             if ((this.x - toX) > 0)
@@ -58,7 +65,7 @@ class Enemy {
             this.x += this.vx;
         }
 
-        if (Math.abs (this.y - toY) < Math.abs (this.vy))
+        if (Math.abs(this.y - toY) < Math.abs(this.vy))
             this.y = toY;
         else {
             if ((this.y - toY) > 0)
@@ -72,31 +79,48 @@ class Enemy {
     }
 
     show() {
-        image (this.texture, this.x, this.y, this.width, this.height)
+        tint(255, this.Opacity) // przezroczystosc, ustawiana tym drugim argumentem
+        image(this.texture, this.x, this.y, this.width, this.height)
     };
 
     attemptShooting() {
-        let rand = random (); // random() bez argumentow zwraca float z przedzialu <0;1)
+        let rand = random(); // random() bez argumentow zwraca float z przedzialu <0;1)
         if (rand < this.shootProbability) {
-            this.shoot ();
+            this.shoot();
 
         }
     };
 
     shoot() {
-        this.enemyShots.push (new EnemyShot (this.x + 35, this.y, this.vx))
+        this.enemyShots.push(new EnemyShot(this.x + 35, this.y, this.vx))
     };
 
     flyToRightAndBack(leftX, rightX) {
         if (this.flyDirection === 'right') {
-            if (this.flyTo (rightX, this.y))
+            if (this.flyTo(rightX, this.y))
                 this.flyDirection = 'left';
         }
 
         if (this.flyDirection === 'left') {
-            if (this.flyTo (leftX, this.y)) {
+            if (this.flyTo(leftX, this.y)) {
                 this.flyDirection = 'right';
             }
         }
+    }
+
+    immobilizeAndNeutralize() {
+        this.vy = 0;
+        this.vx = 0;
+        this.shootProbability = 0;
+    }
+
+    explode() {
+        if (this.explodeFrame === 47) return true;
+
+        image(IMGS.explosions[this.explodeFrame], this.x, this.y, this.width, this.height)
+        this.opacity = (this.opacity - 6 < 0) ? 0 : this.opacity - 6
+
+
+        return false;
     }
 }

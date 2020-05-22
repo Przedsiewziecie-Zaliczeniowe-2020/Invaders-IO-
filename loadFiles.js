@@ -20,6 +20,16 @@ function loadImgs() {
     //neural object
     IMGS.asteroid = loadImage('Models/Asteroids/Level1/1.png');
 
+    IMGS.explosions = [] //48 ich jest
+    for(let i = 1; i <= 6; i++){
+        for(let j = 1; j <=8; j++){
+            IMGS.explosions.push(loadImage('Models/Explosions/explosion'+i+'x'+j+'.png'));
+        }
+    }
+    console.dir(IMGS.explosions)
+
+
+
 }
 
 function loadSoundsAndMusic()

@@ -1,7 +1,7 @@
 class Ship {
     constructor(playerShots) {
         this.playerShots = playerShots;
-
+        this.hp=5;
         this.width = 80;
         this.height= 90;
         this.y = height - 120;
@@ -23,6 +23,16 @@ class Ship {
         this.x = MOUSE_X;
     };
 
+    isHitted() {
+        this.hp--;
+        this.hitted = true;
+        if (this.hp === 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    };
     shoot() {
         this.playerShots.push(new Shot(this.x+30, this.y))
     };

@@ -48,7 +48,7 @@ function LevelTemplate()
 
     // Boss
     let boss = [];
-    boss.push(new Enemy(500, 100, dataOfEnemyShoot.Boss, 2,IMGS.enemyLvl1Boss,dataOfEnemySize.W_Boss,dataOfEnemySize.H_Bos,dataOfEnemyLife.Boss));
+    boss.push(new Enemy(100, 100, dataOfEnemyShoot.Boss, 2,IMGS.enemyLvl1Boss,dataOfEnemySize.W_Boss,dataOfEnemySize.H_Bos,dataOfEnemyLife.Boss));
     stages.push(new Stage(boss));
 
 

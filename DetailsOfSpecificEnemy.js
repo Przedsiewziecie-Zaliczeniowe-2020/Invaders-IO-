@@ -1,7 +1,7 @@
 const dataOfEnemyLife= {
-    Small:4,
-    Medium:12,
-    Big:20,
+    Small:2,
+    Medium:5,
+    Big:8,
     Boss:40
 };
 const dataOfEnemySize={

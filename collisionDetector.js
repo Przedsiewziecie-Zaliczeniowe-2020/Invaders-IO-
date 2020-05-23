@@ -57,7 +57,10 @@ class CollisionDetector {
                 if(checkEnemyShotHitShip(this.enemyShots[i], this.ship)){
                     this.enemyShots.splice(i, 1);
                     i--;
-                    this.callbackShip();
+                    if(this.ship.isHitted())
+                        this.callbackShip();
+                    break;
+
                 }
             }
         }

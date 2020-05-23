@@ -20,6 +20,13 @@ function loadImgs() {
     //neural object
     IMGS.asteroid = loadImage('Models/Asteroids/Level1/1.png');
 
+    // E X P L O S I O N  youtube.com/watch?v=wEvUHknyFng
+    IMGS.explosions = [] //48 ich jest
+    for(let i = 1; i <= 6; i++){
+        for(let j = 1; j <=8; j++){
+            IMGS.explosions.push(loadImage('Models/Explosions/explosion'+i+'x'+j+'.png'));
+        }
+    }
 }
 
 function loadSoundsAndMusic()
@@ -30,13 +37,26 @@ function loadSoundsAndMusic()
     SOUNDS_AND_MUSIC.too_soon = new Howl({
         src: ['Sound/General/Too Soon.mp3'],
         loop: true,
-        volume: 0.7,
+        volume: 0.5,
     });
 
     SOUNDS_AND_MUSIC.shot = new Howl({
         src: ['Sound/Effects/Lazers1.mp3'],
-        volume: 0.4,
+        volume: 0.3,
     });
+
+    SOUNDS_AND_MUSIC.enemyExplosion = new Howl({
+        src: ['Sound/Effects/spaceExplosionSmall.wav'],
+        volume: 0.5,
+        rate: 0.5,
+    });
+
+    SOUNDS_AND_MUSIC.enemyBossExplosion = new Howl({
+        src: ['Sound/Effects/spaceExplosionBig.wav'],
+        volume: 1,
+        rate: 0.9,
+    });
+
 
 
 }

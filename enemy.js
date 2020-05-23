@@ -1,9 +1,7 @@
 class Enemy {
     flyDirection = 'right';
     isExploding = false;
-    explodingFinished = false;
     explodeFrame = 0;
-    Opacity = 256;
 
     constructor(x, y, shootProbability, speed, texture, width, height, hp) {
         this.x = x;
@@ -17,6 +15,8 @@ class Enemy {
         this.hp = hp;
         this.startHp = hp;
         this.hitted = false;
+        this.explosionXScale = (this.width * 1.75 - this.width)
+        this.explosionYScale = (this.height * 1.75 - this.height)
     };
 
     setupEnemyShots(enemyShots) {
@@ -31,14 +31,13 @@ class Enemy {
     }
 
     isHitted() {
-        this.hp--;
+        this.hp = (this.hp - 1 < 0) ? 0 : this.hp - 1
         this.hitted = true;
         if (this.hp === 0) {
             return true;
         } else {
             return false;
         }
-
     }
 
     move() {
@@ -79,8 +78,11 @@ class Enemy {
     }
 
     show() {
-        tint(255, this.Opacity) // przezroczystosc, ustawiana tym drugim argumentem
-        image(this.texture, this.x, this.y, this.width, this.height)
+        //tint(255, this.Opacity) // ta funkcja zre za duzo mocy obliczeniowej
+        if (this.explodeFrame < 18) {
+            image(this.texture, this.x, this.y, this.width, this.height)
+        }
+
     };
 
     attemptShooting() {
@@ -115,11 +117,10 @@ class Enemy {
     }
 
     explode() {
-        if (this.explodeFrame === 47) return true;
-
-        image(IMGS.explosions[this.explodeFrame], this.x, this.y, this.width, this.height)
-        this.opacity = (this.opacity - 6 < 0) ? 0 : this.opacity - 6
-
+        if (this.explodeFrame === 47)
+            return true;
+        image(IMGS.explosions[this.explodeFrame], this.x - this.explosionXScale / 2, this.y - this.explosionYScale / 2, this.width + this.explosionXScale, this.height + this.explosionYScale)
+        this.explodeFrame += 1
 
         return false;
     }

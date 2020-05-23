@@ -34,23 +34,19 @@ class Stage {
         // TODO animacja zniszczenia
         this.enemies[index].immobilizeAndNeutralize();
         this.enemies[index].isExploding = true;
-        this.aliveEnemies  = this.aliveEnemies -1;
+
     }
 
-    clearDeadEnemies(){
-        for(let i = 0; i < this.enemies.length; i++){
-            if(this.enemies[i].explodingFinished === true ){
-                this.enemies.splice(index, 1);
-                this.startingEnemyCords.splice(index,1);
-            }
-        }
+    clearDeadEnemy(index){
+        this.enemies.splice(index, 1);
+        this.startingEnemyCords.splice(index,1);
+        this.aliveEnemies  = this.aliveEnemies -1;
     }
 
     animateEnemyExplosion(index){
             if(this.enemies[index].isExploding){
                 if(this.enemies[index].explode()){
-                    this.enemies.explodingFinished = true;
-                    this.enemies.isExploding = false;
+                    this.clearDeadEnemy(index)
                 }
             }
     }
@@ -64,9 +60,9 @@ class Stage {
                 areAllEnemiesLoaded = false;
             }
             this.enemies[i].show();
+            this.enemies[i].showEnemyLife();
             this.animateEnemyExplosion(i);
         }
-        this.clearDeadEnemies();
         if (areAllEnemiesLoaded === true)
             return 'live';
         else
@@ -82,12 +78,10 @@ class Stage {
             if (frameCount % 30 === 0) {
                 this.enemies[i].attemptShooting();
             }
-
             this.enemies[i].show();
             this.enemies[i].showEnemyLife();
             this.animateEnemyExplosion(i);
         }
-        this.clearDeadEnemies();
         for (let i = 0; i < this.enemyShots.length; i++) {
             this.enemyShots[i].move();
             this.enemyShots[i].show();

@@ -89,7 +89,7 @@ let PLAYER_NAME;
 
     GAME_OVER = function () {
         // PAUSE_MANAGER.pauseGame();
-        ship.y = - 200;
+        //ship.y = - 200;
         // TODO zrobic napis game over i pause i wgl wszystko xd
         console.log('no playerdown gameover');
     }

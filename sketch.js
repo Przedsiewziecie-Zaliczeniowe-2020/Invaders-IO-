@@ -44,7 +44,7 @@ let PLAYER_NAME;
 
         ship = new Ship(playerShots);
 
-        COLLISION_DETECTOR.setupShip(ship, GAME_OVER, this)
+        COLLISION_DETECTOR.setupShip(ship, GAME_OVER, this);
         COLLISION_DETECTOR.setupPlayerShots(playerShots);
         prepareBgStars(bgStars, countBgStars);
         // prepareasteroid(asteroid, 100, 100, 1);

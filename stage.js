@@ -34,21 +34,25 @@ class Stage {
         // TODO animacja zniszczenia
         this.enemies[index].immobilizeAndNeutralize();
         this.enemies[index].isExploding = true;
+        if (this.enemies[index].height > 200) // TODO, to jest tylko tymczasowe rozwiazanie, trzeba zrobic wlasciwosc, ktora bedzie okreslac jaki to typ moba
+            SOUNDS_AND_MUSIC.enemyBossExplosion.play();
+        else
+            SOUNDS_AND_MUSIC.enemyExplosion.play();
 
     }
 
-    clearDeadEnemy(index){
+    clearDeadEnemy(index) {
         this.enemies.splice(index, 1);
-        this.startingEnemyCords.splice(index,1);
-        this.aliveEnemies  = this.aliveEnemies -1;
+        this.startingEnemyCords.splice(index, 1);
+        this.aliveEnemies = this.aliveEnemies - 1;
     }
 
-    animateEnemyExplosion(index){
-            if(this.enemies[index].isExploding){
-                if(this.enemies[index].explode()){
-                    this.clearDeadEnemy(index)
-                }
+    animateEnemyExplosion(index) {
+        if (this.enemies[index].isExploding) {
+            if (this.enemies[index].explode()) {
+                this.clearDeadEnemy(index)
             }
+        }
     }
 
     // Dolatywanie na miejsce

@@ -58,6 +58,12 @@ function loadSoundsAndMusic()
         rate: 0.9,
     });
 
+    SOUNDS_AND_MUSIC.shipExplossion = new Howl({
+        src: ['Sound/Effects/spaceExplosionBig.wav'],
+        volume: 1,
+        rate: 2,
+    });
+
 
 
 }

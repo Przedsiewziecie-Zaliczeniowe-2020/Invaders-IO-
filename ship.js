@@ -46,6 +46,7 @@ class Ship {
         } else { // Zacznij wybuchanie
             this.isSpawnProtected = true;
             this.explodeFrame = 0;
+            SOUNDS_AND_MUSIC.shipExplossion.play();
 
             return false;
         }

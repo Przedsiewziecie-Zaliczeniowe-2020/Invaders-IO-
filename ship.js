@@ -18,6 +18,7 @@ class Ship {
 
     show() {
         this.attemptExplode();
+        if(this.hp <= 0) GAME_OVER();
         if (this.explodeFrame < 18) {
             image(IMGS.playerShip, this.x, this.y, this.width, this.height);
             return;
@@ -41,15 +42,10 @@ class Ship {
         if (this.isSpawnProtected === true) return;
 
         this.hp--;
-        if (this.hp === 0) { // GAME OVER {
-            return true;
-        } else { // Zacznij wybuchanie
-            this.isSpawnProtected = true;
-            this.explodeFrame = 0;
-            SOUNDS_AND_MUSIC.shipExplossion.play();
-
-            return false;
-        }
+        this.isSpawnProtected = true;
+        this.explodeFrame = 0;
+        SOUNDS_AND_MUSIC.shipExplossion.play();
+        return false;
     };
 
     shoot() {

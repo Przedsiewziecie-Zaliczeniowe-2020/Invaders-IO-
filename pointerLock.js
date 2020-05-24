@@ -17,7 +17,7 @@ function lockChangeAlert() {
     } else {
         document.removeEventListener("mousemove", updatePosition, false);
         pointerLock = false;
-        PAUSE_MANAGER.pauseGameAndSetPauseTextFlag();
+        PAUSE_MANAGER.pauseGameAndSetPauseTextFlag('pause');
     }
 }
 

@@ -25,11 +25,13 @@ let PLAYER_NAME;
         loadSoundsAndMusic();
         setupResParamas();
         scaleNameInputDialog();
+        scaleGameFinishedDialog();
 
     }
 
     function setup() {
         showNameInputDialog(SOUNDS_AND_MUSIC.too_soon);
+
         var canvas = createCanvas(RES_PARAMS.canvasWidth, RES_PARAMS.canvasHeight);
         canvas.parent('sketchHolder');
 
@@ -43,11 +45,9 @@ let PLAYER_NAME;
     }
 
     function mouseClicked() {
-
             if (!PAUSE_MANAGER.isGamePaused) {
                 ship.shoot();
             }
-
     }
 
     function draw() {
@@ -70,7 +70,8 @@ let PLAYER_NAME;
             }
             // gracz ukonczyl gre
             else {
-                console.log('gracz ukonczyl gre');
+                PAUSE_MANAGER.pauseGame();
+                showGameFinishedDialog();
             }
         }
         // @ @ @ @ END OF MOVING AND DRAWING @ @ @ @

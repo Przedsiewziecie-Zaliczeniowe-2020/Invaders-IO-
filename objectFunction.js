@@ -1,5 +1,3 @@
-// TODO mozna pousuwac troche tych funkcji
-
 
 function prepareBgStars(bgStars, countBgStars) {
     for (let i = 0; i < countBgStars; i++) {

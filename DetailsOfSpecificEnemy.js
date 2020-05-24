@@ -4,6 +4,7 @@ const dataOfEnemyLife= {
     Big:8,
     Boss:40
 };
+
 const dataOfEnemySize={
     W_small:60,
     H_small:60,
@@ -16,10 +17,8 @@ const dataOfEnemySize={
 };
 const dataOfEnemyShoot={
     Small:0.1,
-    // Small:1,
     Medium:0.3,
-     Big:0.5,
+    Big:0.5,
     Boss:0.8,
-
 };
 

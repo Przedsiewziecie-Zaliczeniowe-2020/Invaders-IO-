@@ -1,7 +1,8 @@
 function loadImgs() {
     //players
     IMGS.playerShip = loadImage('Models/Spaceships/PlayerOne.png');
-    IMGS.playership2 = loadImage('Models/Spaceships/PlayerTwo.png');
+    IMGS.playerShipSpawnProtected = loadImage('Models/Spaceships/PlayerOne65Opacity.png');
+    IMGS.playerShip2 = loadImage('Models/Spaceships/PlayerTwo.png');
 
     //enemies
     IMGS.enemyLvl1Small = loadImage('Models/Enemies/Level1/Small.png');

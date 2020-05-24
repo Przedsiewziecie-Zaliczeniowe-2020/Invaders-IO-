@@ -95,9 +95,7 @@ class Enemy {
     };
 
     shoot() {
-
         this.enemyShots.push (new EnemyShot (this.x +(this.width/2), this.y+(this.height/2), this.vx))
-
     };
 
     flyToRightAndBack(leftX, rightX) {
@@ -120,7 +118,7 @@ class Enemy {
     }
 
     explode() {
-        if (this.explodeFrame === 47)
+        if (this.explodeFrame === 48)
             return true;
         image(IMGS.explosions[this.explodeFrame], this.x - this.explosionXScale / 2, this.y - this.explosionYScale / 2, this.width + this.explosionXScale, this.height + this.explosionYScale)
         this.explodeFrame += 1

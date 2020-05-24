@@ -54,7 +54,6 @@ let PLAYER_NAME;
 
             if (!PAUSE_MANAGER.isGamePaused) {
                 ship.shoot();
-                SOUNDS_AND_MUSIC.shot.play();
             }
 
     }

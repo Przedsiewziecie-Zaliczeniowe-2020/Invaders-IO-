@@ -16,6 +16,7 @@ const dataOfEnemySize={
 };
 const dataOfEnemyShoot={
     Small:0.1,
+    // Small:1,
     Medium:0.3,
      Big:0.5,
     Boss:0.8,

@@ -25,8 +25,10 @@ class Enemy {
 
     showEnemyLife() {
         if (this.hitted && this.hp !== 0) {
+
             fill (255, 0, 0);
-            rect (this.x+(this.width/4), this.y, this.hp * 100 / this.startHp, 3);
+            let hpLength = (this.hp/this.startHp) * this.width;
+            rect ((this.x+this.width/2)-this.width/2, this.y, hpLength, 3);
 
         }
     }

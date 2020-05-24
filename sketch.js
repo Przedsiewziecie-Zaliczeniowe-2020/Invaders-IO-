@@ -57,6 +57,7 @@ let PLAYER_NAME;
         DIALOG_MANAGER.attemptDialog(true);
 
         playerActionFunction(ship, playerShots);
+        showPlayerLives(ship.hp);
 
         if (!levelStrategy.run()) // jesli skonczyly sie stage
         {

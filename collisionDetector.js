@@ -7,7 +7,7 @@ class CollisionDetector {
 
     setupShip(ship, callbackShip) {
         this.ship = ship;
-        this.callbackShip = callbackShip;
+        this.callbackShip = callbackShip;  //TODO usunac callbackShip wszedzie bo jest niepotrzebny
 
     }
 
@@ -63,7 +63,7 @@ class CollisionDetector {
                     this.enemyShots.splice(i, 1);
                     i--;
                     if(this.ship.isHitted())
-                        this.callbackShip();
+                         // this.callbackShip();
                     break;
 
                 }
@@ -80,7 +80,7 @@ class CollisionDetector {
                 if (checkNeutralObjectHitShip(this.neutralObjects[i], this.ship)) {
                     this.neutralObjects.splice(i, 1);
                     i--;
-                    this.callbackShip();
+                    // this.callbackShip();
                 }
             }
         }

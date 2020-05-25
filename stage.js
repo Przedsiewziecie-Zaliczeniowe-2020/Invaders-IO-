@@ -78,7 +78,7 @@ class Stage {
         if (this.aliveEnemies <= 0) return 'dead';
 
         for (let i = 0; i < this.enemies.length; i++) {
-            this.enemies[i].flyToRightAndBack(100, width-100);
+            this.enemies[i].flyToRightAndBack(100, width-100-this.enemies[i].width);
             if (frameCount % 30 === 0) {
                 this.enemies[i].attemptShooting();
             }

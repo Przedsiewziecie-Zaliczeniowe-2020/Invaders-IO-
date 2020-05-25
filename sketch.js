@@ -25,38 +25,29 @@ let PLAYER_NAME;
         loadSoundsAndMusic();
         setupResParamas();
         scaleNameInputDialog();
+        scaleGameFinishedDialog();
 
     }
 
     function setup() {
         showNameInputDialog(SOUNDS_AND_MUSIC.too_soon);
+
         var canvas = createCanvas(RES_PARAMS.canvasWidth, RES_PARAMS.canvasHeight);
         canvas.parent('sketchHolder');
 
         pointerLockSetup();
 
-        for (let i = 0; i < 1; i++) {
-            levels.push(LevelTemplate()) // narazie robie 2 razy ten sam level
-        }
-        levelStrategy.setLevel(levels[0]);
-        levels[0].setupCollisionDetection();
-        actualLevel = 0;
+        prepareWorld();
 
-        ship = new Ship(playerShots);
-
-        COLLISION_DETECTOR.setupShip(ship, GAME_OVER, this);
         COLLISION_DETECTOR.setupPlayerShots(playerShots);
         prepareBgStars(bgStars, countBgStars);
         // prepareasteroid(asteroid, 100, 100, 1);
     }
 
     function mouseClicked() {
-
             if (!PAUSE_MANAGER.isGamePaused) {
                 ship.shoot();
-                SOUNDS_AND_MUSIC.shot.play();
             }
-
     }
 
     function draw() {
@@ -66,6 +57,7 @@ let PLAYER_NAME;
         DIALOG_MANAGER.attemptDialog(true);
 
         playerActionFunction(ship, playerShots);
+        showPlayerLives(ship.hp);
 
         if (!levelStrategy.run()) // jesli skonczyly sie stage
         {
@@ -78,7 +70,8 @@ let PLAYER_NAME;
             }
             // gracz ukonczyl gre
             else {
-                console.log('gracz ukonczyl gre');
+                PAUSE_MANAGER.pauseGame();
+                showGameFinishedDialog();
             }
         }
         // @ @ @ @ END OF MOVING AND DRAWING @ @ @ @
@@ -88,9 +81,21 @@ let PLAYER_NAME;
     }
 
     GAME_OVER = function () {
-        // PAUSE_MANAGER.pauseGame();
-        //ship.y = - 200;
-        // TODO zrobic napis game over i pause i wgl wszystko xd
-        console.log('no playerdown gameover');
+        PAUSE_MANAGER.pauseGameAndSetPauseTextFlag('game over');
+        prepareWorld();
+    }
+
+    function prepareWorld() {
+        levels = []
+
+        for (let i = 0; i < 1; i++) {
+            levels.push(LevelTemplate()) // narazie robie 2 razy ten sam level
+        }
+        levelStrategy.setLevel(levels[0]);
+        levels[0].setupCollisionDetection();
+        actualLevel = 0;
+
+        ship = new Ship(playerShots);
+        COLLISION_DETECTOR.setupShip(ship, GAME_OVER, this);
     }
 }

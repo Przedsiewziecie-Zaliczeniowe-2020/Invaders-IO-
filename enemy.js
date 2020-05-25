@@ -25,8 +25,10 @@ class Enemy {
 
     showEnemyLife() {
         if (this.hitted && this.hp !== 0) {
+
             fill (255, 0, 0);
-            rect (this.x+(this.width/4), this.y, this.hp * 100 / this.startHp, 3);
+            let hpLength = (this.hp/this.startHp) * this.width;
+            rect ((this.x+this.width/2)-this.width/2, this.y, hpLength, 3);
 
         }
     }
@@ -95,9 +97,7 @@ class Enemy {
     };
 
     shoot() {
-
         this.enemyShots.push (new EnemyShot (this.x +(this.width/2), this.y+(this.height/2), this.vx))
-
     };
 
     flyToRightAndBack(leftX, rightX) {
@@ -120,7 +120,7 @@ class Enemy {
     }
 
     explode() {
-        if (this.explodeFrame === 47)
+        if (this.explodeFrame === 48)
             return true;
         image(IMGS.explosions[this.explodeFrame], this.x - this.explosionXScale / 2, this.y - this.explosionYScale / 2, this.width + this.explosionXScale, this.height + this.explosionYScale)
         this.explodeFrame += 1

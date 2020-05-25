@@ -1,7 +1,8 @@
 function loadImgs() {
     //players
     IMGS.playerShip = loadImage('Models/Spaceships/PlayerOne.png');
-    IMGS.playership2 = loadImage('Models/Spaceships/PlayerTwo.png');
+    IMGS.playerShipSpawnProtected = loadImage('Models/Spaceships/PlayerOne65Opacity.png');
+    IMGS.playerShip2 = loadImage('Models/Spaceships/PlayerTwo.png');
 
     //enemies
     IMGS.enemyLvl1Small = loadImage('Models/Enemies/Level1/Small.png');
@@ -55,6 +56,12 @@ function loadSoundsAndMusic()
         src: ['Sound/Effects/spaceExplosionBig.wav'],
         volume: 1,
         rate: 0.9,
+    });
+
+    SOUNDS_AND_MUSIC.shipExplossion = new Howl({
+        src: ['Sound/Effects/spaceExplosionBig.wav'],
+        volume: 1,
+        rate: 2,
     });
 
 

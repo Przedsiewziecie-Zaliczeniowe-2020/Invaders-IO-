@@ -12,12 +12,12 @@ function pointerLockSetup() {
 function lockChangeAlert() {
     if (document.pointerLockElement === canvas || document.mozPointerLockElement === canvas) {
         document.addEventListener("mousemove", updatePosition, false);
-        pointerLock = true;
+        pointerLock = true; // TODO dopisac blokade, by przy dialogu gracz nie mogl pointerLockowac canvasa
         PAUSE_MANAGER.unPauseGame();
     } else {
         document.removeEventListener("mousemove", updatePosition, false);
         pointerLock = false;
-        PAUSE_MANAGER.pauseGameAndSetPauseTextFlag();
+        PAUSE_MANAGER.pauseGameAndSetPauseTextFlag('pause');
     }
 }
 

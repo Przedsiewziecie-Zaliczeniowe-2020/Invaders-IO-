@@ -6,6 +6,14 @@ function scaleNameInputDialog() {
     div.style.left = RES_PARAMS.canvasOriginX + 'px';
 }
 
+function scaleGameFinishedDialog() {
+    let div = document.getElementById('gameFinished');
+    div.style.height = RES_PARAMS.canvasHeight + 'px';
+    div.style.width = RES_PARAMS.canvasWidth + 'px';
+    div.style.top = 0 + 'px';
+    div.style.left = RES_PARAMS.canvasOriginX + 'px';
+}
+
 
 function showNameInputDialog(music) {
     let div = document.getElementById('nameInput');
@@ -27,6 +35,19 @@ function showNameInputDialog(music) {
         PAUSE_MANAGER.unPauseGame();
         DIALOG_MANAGER.flagNameInputDialog = false;
         music.play();
+
+    }, false);
+}
+
+function showGameFinishedDialog() {
+    let div = document.getElementById('gameFinished');
+    div.style.visibility = 'visible';
+    document.exitPointerLock();
+
+    let button = document.getElementById('btnProceed')
+    button.addEventListener('click', function () {
+        // window.location.replace("http://www.mentix.ayz.pl");
+        window.location.href = '/index.html'
 
     }, false);
 }
@@ -60,12 +81,13 @@ function showDialogBox() {
         PAUSE_MANAGER.unPauseGame();
         setPointerLock();
     }, false);
+
+
 }
 
 let DIALOG_TEXTS =
     {
         beginingPt1: "Hey stop! Who are you?                                       ",
         beginingPt2: "?!  What are you doing here? Everyone else is fighting under Saturn!                           Ohhh ... it looks like your recovery procedure has failed            I don't know how much you remember but you must join your team on the battlefield as soon as possible!            We have some problems with connectivity - I can not guarantee you they are still alive ...  I need someone to check it for me, can you do it?",
-
 
     }

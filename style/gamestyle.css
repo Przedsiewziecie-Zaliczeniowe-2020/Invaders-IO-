@@ -47,11 +47,18 @@ body {
   height: 100vh;
 }
 
+#gameFinished{
+    position: fixed;
+    background-color: black;
+    visibility: collapse;
+}
+
 #nameInput{
     position: fixed;
     background-color: black;
     visibility: collapse;
 }
+
 .center{
     position: absolute;
     text-align: center;
@@ -80,6 +87,22 @@ body {
         filter: drop-shadow(0 0 40px #12208a);
 }
 
+.herotext2{
+    color:white;
+    font-family: 'Saira', sans-serif;
+    font-weight: 700;
+    display: block;
+    background: linear-gradient(to bottom, #fffb00 0%, #fffae2 50%, #3f320a 51%, #f7b900 100%);
+    background-blend-mode: multiply;
+    background-repeat: repeat;
+    line-height: 1;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 40px;
+    -webkit-filter: drop-shadow(0 0 30px #12208a);
+    filter: drop-shadow(0 0 30px #12208a);
+}
+
 
 #btnEnterName {
   font-family: 'Saira', sans-serif;
@@ -93,6 +116,20 @@ body {
   border: 2px solid #17182f;
   padding: 0px 20px;
 }
+
+#btnProceed {
+    font-family: 'Saira', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #17182f;
+    cursor: pointer;
+    background: #fff;
+    display: inline-block;
+    border-radius: 8px;
+    border: 2px solid #17182f;
+    padding: 0px 20px;
+}
+
 
 #btnEnterName i{
 

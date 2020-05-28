@@ -1,136 +1,101 @@
-let SHIP_IMG;
-let LAYER_IMG;
-let LASER_IMG;
-let LASER_ENEMY_IMG;
-let ENEMY_ONE_SMALL;
+let IMGS = {};
+let SOUNDS_AND_MUSIC = {};
+let PAUSE_MANAGER;
+let DIALOG_MANAGER;
+let COLLISION_DETECTOR;
+let GAME_OVER;
+let MOUSE_X;
+let MOUSE_Y;
+let PLAYER_NAME;
 {
     let countBgStars = 100;
-    let BACKGROUND_MUSIC;
-    let SHOT_SOUND;
     let bgStars = [countBgStars];
     let ship;
-    let enemies = [];
-    let enemyShots = [];
     let playerShots = [];
-
+    let levelStrategy = new LevelStrategy();
+    let levels = [];
+    let actualLevel;
 
     function preload() {
-        SHIP_IMG = loadImage('Models/Spaceships/PlayerOne.png');
-        LAYER_IMG = loadImage('Models/Layer/Layer 1.png');
-        LASER_IMG = loadImage('Models/Lazers/lazers1.png');
-        BACKGROUND_MUSIC=loadSound("Sound/General/Too Soon.mp3");
-        SHOT_SOUND=loadSound("Sound/Effects/Lazers1.mp3");
-        ENEMY_ONE_SMALL= loadImage('Models/Enemies/Pack1/Infantry/inf-a-7.png');
-        LASER_ENEMY_IMG=loadImage('Models/Lazers/lazers2.png');
+        PAUSE_MANAGER = new PauseManager();
+        DIALOG_MANAGER = new DialogsManager();
+        COLLISION_DETECTOR = new CollisionDetector();
+
+        loadImgs();
+        loadSoundsAndMusic();
+        setupResParamas();
+        scaleNameInputDialog();
+        scaleGameFinishedDialog();
+
     }
 
     function setup() {
-        var div = document.getElementById('gameBar');
-        var canvas = createCanvas(div.offsetWidth, div.offsetHeight); // TODO naprawić i zapisać gdzies wielkosc canvasu
-        canvas.parent('gameBar');
+        showNameInputDialog(SOUNDS_AND_MUSIC.too_soon);
 
-        ship = new Ship(playerShots);
-        prepareEnemies();
-        prepareBgStars();
+        var canvas = createCanvas(RES_PARAMS.canvasWidth, RES_PARAMS.canvasHeight);
+        canvas.parent('sketchHolder');
 
+        pointerLockSetup();
 
-        BACKGROUND_MUSIC.loop();
+        prepareWorld();
+
+        COLLISION_DETECTOR.setupPlayerShots(playerShots);
+        prepareBgStars(bgStars, countBgStars);
+        // prepareasteroid(asteroid, 100, 100, 1);
     }
 
-    function keyPressed() {
-        if (key == ' ') {
-            ship.shoot();
-            SHOT_SOUND.play();
-        }
+    function mouseClicked() {
+            if (!PAUSE_MANAGER.isGamePaused) {
+                ship.shoot();
+            }
     }
 
     function draw() {
-        // - - - - moving and drawing - - - -
-        background(LAYER_IMG);
-        moveAndDrawBgStars();
-        for (let i = 0; i < enemies.length; i++) {
-            enemies[i].show();
-            enemies[i].update();
-            enemies[i].move();
-        }
+        // - - - - MOVING AND DRAWING - - - -
+        background(IMGS.bg1);
+        moveAndDrawBgStars(bgStars, countBgStars);
+        DIALOG_MANAGER.attemptDialog(true);
 
-        ship.show();
-        ship.update();
+        playerActionFunction(ship, playerShots);
+        showPlayerLives(ship.hp);
 
-        for (let i = 0; i < enemyShots.length; i++) {
-            enemyShots[i].show();
-            enemyShots[i].move();
-        }
-        for (let i = 0; i < playerShots.length; i++) {
-            playerShots[i].show();
-            playerShots[i].move();
-        }
-
-        // co pol sekundy triggeruj prawdopodobny strzal enenmy
-        if (frameCount % 30 == 0) {
-            for (let i = 0; i < enemies.length; i++)
-                enemies[i].attemptShooting()
-
-        }
-
-        // kolizje
-        enemyShotsCollisions();
-        playerShotsCollisions();
-
-    }
-
-    function prepareBgStars() {
-        for (let i = 0; i < countBgStars; i++) {
-            bgStars[i] = new BgStar();
-        }
-    };
-
-    function prepareEnemies() {
-        for (let i = 0; i < 6; i++) {
-            enemies.push(new Enemy(100 + (i * 150), 100, 0.1, enemyShots))
-        }
-    };
-
-    function moveAndDrawBgStars() {
-        for (let i = 0; i < countBgStars; i++) {
-            bgStars[i].show();
-            bgStars[i].move();
-            bgStars[i].update();
-        }
-    };
-
-    function enemyShotsCollisions() {
-        for (let i = 0; i < enemyShots.length; i++) {
-            let collision = enemyShots[i].checkCollision(ship);
-
-            if (collision == "player") {
-                enemyShots.splice(i, 1);
-                i--;
-                ship.y = -100; // tymczasowo
-                // TODO tracenie zyc, respienie sie na srodku?
-
-            } else if (collision == "wall") {
-                enemyShots.splice(i, 1);
-                i--;
+        if (!levelStrategy.run()) // jesli skonczyly sie stage
+        {
+            // jesli jest nastepny poziom to zmien na niego
+            // Tutaj nastepuje zmiana levelu, wiec mozna by zrobic jakies wodostryksi xD
+            if (actualLevel + 1 < levels.length) {
+                actualLevel += 1;
+                levelStrategy.setLevel(levels[actualLevel]);
+                levels[actualLevel].setupCollisionDetection();
+            }
+            // gracz ukonczyl gre
+            else {
+                PAUSE_MANAGER.pauseGame();
+                showGameFinishedDialog();
             }
         }
+        // @ @ @ @ END OF MOVING AND DRAWING @ @ @ @
+
+        COLLISION_DETECTOR.detect();
+        PAUSE_MANAGER.attemptShowPauseText();
     }
 
-    function playerShotsCollisions() {
-        for (let i = 0; i < playerShots.length; i++) {
-            let collision = playerShots[i].checkCollision(enemies);
+    GAME_OVER = function () {
+        PAUSE_MANAGER.pauseGameAndSetPauseTextFlag('game over');
+        prepareWorld();
+    }
 
-            if (collision == -99) continue;
-            if (collision == -1) {
-                playerShots.splice(i, 1);
-                i--;
+    function prepareWorld() {
+        levels = []
 
-            } else {
-                playerShots.splice(i, 1);
-                enemies.splice(collision, 1);
-                i--;
-            }
+        for (let i = 0; i < 1; i++) {
+            levels.push(LevelTemplate()) // narazie robie 2 razy ten sam level
         }
-    }
+        levelStrategy.setLevel(levels[0]);
+        levels[0].setupCollisionDetection();
+        actualLevel = 0;
 
+        ship = new Ship(playerShots);
+        COLLISION_DETECTOR.setupShip(ship, GAME_OVER, this);
+    }
 }

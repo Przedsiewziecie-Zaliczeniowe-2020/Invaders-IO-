@@ -1,0 +1,79 @@
+
+	1. Jak wygl¹da (ogólnie) rozgrywka? Czy jest podobna do jakiejœ wersji Chicken Invaders/Space Invaders? 			Jakiej?
+
+		min graczy: 1
+		max graczy: 2 (max 2 po sieci, lokalnie: 1)
+		spawn graczy: dó³ ekranu, wyœrodkowane
+		gracze sterowani przez komputer: brak, tylko AI
+		mieszane multi: nie
+		crossplatform: nie
+		wzorzec: ***link here***
+		jêzyk: English
+
+	
+	2. Jakie s¹ warunki zwyciêstwa?
+		Ukoñczenie podstawowych poziomów (ala history mode), po zakonczeniu wyœwietlany jest nam uzyskany wynik
+		oraz informacja czy chcemy powrocic do menu g³ównego i zakoñczyæ lub "lecieæ dalej".
+		Kontynuowanie dodatkowej rozgrywki generowanej generycznie jest w stanie podwy¿szyæ nam wynik zdobyty
+		juz w podstawowej wersji gry.
+		Swoistym "zwyciêstwem" jest uzyskanie jak najwiêkszego wyniku zanim stracimy wszystkie nasze ¿ycia.
+		
+	3. Poziomy:
+
+		Bêd¹ poziomy do³adowywane dynamicznie, zwiêkszaj¹ce iloœæ przeciwników, szybkoœæ ich poruszania oraz 				prêdkoœæ strza³ów wrogów. Ka¿dy nastêpny poziom bêdzie mia³ inn¹ szat¹ graniczn¹. W rogu ekranu informacje 
+		na temat na której mapie znajdujê siê juz gracz oraz jaki wynik obecnie posiada (pkt).
+		
+
+	4. Wave-y oraz bossowie:
+		Wave-y: Tak, s¹.
+		Minumum 2 Wave-y, na pewno ostatni wave to boss.
+		Przyk³ad: 3 Wave-y przygody ( w danym poziomie ) odblokowuje 4 Wave-a z Bossem.
+		Ka¿dy poziom koñczy siê mocniejszym przeciwnikiem (coœ jak boss), uk³on w stronê retro gier.
+		Pokonanie bossa pozwala nam przejœæ na kolejny poziom.
+		Pokonanie bossa gwarantuje sta³y powerup.
+		
+	4.1 Kiedy generuje sie nowy Wave?
+		
+		Przy wyczyszczeniu "planszy" z przeciwniów.
+		Zabicie przeciwników aktualnie znajduj¹cych siê przed Tob¹.
+			
+
+	5. Wszystko o power-upach:
+		
+		Stale:
+			Health up, Wmocnienie broni dmg, Inny pattern strza³u itp.
+		Czasowe: 
+			Tarcza, 2x points itp.
+		
+
+
+		Indywidualne: (zdobywane dla jednego gracza)
+			Health up, Wmocnienie broni dmg, Inny pattern strza³u, Tarcza.
+			
+		Zespolowe: (zebranie przez jednego gracza gwarantuje nagrodê równie¿ dla kolegi)
+			2x points, Wmocnienie broni dmg
+
+
+		Powerupy mog¹ byæ równie¿ uniwersalne, typu tarcza dla calej ekipy.
+		Kolorystyka jakas spójna by podczas rozgrywki gracze od razu wiedzieli czy zbierany power-up jest 
+		przeznaczony dla zespolu czy indywidualny.
+		Przejzysty interfejs - malo czasu i intuicyjne podejscie.
+		Np. pomaranczony -> cala ekipa, niebieski -> solo.
+		
+
+
+	6. Czy gra posiada jeden tryb, czy kilka?
+
+		A. Przygoda solo:
+		B. Multiplayer z koleg¹:
+
+		Brak listy pokoi (mniejsza toksycznoœæ graczy), jeœli gracz wybierze tryb multiplayer nie bêdzie móg³ 				rozpocz¹æ dopóki 2gi gracz nie do³¹czy do jego sesji. Zaprasza pierwszy gracz poprzez kod wygenerowany do 			zaproszenia.
+
+
+	
+	7. Na jakie platformy gra bêdzie wydana?
+		PC: Przegl¹darka.
+	
+
+	8. Czy gra bêdzie posiada³a rozszerzenia, dodatki?
+		Na razie nie przewidujemy.

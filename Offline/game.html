@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GAME - Robots Invaders</title>
+
+    <!-- https://cdnjs.com/libraries/p5.js --> <!-- https://p5js.org/reference/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+    <!-- https://cdnjs.com/libraries/howler --> <!-- https://github.com/goldfire/howler.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.3/howler.js"></script>
+    <!-- https://github.com/bmoren/p5.collide2D -->
+    <script src="https://cdn.jsdelivr.net/gh/bmoren/p5.collide2D/p5.collide2d.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+
+
+    <!-- Font-awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="style/gamestyle.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="load">
+  <hr/><hr/><hr/><hr/>
+</div>
+
+<div id="container">
+    <div id="sketchHolder">
+        <script type="text/javascript" src="pauseManager.js"></script>
+        <script type="text/javascript" src="dialogsManager.js"></script>
+        <script type="text/javascript" src="collisionDetector.js"></script>
+        <script type="text/javascript" src="levelFactories.js"></script>
+        <script type="text/javascript" src="levelStrategy.js"></script>
+        <script type="text/javascript" src="level.js"></script>
+        <script type="text/javascript" src="sketch.js"></script>
+        <script type="text/javascript" src="loadFiles.js"></script>
+        <script type="text/javascript" src="dialogs.js"></script>
+        <script type="text/javascript" src="pointerLock.js"></script>
+        <script type="text/javascript" src="ship.js"></script>
+        <script type="text/javascript" src="shot.js"></script>
+        <script type="text/javascript" src="additionalSystemFunctions.js"></script>
+        <script type="text/javascript" src="bgStar.js"></script>
+        <script type="text/javascript" src="enemy.js"></script>
+        <script type="text/javascript" src="enemyShot.js"></script>
+        <script type="text/javascript" src="objectFunction.js"></script>
+        <script type="text/javascript" src="neutralDangerousObjects.js"></script>
+        <script type="text/javascript" src="collisionFunctions.js"></script>
+
+        <script type="text/javascript" src="stage.js"></script>
+        <script type="text/javascript" src="DetailsOfSpecificEnemy.js"></script>
+        <script type="text/javascript" src="resolution.js"></script>
+    </div>
+
+    <div id="nameInput">
+        <div class="center">
+            <div class="centerfix">
+                <div class="herotext">Select your name!</div>
+                <br/>
+                <div class="text-input">
+                    <input name="playerName" id="playerName" type="text" placeholder="Your name">
+                    <label for="playerName">Name</label>
+                    <br/>
+                    <br/>
+                </div>
+                <button id="btnEnterName"><p>Accept <i class="fa fa-check-circle"></i></p></button>
+                <div class="txtError" id="txtError"></div>
+                <br/>
+            </div>
+        </div>
+    </div>
+
+    <div id="gameFinished">
+        <div class="center">
+            <div class="centerfix">
+                <div class="herotext2">Congratulations! Game completed</div>
+                <br/>
+                <button id="btnProceed"><p>Go back to main page</p></button>
+                <br/>
+            </div>
+        </div>
+    </div>
+
+    <div id="dialogBox">
+        <div class="row">
+            <div class="column left">
+                <img src="Models/Characters/android-girl.jpg" alt="Android woman">
+            </div>
+            <div class="column right">
+                <h2>Android Woman:</h2>
+                <div id="text"></div>
+            </div>
+        </div>
+        <br/>
+        <a class="close" id="dialogBoxClose">I'm ready!</a>
+    </div>
+
+</div>
+
+
+</body>
+</html>

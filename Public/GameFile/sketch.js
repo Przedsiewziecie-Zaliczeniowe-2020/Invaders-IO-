@@ -31,7 +31,7 @@ let PLAYER_NAME;
 
     function setup() {
         showNameInputDialog(SOUNDS_AND_MUSIC.too_soon);
-        socket = io.connect('http://localhost:3000');
+
         var canvas = createCanvas(RES_PARAMS.canvasWidth, RES_PARAMS.canvasHeight);
         canvas.parent('sketchHolder');
 

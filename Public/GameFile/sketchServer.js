@@ -8,6 +8,7 @@ let MOUSE_X;
 let MOUSE_Y;
 let PLAYER_NAME;
 var socket;
+let ship2X;
 {
     let countBgStars = 100;
     let bgStars = [countBgStars];
@@ -33,8 +34,10 @@ var socket;
 
     function setup() {
         showNameInputDialog(SOUNDS_AND_MUSIC.too_soon);
+
         socket = io.connect('http://localhost:3000');
-        socket.on('ship2',drawNewShip);
+
+
         var canvas = createCanvas(RES_PARAMS.canvasWidth, RES_PARAMS.canvasHeight);
         canvas.parent('sketchHolder');
 
@@ -48,14 +51,14 @@ var socket;
     }
 
     function drawNewShip(ship) {
-        ship2=ship;
-        playerActionFunction(ship2, playerShots);
+        ship2X=ship.x;
+        // console.log('id: '+ship.id+' ship X: '+ship.x )
     }
-    
+
     function mouseClicked() {
-            if (!PAUSE_MANAGER.isGamePaused) {
-                ship.shoot();
-            }
+        if (!PAUSE_MANAGER.isGamePaused) {
+            ship.shoot();
+        }
     }
 
     function draw() {
@@ -64,10 +67,14 @@ var socket;
         moveAndDrawBgStars(bgStars, countBgStars);
         DIALOG_MANAGER.attemptDialog(true);
 
+        socket.on('ship2', drawNewShip);
+
+        //playerActionFunction(ship2, playerShots);
         EMIT_TO_SERVER();
         //drawNewShip();
 
         playerActionFunction(ship, playerShots);
+        playerActionFunction(ship2, playerShots);
         showPlayerLives(ship.hp);
 
         if (!levelStrategy.run()) // jesli skonczyly sie stage
@@ -96,8 +103,8 @@ var socket;
         prepareWorld();
 
     };
-   EMIT_TO_SERVER= function () {
-    socket.emit('ship',ship)
+    EMIT_TO_SERVER = function () {
+        socket.emit('ship', ship)
     };
 
     function prepareWorld() {
@@ -111,6 +118,7 @@ var socket;
         actualLevel = 0;
 
         ship = new Ship(playerShots);
+        ship2 =new Ship2(playerShots);
 
         COLLISION_DETECTOR.setupShip(ship2, GAME_OVER, this);
         COLLISION_DETECTOR.setupShip(ship, GAME_OVER, this);

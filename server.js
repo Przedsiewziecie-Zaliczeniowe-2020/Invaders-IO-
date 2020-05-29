@@ -16,7 +16,7 @@ io.sockets.on('connection',
         socket.on('ship',
             function (ship) {
                 console.log("Received: 'ship x:' " + ship.x + "ship y: " + ship.y);
-                socket.broadcast.emit('ship', ship);
+                socket.broadcast.emit('ship2', ship);
             }
         );
         socket.on('disconnect', function () {

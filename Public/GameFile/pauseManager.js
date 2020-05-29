@@ -44,6 +44,7 @@ class PauseManager {
         textSize(20);
         textAlign(CENTER, CENTER);
         text(info, RES_PARAMS.canvasWidth/2, RES_PARAMS.canvasHeight/2+50);
+
     }
 
     showGameOverText(){

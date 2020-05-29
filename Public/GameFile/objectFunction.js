@@ -6,10 +6,10 @@ function prepareBgStars(bgStars, countBgStars) {
 };
 
 function showPlayerLives(livesAmount) {
-    fill(0, 159, 232, 150)
+    fill(0, 159, 232, 150);
     strokeWeight(3);
-    stroke(0, 159, 232)
-    rect(width - 148, 0, 150, 50, 0, 0, 0, 15)
+    stroke(0, 159, 232);
+    rect(width - 148, 0, 150, 50, 0, 0, 0, 15);
     noStroke();
 
     if (livesAmount === 0 || PAUSE_MANAGER.pauseTextType === 'game over') {

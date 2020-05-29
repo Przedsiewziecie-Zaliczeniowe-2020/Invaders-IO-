@@ -7,10 +7,12 @@ let GAME_OVER;
 let MOUSE_X;
 let MOUSE_Y;
 let PLAYER_NAME;
+var socket;
 {
     let countBgStars = 100;
     let bgStars = [countBgStars];
     let ship;
+    let ship2;
     let playerShots = [];
     let levelStrategy = new LevelStrategy();
     let levels = [];
@@ -31,7 +33,8 @@ let PLAYER_NAME;
 
     function setup() {
         showNameInputDialog(SOUNDS_AND_MUSIC.too_soon);
-
+        socket = io.connect('http://localhost:3000');
+        socket.on('ship2',drawNewShip);
         var canvas = createCanvas(RES_PARAMS.canvasWidth, RES_PARAMS.canvasHeight);
         canvas.parent('sketchHolder');
 
@@ -44,6 +47,11 @@ let PLAYER_NAME;
         // prepareasteroid(asteroid, 100, 100, 1);
     }
 
+    function drawNewShip(ship) {
+        ship2=ship;
+        playerActionFunction(ship2, playerShots);
+    }
+    
     function mouseClicked() {
             if (!PAUSE_MANAGER.isGamePaused) {
                 ship.shoot();
@@ -55,6 +63,9 @@ let PLAYER_NAME;
         background(IMGS.bg1);
         moveAndDrawBgStars(bgStars, countBgStars);
         DIALOG_MANAGER.attemptDialog(true);
+
+        EMIT_TO_SERVER();
+        //drawNewShip();
 
         playerActionFunction(ship, playerShots);
         showPlayerLives(ship.hp);
@@ -83,10 +94,14 @@ let PLAYER_NAME;
     GAME_OVER = function () {
         PAUSE_MANAGER.pauseGameAndSetPauseTextFlag('game over');
         prepareWorld();
-    }
+
+    };
+   EMIT_TO_SERVER= function () {
+    socket.emit('ship',ship)
+    };
 
     function prepareWorld() {
-        levels = []
+        levels = [];
 
         for (let i = 0; i < 1; i++) {
             levels.push(LevelTemplate()) // narazie robie 2 razy ten sam level
@@ -96,6 +111,8 @@ let PLAYER_NAME;
         actualLevel = 0;
 
         ship = new Ship(playerShots);
+
+        COLLISION_DETECTOR.setupShip(ship2, GAME_OVER, this);
         COLLISION_DETECTOR.setupShip(ship, GAME_OVER, this);
     }
 }

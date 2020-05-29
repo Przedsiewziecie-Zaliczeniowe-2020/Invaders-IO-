@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.3/howler.js"></script>
     <!-- https://github.com/bmoren/p5.collide2D -->
     <script src="https://cdn.jsdelivr.net/gh/bmoren/p5.collide2D/p5.collide2d.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
 
 
     <!-- Font-awesome -->
@@ -18,10 +18,6 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="style/gamestyle.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="style/gamestyle.css">
-  
-
 
 </head>
 
@@ -33,29 +29,29 @@
 
 <div id="container">
     <div id="sketchHolder">
-        <script type="text/javascript" src="pauseManager.js"></script>
-        <script type="text/javascript" src="dialogsManager.js"></script>
-        <script type="text/javascript" src="collisionDetector.js"></script>
-        <script type="text/javascript" src="levelFactories.js"></script>
-        <script type="text/javascript" src="levelStrategy.js"></script>
-        <script type="text/javascript" src="level.js"></script>
-        <script type="text/javascript" src="sketch.js"></script>
-        <script type="text/javascript" src="loadFiles.js"></script>
-        <script type="text/javascript" src="dialogs.js"></script>
-        <script type="text/javascript" src="pointerLock.js"></script>
-        <script type="text/javascript" src="ship.js"></script>
-        <script type="text/javascript" src="shot.js"></script>
-        <script type="text/javascript" src="additionalSystemFunctions.js"></script>
-        <script type="text/javascript" src="bgStar.js"></script>
-        <script type="text/javascript" src="enemy.js"></script>
-        <script type="text/javascript" src="enemyShot.js"></script>
-        <script type="text/javascript" src="objectFunction.js"></script>
-        <script type="text/javascript" src="neutralDangerousObjects.js"></script>
-        <script type="text/javascript" src="collisionFunctions.js"></script>
+        <script type="text/javascript" src="GameFile/pauseManager.js"></script>
+        <script type="text/javascript" src="GameFile/dialogsManager.js"></script>
+        <script type="text/javascript" src="GameFile/collisionDetector.js"></script>
+        <script type="text/javascript" src="GameFile/levelFactories.js"></script>
+        <script type="text/javascript" src="GameFile/levelStrategy.js"></script>
+        <script type="text/javascript" src="GameFile/level.js"></script>
+        <script type="text/javascript" src="GameFile/sketchServer.js"></script>
+        <script type="text/javascript" src="GameFile/loadFiles.js"></script>
+        <script type="text/javascript" src="GameFile/dialogs.js"></script>
+        <script type="text/javascript" src="GameFile/pointerLock.js"></script>
+        <script type="text/javascript" src="GameFile/ship.js"></script>
+        <script type="text/javascript" src="GameFile/shot.js"></script>
+        <script type="text/javascript" src="GameFile/additionalSystemFunctions.js"></script>
+        <script type="text/javascript" src="GameFile/bgStar.js"></script>
+        <script type="text/javascript" src="GameFile/enemy.js"></script>
+        <script type="text/javascript" src="GameFile/enemyShot.js"></script>
+        <script type="text/javascript" src="GameFile/objectFunction.js"></script>
+        <script type="text/javascript" src="GameFile/neutralDangerousObjects.js"></script>
+        <script type="text/javascript" src="GameFile/collisionFunctions.js"></script>
 
-        <script type="text/javascript" src="stage.js"></script>
-        <script type="text/javascript" src="DetailsOfSpecificEnemy.js"></script>
-        <script type="text/javascript" src="resolution.js"></script>
+        <script type="text/javascript" src="GameFile/stage.js"></script>
+        <script type="text/javascript" src="GameFile/DetailsOfSpecificEnemy.js"></script>
+        <script type="text/javascript" src="GameFile/resolution.js"></script>
     </div>
 
     <div id="nameInput">
@@ -90,7 +86,7 @@
     <div id="dialogBox">
         <div class="row">
             <div class="column left">
-                <img src="Models/Characters/android-girl.jpg" alt="Android woman">
+                <img src="GameFile/Models/Characters/android-girl.jpg" alt="Android woman">
             </div>
             <div class="column right">
                 <h2>Android Woman:</h2>

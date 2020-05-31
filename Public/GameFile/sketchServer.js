@@ -58,6 +58,7 @@ let ship2X;
     function mouseClicked() {
         if (!PAUSE_MANAGER.isGamePaused) {
             ship.shoot();
+            socket.emit('shipShoot')
         }
     }
 
@@ -68,7 +69,7 @@ let ship2X;
         DIALOG_MANAGER.attemptDialog(true);
 
         socket.on('ship2', drawNewShip);
-
+        socket.on('ship2Shoot', ship2.shoot());
         //playerActionFunction(ship2, playerShots);
         EMIT_TO_SERVER();
         //drawNewShip();
@@ -77,6 +78,8 @@ let ship2X;
         playerActionFunction(ship2, playerShots);
         showPlayerLives(ship.hp);
 
+
+        
         if (!levelStrategy.run()) // jesli skonczyly sie stage
         {
             // jesli jest nastepny poziom to zmien na niego
@@ -105,11 +108,13 @@ let ship2X;
     };
     EMIT_TO_SERVER = function () {
         socket.emit('ship', ship)
+
     };
 
     function prepareWorld() {
-        levels = [];
 
+
+        levels = [];
         for (let i = 0; i < 1; i++) {
             levels.push(LevelTemplate()) // narazie robie 2 razy ten sam level
         }

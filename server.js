@@ -15,10 +15,17 @@ io.sockets.on('connection',
         console.log("We have a new client: " + socket.id);
         socket.on('ship',
             function (ship) {
-                console.log("Received: 'ship x:' " + ship.x + "ship y: " + ship.y);
+               // console.log("Received: 'ship x:' " + ship.x + "ship y: " + ship.y);
                 socket.broadcast.emit('ship2', ship);
             }
         );
+        socket.on('shipShoot',function () {
+console.log('strzelio na serwerze');
+            socket.broadcast.emit('ship2Shoot','Zostal wystrzelony pocisk');
+        });
+
+
+
         socket.on('disconnect', function () {
             console.log("Client has disconnected");
         });

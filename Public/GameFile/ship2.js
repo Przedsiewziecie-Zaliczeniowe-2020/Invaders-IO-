@@ -2,8 +2,8 @@ class Ship2 {
     explodeFrame = 0;
     isSpawnProtected = false;
 
-    constructor(playerShots) {
-        this.id=getRandomInt(1,200);
+    constructor(playerShots,socket) {
+        this.id=socket;
         this.playerShots = playerShots;
         this.hp = 3;
         this.width = 80;
@@ -13,7 +13,7 @@ class Ship2 {
 
         this.x = ship2X;
 
-        this.explosionXScale = (this.width * 1.75 - this.width)
+        this.explosionXScale = (this.width * 1.75 - this.width);
         this.explosionYScale = (this.height * 1.75 - this.height)
     };
 

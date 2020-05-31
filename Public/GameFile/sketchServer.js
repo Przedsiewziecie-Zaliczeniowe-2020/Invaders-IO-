@@ -72,6 +72,11 @@ let startGame=false;
 
         socket.on('ship2', drawNewShip);
 
+        socket.on('enemyAttacked', function (j) {
+            this.callbackEnemies.call(this.callbackEnemiesCaller, j);
+            socket.off('enemyAttacked');
+        });
+
 
             socket.on('ship2Shoot', function () {
                 ship2.shoot();

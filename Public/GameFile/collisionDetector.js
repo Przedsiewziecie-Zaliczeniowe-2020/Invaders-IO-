@@ -40,10 +40,11 @@ class CollisionDetector {
                 }
                 if (this.enemies.length > 0) {
                     for (let j = 0; j < this.enemies.length; j++) {
-                        if (checkPlayerShotHitEnemy(this.playerShots[i], this.enemies[j])) {
+                        if (checkPlayerShotHitEnemy(this.playerShots[i], this.enemies[j],false)) {
                             this.playerShots.splice(i, 1);
                             i--;
                             if (this.enemies[j].isHitted() && this.enemies[j].isExploding === false)
+                                socket.broadcast.emit('enemyAttacked',j);
                                 this.callbackEnemies.call(this.callbackEnemiesCaller, j);
                             break;
                         }

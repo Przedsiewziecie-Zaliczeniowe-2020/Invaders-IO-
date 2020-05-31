@@ -22,6 +22,7 @@ function checkPlayerShotHitWall(shot) {
 function checkPlayerShotHitEnemy(shot, enemy) {
     if (collideRectRect(enemy.x, enemy.y, enemy.width, enemy.height, shot.x, shot.y, shot.width, shot.height)) {
         return true;
+        
     }
     return false;
 }

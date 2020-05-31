@@ -62,14 +62,23 @@ let ship2X;
         }
     }
 
+let startGame=false;
     function draw() {
+
         // - - - - MOVING AND DRAWING - - - -
         background(IMGS.bg1);
         moveAndDrawBgStars(bgStars, countBgStars);
         DIALOG_MANAGER.attemptDialog(true);
 
         socket.on('ship2', drawNewShip);
-        socket.on('ship2Shoot', ship2.shoot());
+
+
+            socket.on('ship2Shoot', function () {
+                ship2.shoot();
+                socket.off('ship2Shoot');
+            });
+
+
         //playerActionFunction(ship2, playerShots);
         EMIT_TO_SERVER();
         //drawNewShip();
@@ -78,23 +87,31 @@ let ship2X;
         playerActionFunction(ship2, playerShots);
         showPlayerLives(ship.hp);
 
+        socket.on('startGame',function f () {
+        startGame=true;
+            socket.off('startGame');
+        });
 
-        
-        if (!levelStrategy.run()) // jesli skonczyly sie stage
-        {
-            // jesli jest nastepny poziom to zmien na niego
-            // Tutaj nastepuje zmiana levelu, wiec mozna by zrobic jakies wodostryksi xD
-            if (actualLevel + 1 < levels.length) {
-                actualLevel += 1;
-                levelStrategy.setLevel(levels[actualLevel]);
-                levels[actualLevel].setupCollisionDetection();
-            }
-            // gracz ukonczyl gre
-            else {
-                PAUSE_MANAGER.pauseGame();
-                showGameFinishedDialog();
-            }
+
+if (startGame) {
+    if (!levelStrategy.run()) // jesli skonczyly sie stage
+    {
+        // jesli jest nastepny poziom to zmien na niego
+        // Tutaj nastepuje zmiana levelu, wiec mozna by zrobic jakies wodostryksi xD
+        if (actualLevel + 1 < levels.length) {
+            actualLevel += 1;
+            levelStrategy.setLevel(levels[actualLevel]);
+            levels[actualLevel].setupCollisionDetection();
         }
+        // gracz ukonczyl gre
+        else {
+            PAUSE_MANAGER.pauseGame();
+            showGameFinishedDialog();
+        }
+    }
+}
+
+
         // @ @ @ @ END OF MOVING AND DRAWING @ @ @ @
 
         COLLISION_DETECTOR.detect();
@@ -115,9 +132,11 @@ let ship2X;
 
 
         levels = [];
+
         for (let i = 0; i < 1; i++) {
             levels.push(LevelTemplate()) // narazie robie 2 razy ten sam level
         }
+
         levelStrategy.setLevel(levels[0]);
         levels[0].setupCollisionDetection();
         actualLevel = 0;

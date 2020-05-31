@@ -17,6 +17,12 @@ io.sockets.on('connection',
             function (ship) {
                // console.log("Received: 'ship x:' " + ship.x + "ship y: " + ship.y);
                 socket.broadcast.emit('ship2', ship);
+
+                    socket.broadcast.emit('startGame', 'Wavy zaczynają isc');
+
+
+
+
             }
         );
         socket.on('shipShoot',function () {

@@ -34,7 +34,8 @@ class Enemy {
     }
 
     isHitted() {
-        this.hp = (this.hp - 1 < 0) ? 0 : this.hp - 1
+
+        this.hp = (this.hp - 1 < 0) ? 0 : this.hp - 1;
         this.hitted = true;
         if (this.hp === 0) {
             return true;
@@ -123,7 +124,7 @@ class Enemy {
         if (this.explodeFrame === 48)
             return true;
         image(IMGS.explosions[this.explodeFrame], this.x - this.explosionXScale / 2, this.y - this.explosionYScale / 2, this.width + this.explosionXScale, this.height + this.explosionYScale)
-        this.explodeFrame += 1
+        this.explodeFrame += 1;
 
         return false;
     }

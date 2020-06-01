@@ -72,14 +72,21 @@ let startGame=false;
 
         socket.on('ship2', drawNewShip);
 
-        socket.on('enemyAttacked', function (j) {
-            this.callbackEnemies.call(this.callbackEnemiesCaller, j);
+        socket.on('enemyAttacked', function (k) {
+            for (let j = 0; j < this.enemies.length; j++) {
+                this.enemies[k].isHitted();
+            }
+
             socket.off('enemyAttacked');
         });
 
 
             socket.on('ship2Shoot', function () {
-                ship2.shoot();
+
+                    ship2.shoot();
+                    console.log('strzal');
+
+
                 socket.off('ship2Shoot');
             });
 

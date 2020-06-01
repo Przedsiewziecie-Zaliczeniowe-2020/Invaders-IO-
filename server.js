@@ -7,7 +7,7 @@ function listen() {
     var port = server.address().port;
     console.log('App listening at http://' + host + ':' + port);
 }
-
+let gameStart=true;
 app.use(express.static('public'));
 var io = require('socket.io')(server);
 io.sockets.on('connection',

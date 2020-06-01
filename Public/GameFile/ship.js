@@ -3,7 +3,7 @@ class Ship {
     isSpawnProtected = false;
 
     constructor(playerShots) {
-        this.id=getRandomInt(1,200);
+        // this.id=getRandomInt(1,200);
         this.playerShots = playerShots;
         this.hp = 3;
         this.width = 80;
@@ -75,3 +75,4 @@ class Ship {
     }
 
 }
+module.exports=Ship;

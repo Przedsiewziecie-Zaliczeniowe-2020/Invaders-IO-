@@ -15,7 +15,7 @@ class Enemy {
         this.hp = hp;
         this.startHp = hp;
         this.hitted = false;
-        this.explosionXScale = (this.width * 1.75 - this.width)
+        this.explosionXScale = (this.width * 1.75 - this.width);
         this.explosionYScale = (this.height * 1.75 - this.height)
     };
 
@@ -129,3 +129,5 @@ class Enemy {
         return false;
     }
 }
+module.exports=Enemy;
+// exports.isHitted=isHitted;

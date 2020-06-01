@@ -41,3 +41,4 @@ function checkNeutralObjectHitShip(neutralObject, ship) {
     }
     return false;
 }
+

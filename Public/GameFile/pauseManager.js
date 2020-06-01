@@ -3,34 +3,34 @@ class PauseManager {
     pauseTextType = 'none';
 
     pauseGame() {
-        this.isGamePaused = true;
-        noLoop();
+        // this.isGamePaused = true;
+        // noLoop();
     }
 
     unPauseGame() {
-        this.isGamePaused = false;
-        loop();
+        // this.isGamePaused = false;
+        // loop();
     }
 
     pauseGameAndSetPauseTextFlag(pauseType) {
-        this.pauseGame();
-        this.pauseTextType = pauseType;
+        // this.pauseGame();
+        // this.pauseTextType = pauseType;
     }
 
     attemptShowPauseText()
     {
-        if(this.pauseTextType === 'none') return;
-
-        if(this.pauseTextType === 'pause'){
-            this.pauseTextType = 'none';
-            this.showGamePausedText();
-            return;
-        }
-        if(this.pauseTextType === 'game over'){
-            this.pauseTextType = 'none';
-            this.showGameOverText();
-            return;
-        }
+        // if(this.pauseTextType === 'none') return;
+        //
+        // if(this.pauseTextType === 'pause'){
+        //     this.pauseTextType = 'none';
+        //     this.showGamePausedText();
+        //     return;
+        // }
+        // if(this.pauseTextType === 'game over'){
+        //     this.pauseTextType = 'none';
+        //     this.showGameOverText();
+        //     return;
+        // }
     }
 
     showGamePausedText(){
@@ -44,6 +44,7 @@ class PauseManager {
         textSize(20);
         textAlign(CENTER, CENTER);
         text(info, RES_PARAMS.canvasWidth/2, RES_PARAMS.canvasHeight/2+50);
+
     }
 
     showGameOverText(){

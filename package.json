@@ -24,5 +24,8 @@
   "devDependencies": {
     "jest": "^25.4.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
 }

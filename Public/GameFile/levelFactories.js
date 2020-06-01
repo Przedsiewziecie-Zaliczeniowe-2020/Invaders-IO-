@@ -21,6 +21,7 @@ function Level1() {
 // Stad kopiujcie sobie kod, tworzac nowy level
 function LevelTemplate()
 {
+
     let stages = [];
 
     // Stage 1(czyli inaczej to po prostu wave 1)

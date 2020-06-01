@@ -1,3 +1,6 @@
+const width = 200;
+const height = 200;
+
 function checkEnemyShotHitWall(enemyShot) {
     if (enemyShot.x >= width || enemyShot.x <= 0 || enemyShot.y >= height) {
         return true;
@@ -41,4 +44,8 @@ function checkNeutralObjectHitShip(neutralObject, ship) {
     return false;
 }
 
+
+module.exports = checkEnemyShotHitWall;
+module.exports.width = width;
+module.exports.height = height;
 

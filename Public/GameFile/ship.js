@@ -3,7 +3,7 @@ class Ship {
     isSpawnProtected = false;
 
     constructor(playerShots) {
-        this.id=getRandomInt(1,200);
+        // this.id=getRandomInt(1,200);
         this.playerShots = playerShots;
         this.hp = 3;
         this.width = 80;
@@ -51,7 +51,7 @@ class Ship {
 
     shoot() {
         if (this.explodeFrame > 0 && this.explodeFrame <= 78) return;
-        this.playerShots.push(new Shot(this.x + 30, this.y))
+        this.playerShots.push(new Shot(this.x + 30, this.y));
         SOUNDS_AND_MUSIC.shot.play();
     };
 
@@ -75,3 +75,4 @@ class Ship {
     }
 
 }
+module.exports=Ship;

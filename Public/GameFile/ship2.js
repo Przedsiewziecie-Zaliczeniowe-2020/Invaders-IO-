@@ -51,7 +51,7 @@ class Ship2 {
 
     shoot() {
         if (this.explodeFrame > 0 && this.explodeFrame <= 78) return;
-        this.playerShots.push(new Shot(this.x + 30, this.y))
+        this.playerShots.push(new Shot(this.x + 30, this.y));
         SOUNDS_AND_MUSIC.shot.play();
     };
 

@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/Przedsiewziecie-Zaliczeniowe-2020/Invaders-IO-#readme",
   "devDependencies": {
-    "jest": "^25.4.0"
+    "jest": "^25.5.4"
   },
   "dependencies": {}
 }

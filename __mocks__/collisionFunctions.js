@@ -1,3 +1,14 @@
+const width = 200;
+const height = 200;
+
+
+function checkPlayerShotHitEnemy(shot, enemy) {
+    if (collideRectRect(enemy.x, enemy.y, enemy.width, enemy.height, shot.x, shot.y, shot.width, shot.height)) {
+        return true;
+    }
+    return false;
+}
+
 function checkEnemyShotHitWall(enemyShot) {
     if (enemyShot.x >= width || enemyShot.x <= 0 || enemyShot.y >= height) {
         return true;
@@ -19,12 +30,7 @@ function checkPlayerShotHitWall(shot) {
     return false;
 }
 
-function checkPlayerShotHitEnemy(shot, enemy) {
-    if (collideRectRect(enemy.x, enemy.y, enemy.width, enemy.height, shot.x, shot.y, shot.width, shot.height)) {
-        return true;
-    }
-    return false;
-}
+
 
 //sprawdza czy wylecial poza sciane
 function checkNeutralObjectFlewOverWall(neutralObject) {
@@ -41,3 +47,6 @@ function checkNeutralObjectHitShip(neutralObject, ship) {
     return false;
 }
 
+module.exports = checkEnemyShotHitWall;
+module.exports.width = width;
+module.exports.height = height;

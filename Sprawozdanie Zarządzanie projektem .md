@@ -1,4 +1,4 @@
-# Specyfikacja Wymagań
+# Sprawozdanie
 **Gra Invaders IO**<br>
 Wersja 2.0<br>
 >Członkowie Zespołu

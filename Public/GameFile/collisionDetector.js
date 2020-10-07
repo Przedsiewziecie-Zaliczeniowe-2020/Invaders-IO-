@@ -46,9 +46,15 @@ class CollisionDetector {
                             i--;
 
                             if (this.enemies[j].isHitted() && this.enemies[j].isExploding === false)
-                                socket.broadcast.emit('enemyAttacked',j);
+                            {
+                                if (GameIsonline===true)
+                                {
+                                    socket.broadcast.emit('enemyAttacked',j);
+                                }
                                 this.callbackEnemies.call(this.callbackEnemiesCaller, j);
+                            }
                             break;
+
                         }
                     }
                 }

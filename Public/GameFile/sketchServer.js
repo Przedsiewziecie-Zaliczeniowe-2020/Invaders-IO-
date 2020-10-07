@@ -9,6 +9,7 @@ let MOUSE_Y;
 let PLAYER_NAME;
 var socket;
 let ship2X;
+var GameIsonline;
 {
     let countBgStars = 100;
     let bgStars = [countBgStars];
@@ -18,6 +19,7 @@ let ship2X;
     let levelStrategy = new LevelStrategy();
     let levels = [];
     let actualLevel;
+
 
     function preload() {
         PAUSE_MANAGER = new PauseManager();
@@ -37,7 +39,7 @@ let ship2X;
 
         socket = io.connect('http://localhost:3000');
 
-
+        GameIsonline=true;
         var canvas = createCanvas(RES_PARAMS.canvasWidth, RES_PARAMS.canvasHeight);
         canvas.parent('sketchHolder');
 
@@ -117,7 +119,7 @@ if (startGame) {
         }
         // gracz ukonczyl gre
         else {
-            PAUSE_MANAGER.pauseGame();
+          //  PAUSE_MANAGER.pauseGame();
             showGameFinishedDialog();
         }
     }
@@ -127,11 +129,11 @@ if (startGame) {
         // @ @ @ @ END OF MOVING AND DRAWING @ @ @ @
 
         COLLISION_DETECTOR.detect();
-        PAUSE_MANAGER.attemptShowPauseText();
+     //   PAUSE_MANAGER.attemptShowPauseText();
     }
 
     GAME_OVER = function () {
-        PAUSE_MANAGER.pauseGameAndSetPauseTextFlag('game over');
+     //   PAUSE_MANAGER.pauseGameAndSetPauseTextFlag('game over');
         prepareWorld();
 
     };

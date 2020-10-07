@@ -7,6 +7,7 @@ let GAME_OVER;
 let MOUSE_X;
 let MOUSE_Y;
 let PLAYER_NAME;
+var GameIsonline;
 {
     let countBgStars = 100;
     let bgStars = [countBgStars];
@@ -15,6 +16,7 @@ let PLAYER_NAME;
     let levelStrategy = new LevelStrategy();
     let levels = [];
     let actualLevel;
+
 
     function preload() {
         PAUSE_MANAGER = new PauseManager();
@@ -31,7 +33,7 @@ let PLAYER_NAME;
 
     function setup() {
         showNameInputDialog(SOUNDS_AND_MUSIC.too_soon);
-
+        GameIsonline=false;
         var canvas = createCanvas(RES_PARAMS.canvasWidth, RES_PARAMS.canvasHeight);
         canvas.parent('sketchHolder');
 

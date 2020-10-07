@@ -34,12 +34,14 @@ class Enemy {
     }
 
     isHitted() {
-
         this.hp = (this.hp - 1 < 0) ? 0 : this.hp - 1;
+        console.log("HP: " +this.hp)
         this.hitted = true;
         if (this.hp === 0) {
+            console.log("true")
             return true;
         } else {
+            console.log("false")
             return false;
         }
     }

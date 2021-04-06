@@ -26,25 +26,21 @@ function LevelTemplate()
 
     // Stage 1(czyli inaczej to po prostu wave 1)
     let enemies_1 = [];
-    enemies_1.push(new Enemy(100, 100, dataOfEnemyShoot.Small, 2,IMGS.enemyLvl1Small,dataOfEnemySize.W_small,dataOfEnemySize.H_small,dataOfEnemyLife.Small));
-    enemies_1.push(new Enemy(250, 100, dataOfEnemyShoot.Small, 2,IMGS.enemyLvl1Small,dataOfEnemySize.W_small,dataOfEnemySize.H_small,dataOfEnemyLife.Small));
-    enemies_1.push(new Enemy(400, 100, dataOfEnemyShoot.Small, 2,IMGS.enemyLvl1Small,dataOfEnemySize.W_small,dataOfEnemySize.H_small,dataOfEnemyLife.Small));
-    enemies_1.push(new Enemy(550, 100, dataOfEnemyShoot.Small, 2,IMGS.enemyLvl1Small,dataOfEnemySize.W_small,dataOfEnemySize.H_small,dataOfEnemyLife.Small));
-    enemies_1.push(new Enemy(700, 100, dataOfEnemyShoot.Small, 2,IMGS.enemyLvl1Small,dataOfEnemySize.W_small,dataOfEnemySize.H_small,dataOfEnemyLife.Small));
+    CreateEnemy(100, 100, dataOfEnemyShoot.Small, dataOfEnemySpeed.Small,IMGS.enemyLvl1Small,dataOfEnemySize.W_small,dataOfEnemySize.H_small,dataOfEnemyLife.Small,enemies_1,5,100)
     stages.push(new Stage(enemies_1));
 
     // Stage 2
     let enemies_2 = [];
-    enemies_2.push(new Enemy(100, 100, dataOfEnemyShoot.Small, 2,IMGS.enemyLvl1Small,dataOfEnemySize.W_small,dataOfEnemySize.H_small,dataOfEnemyLife.Small));
-    enemies_2.push(new Enemy(250, 100, dataOfEnemyShoot.Medium, 2,IMGS.enemyLvl1Medium,dataOfEnemySize.W_Medium,dataOfEnemySize.H_Medium,dataOfEnemyLife.Medium));
-    enemies_2.push(new Enemy(400, 100, dataOfEnemyShoot.Small, 2,IMGS.enemyLvl1Small,dataOfEnemySize.W_small,dataOfEnemySize.H_small,dataOfEnemyLife.Small));
+    enemies_2.push(new Enemy(100, 100, dataOfEnemyShoot.Small, 2.5,IMGS.enemyLvl1Small,dataOfEnemySize.W_small,dataOfEnemySize.H_small,dataOfEnemyLife.Small));
+    enemies_2.push(new Enemy(250, 100, dataOfEnemyShoot.Medium, 2.5,IMGS.enemyLvl1Medium,dataOfEnemySize.W_Medium,dataOfEnemySize.H_Medium,dataOfEnemyLife.Medium));
+    enemies_2.push(new Enemy(400, 100, dataOfEnemyShoot.Small, 2.5,IMGS.enemyLvl1Small,dataOfEnemySize.W_small,dataOfEnemySize.H_small,dataOfEnemyLife.Small));
     stages.push(new Stage(enemies_2));
 
     // Stage 3
     let enemies_3 = [];
-    enemies_3.push(new Enemy(100, 100, dataOfEnemyShoot.Medium, 2,IMGS.enemyLvl1Medium,dataOfEnemySize.W_Medium,dataOfEnemySize.H_Medium,dataOfEnemyLife.Medium));
-    enemies_3.push(new Enemy(250, 100, dataOfEnemyShoot.Medium, 2,IMGS.enemyLvl1Medium,dataOfEnemySize.W_Medium,dataOfEnemySize.H_Medium,dataOfEnemyLife.Medium));
-    enemies_3.push(new Enemy(400, 100, dataOfEnemyShoot.Big, 2,IMGS.enemyLvl1Big,dataOfEnemySize.W_Big,dataOfEnemySize.H_Big,dataOfEnemyLife.Big));
+    enemies_3.push(new Enemy(100, 100, dataOfEnemyShoot.Medium, 2.5,IMGS.enemyLvl1Medium,dataOfEnemySize.W_Medium,dataOfEnemySize.H_Medium,dataOfEnemyLife.Medium));
+    enemies_3.push(new Enemy(250, 100, dataOfEnemyShoot.Medium, 2.5,IMGS.enemyLvl1Medium,dataOfEnemySize.W_Medium,dataOfEnemySize.H_Medium,dataOfEnemyLife.Medium));
+    enemies_3.push(new Enemy(400, 100, dataOfEnemyShoot.Big, 2.5,IMGS.enemyLvl1Big,dataOfEnemySize.W_Big,dataOfEnemySize.H_Big,dataOfEnemyLife.Big));
     stages.push(new Stage(enemies_3));
 
     // Boss
@@ -55,4 +51,9 @@ function LevelTemplate()
 
     //-----------------
     return new Level(stages);
+}
+function CreateEnemy(x, y, shootProbability, speed, texture, width, height, hp,enemies,amount,spaceBetween){
+for ( j=0;j<amount;j++){
+    enemies.push(new Enemy(x+j*spaceBetween, y, shootProbability, speed,texture,width,height,hp));
+}
 }

@@ -4,7 +4,12 @@ const dataOfEnemyLife= {
     Big:8,
     Boss:40
 };
-
+const dataOfEnemySpeed= {
+    Small:2.5,
+    Medium:2.4,
+    Big:2,
+    Boss:2
+};
 const dataOfEnemySize={
     W_small:60,
     H_small:60,
